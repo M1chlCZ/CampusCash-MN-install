@@ -108,13 +108,16 @@ fi
 clear
 
 if [ -z "$ADVANCED" ]; then
-echo "
 
+cat << "EOF" 
   _____                         _____         __     __  ____  __  ____    __          
  / ___/__ ___ _  ___  __ _____ / ___/__ ____ / /    /  |/  / |/ / / __/__ / /___ _____ 
 / /__/ _ `/  ' \/ _ \/ // (_-</ /__/ _ `(_-</ _ \  / /|_/ /    / _\ \/ -_) __/ // / _ \
 \___/\_,_/_/_/_/ .__/\_,_/___/\___/\_,_/___/_//_/ /_/  /_/_/|_/ /___/\__/\__/\_,_/ .__/
-              /_/                                                               /_/    
+              /_/                                                               /_/   
+EOF
+
+echo "
 
      +---------MASTERNODE INSTALLER v1 ---------+
  |                                                  |
@@ -135,6 +138,7 @@ echo "
  +--------------------------------------------------+
  ::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+"
 
 sleep 5
 fi
@@ -345,7 +349,7 @@ sudo systemctl start ccash.service
 clear
 
 cat << EOL
-Now, you need to start your masternode. Please go to your desktop wallet
+Now, you need to wait for sync you can check the progress by typing getinfo. After full sync please go to your desktop wallet
 Click the Masternodes tab
 Click Start all at the bottom
 EOL
@@ -353,6 +357,6 @@ EOL
 read -p "Press Enter to continue after you've done that. " -n1 -s
 
 clear
-rm -rf /root/cbninstall.sh
+rm -rf /root/ccashMNinstall.sh
 echo "" && echo "Masternode setup completed." && echo ""
 
