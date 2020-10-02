@@ -6,4 +6,4 @@ cat > /root/.commands/hello << EOL
 echo My first program
 EOL
 chmod +x /root/.commands/hello
-~/.profile
+sudo . ~/.profile
