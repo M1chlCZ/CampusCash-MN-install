@@ -176,11 +176,10 @@ if [ -z "$UFW" ]; then
     read -e -p "Install UFW and configure ports? [Y/n] : " UFW
 fi
 
-if [[ ("$ADVANCED" == "y" || "$ADVANCED" == "Y") ]]; then
-    if [ -z "$ARGUMENTIP" ]; then
+if [ -z "$ARGUMENTIP" ]; then
         read -e -p "Server IP Address: " -i $EXTERNALIP -e IP
-    fi
 fi
+
 
 
 
