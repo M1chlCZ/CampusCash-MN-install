@@ -345,7 +345,7 @@ sudo systemctl start ccash.service
 clear
 
 cat << EOL
-Now, you need to wait for sync you can check the progress by typing getinfo. After full sync please go to your desktop wallet
+Now, you need to start your masternode. Please go to your desktop wallet
 Click the Masternodes tab
 Click Start all at the bottom
 EOL
@@ -353,6 +353,6 @@ EOL
 read -p "Press Enter to continue after you've done that. " -n1 -s
 
 clear
-rm -rf /root/ccashMNinstall.sh
+rm -rf /root/cbninstall.sh
 echo "" && echo "Masternode setup completed." && echo ""
 
