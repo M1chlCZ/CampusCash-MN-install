@@ -381,7 +381,7 @@ chmod +x /root/.commands/mnstatus
 clear
 
 
-echo "Setting up system daemon..."
+echo "Setting up CCASH daemon..."
 cat > /etc/systemd/system/ccash.service << EOL
 [Unit]
 Description=CCASHD
