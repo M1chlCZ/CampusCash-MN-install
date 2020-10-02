@@ -350,15 +350,54 @@ sudo systemctl start ccash.service
 
 clear
 
+echo "Setting up enviromental commands..."
+mkdir .commands
+echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
+cat > /root/.commands/hello << EOL
+#!/bin/bash    
+./root/Campusd getinfo
+EOL
+chmod +x /root/.commands/getinfo
+. ~/.profile
+
+clear
+
+
+echo "Setting up system daemon..."
+cat > /etc/systemd/system/ccash.service << EOL
+[Unit]
+Description=CCASHD
+After=network.target
+[Service]
+Type=forking
+User=${USER}
+WorkingDirectory=/root/
+ExecStart=/root/Campusd -conf=/root/.CCASH/CampusCash.conf -datadir=/root/.CCASH
+ExecStop=/root/Campusd -conf=/root/.CCASH/CampusCash.conf -datadir=/root/.CCASH
+Restart=on-abort
+[Install]
+WantedBy=multi-user.target
+EOL
+
+clear
+
 cat << EOL
 Now, you need to wait for sync you can check the progress by typing getinfo. After full sync please go to your desktop wallet
 Click the Masternodes tab
 Click Start all at the bottom
 EOL
 
-read -p "Press Enter to continue after you've done that. " -n1 -s
+read -p "Press Enter to continue after read to continue. " -n1 -s
+
+cat << EOL
+After full sync block with getinfo = blocks you see in your local wallet (right down corner, however mouse over check sign)
+Type: masternode start
+EOL
+
+read -p "Press Enter to continue after read to continue. " -n1 -s
+
 
 clear
 rm -rf /root/ccashMNinstall.sh
-echo "" && echo "Masternode setup completed." && echo ""
+echo "" && echo "Masternode setup complete" && echo ""
 
