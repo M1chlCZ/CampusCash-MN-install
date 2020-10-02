@@ -186,6 +186,22 @@ clear
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
+echo "Configuring swap file..."
+# Configuring SWAPT
+if [[ ("$SWAP" == "y" || "$SWAP" == "Y" || "$SWAP" == "") ]]; then
+    cd ~
+    sudo fallocate -l 3G /swapfile
+    ls -lh /swapfile
+    sudo chmod 600 /swapfile
+    ls -lh /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+    sudo swapon --show
+    sudo cp /etc/fstab /etc/fstab.bak
+    echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+fi
+clear
+
 # update packages and upgrade Ubuntu
 echo "Installing dependencies..."
 apt-get update 
@@ -203,21 +219,6 @@ if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
   ufw allow ssh
   ufw allow 19427/tcp
   yes | ufw enable
-fi
-
-
-echo "Configuring swap file..."
-if [[ ("$SWAP" == "y" || "$SWAP" == "Y" || "$SWAP" == "") ]]; then
-    cd ~
-    sudo fallocate -l 3G /swapfile
-    ls -lh /swapfile
-    sudo chmod 600 /swapfile
-    ls -lh /swapfile
-    sudo mkswap /swapfile
-    sudo swapon /swapfile
-    sudo swapon --show
-    sudo cp /etc/fstab /etc/fstab.bak
-    echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 fi
 clear
 
@@ -353,7 +354,7 @@ clear
 echo "Setting up enviromental commands..."
 mkdir .commands
 echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
-cat > /root/.commands/hello << EOL
+cat > /root/.commands/getinfo << EOL
 #!/bin/bash    
 ./root/Campusd getinfo
 EOL
