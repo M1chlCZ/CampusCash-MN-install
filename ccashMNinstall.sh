@@ -165,7 +165,7 @@ if [ -z "$ARGUMENTIP" ]; then
 fi
 
 if [ -z "$KEY" ]; then
-    read -e -p "Masternode Private Key (e.g. 7edfjLCUzGczZi3JQw8GHp434R9kNY33eFyMGeKRymkB56G4324h # THE KEY YOU GENERATED EARLIER) : " KEY
+    read -e -p "Masternode Private Key : " KEY
 fi
 
 if [ -z "$SWAP" ]; then
