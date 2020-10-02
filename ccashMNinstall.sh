@@ -169,7 +169,7 @@ if [ -z "$KEY" ]; then
 fi
 
 if [ -z "$SWAP" ]; then
-        read -e -p "Does VPS use less than 2GB RAM? [Y/n] : " SWAP
+    read -e -p "Does VPS use less than 2GB RAM? [Y/n] : " SWAP
 fi
 
 if [ -z "$UFW" ]; then
