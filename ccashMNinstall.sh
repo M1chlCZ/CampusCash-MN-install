@@ -168,12 +168,6 @@ if [ -z "$KEY" ]; then
     read -e -p "Masternode Private Key : " KEY
 fi
 
-if [[ ("$ADVANCED" == "y" || "$ADVANCED" == "Y") ]]; then
-    if [ -z "$ARGUMENTIP" ]; then
-        read -e -p "Server IP Address: " -i $EXTERNALIP -e IP
-    fi
-fi
-
 if [ -z "$SWAP" ]; then
         read -e -p "Does VPS use less than 2GB RAM? [Y/n] : " SWAP
     fi
@@ -181,6 +175,14 @@ if [ -z "$SWAP" ]; then
 if [ -z "$UFW" ]; then
     read -e -p "Install UFW and configure ports? [Y/n] : " UFW
 fi
+
+if [[ ("$ADVANCED" == "y" || "$ADVANCED" == "Y") ]]; then
+    if [ -z "$ARGUMENTIP" ]; then
+        read -e -p "Server IP Address: " -i $EXTERNALIP -e IP
+    fi
+fi
+
+
 
 clear
 
