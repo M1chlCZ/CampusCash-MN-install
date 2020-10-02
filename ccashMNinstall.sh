@@ -170,7 +170,7 @@ fi
 
 if [ -z "$SWAP" ]; then
         read -e -p "Does VPS use less than 2GB RAM? [Y/n] : " SWAP
-    fi
+fi
 
 if [ -z "$UFW" ]; then
     read -e -p "Install UFW and configure ports? [Y/n] : " UFW
@@ -362,7 +362,21 @@ cat > /root/.commands/getinfo << EOL
 #!/bin/bash    
 ./root/Campusd getinfo
 EOL
+
+cat > /root/.commands/mnstart << EOL
+#!/bin/bash    
+./root/Campusd masternode start
+EOL
+
+cat > /root/.commands/mnstatus << EOL
+#!/bin/bash    
+./root/Campusd masternode status
+EOL
+
 chmod +x /root/.commands/getinfo
+chmod +x /root/.commands/mnstart
+chmod +x /root/.commands/mnstatus
+
 . ~/.profile
 
 clear
@@ -396,7 +410,7 @@ read -p "Press Enter to continue after read to continue. " -n1 -s
 
 cat << EOL
 After full sync block with getinfo = blocks you see in your local wallet (right down corner, however mouse over check sign)
-Type: masternode start
+Type: startmn
 EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
