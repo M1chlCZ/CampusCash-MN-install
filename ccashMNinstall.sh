@@ -227,13 +227,15 @@ wget http://download.oracle.com/berkeley-db/db-6.2.32.NC.tar.gz
 tar zxf db-6.2.32.NC.tar.gz
 cd db-6.2.32.NC/build_unix
 ../dist/configure --enable-cxx --disable-shared
- make
- make install
- ln -s /usr/local/BerkeleyDB.6.2/lib/libdb-6.2.so /usr/lib/libdb-6.2.so
- ln -s /usr/local/BerkeleyDB.6.2/lib/libdb_cxx-6.2.so /usr/lib/libdb_cxx-6.2.so
- export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
- export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
- rm -r db-6.2.32.NC.tar.gz
+make
+make install
+ln -s /usr/local/BerkeleyDB.6.2/lib/libdb-6.2.so /usr/lib/libdb-6.2.so
+ln -s /usr/local/BerkeleyDB.6.2/lib/libdb_cxx-6.2.so /usr/lib/libdb_cxx-6.2.so
+export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
+export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
+cd ~
+rm db-6.2.32.NC.tar.gz
+rm -r db-6.2.32.NC
 
 
 # Install CCASH daemon
