@@ -1,4 +1,5 @@
-# CampusCash-MN-install
+# CampusCash Masternode install script
+
 Script to install a CampusCash Masternode on Linux VPS
 
 1) Make sure that you have your Masternode setup up locally
