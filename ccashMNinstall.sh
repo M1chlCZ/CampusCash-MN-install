@@ -359,17 +359,17 @@ mkdir .commands
 echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
 cat > /root/.commands/getinfo << EOL
 #!/bin/bash    
-./root/Campusd getinfo
+~/Campusd getinfo
 EOL
 
 cat > /root/.commands/mnstart << EOL
 #!/bin/bash    
-./root/Campusd masternode start
+~/Campusd masternode start
 EOL
 
 cat > /root/.commands/mnstatus << EOL
 #!/bin/bash    
-./root/Campusd masternode status
+~/Campusd masternode status
 EOL
 
 chmod +x /root/.commands/getinfo
