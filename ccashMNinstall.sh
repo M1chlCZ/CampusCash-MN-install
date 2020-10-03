@@ -237,9 +237,9 @@ ln -s /usr/local/BerkeleyDB.6.2/lib/libdb-6.2.so /usr/lib/libdb-6.2.so
 ln -s /usr/local/BerkeleyDB.6.2/lib/libdb_cxx-6.2.so /usr/lib/libdb_cxx-6.2.so
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
-# cd ~
-# rm db-6.2.32.NC.tar.gz
-# rm -r db-6.2.32.NC
+cd ~
+rm db-6.2.32.NC.tar.gz
+rm -r db-6.2.32.NC
 
 
 # Install CCASH daemon
@@ -255,7 +255,7 @@ chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
 cp  CampusCash/src/CampusCashd /root/Campusd
-# # rm -r CampusCash
+rm -r CampusCash
 
 
 # Create CCASH directory
@@ -357,6 +357,7 @@ clear
 echo "Setting up enviromental commands..."
 mkdir .commands
 echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
+. ~/.profile
 cat > /root/.commands/getinfo << EOL
 #!/bin/bash    
 ~/Campusd getinfo
@@ -376,7 +377,7 @@ chmod +x /root/.commands/getinfo
 chmod +x /root/.commands/mnstart
 chmod +x /root/.commands/mnstatus
 
-. ~/.profile
+source ~/.profile
 
 clear
 
