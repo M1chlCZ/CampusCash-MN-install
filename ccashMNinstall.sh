@@ -237,9 +237,9 @@ ln -s /usr/local/BerkeleyDB.6.2/lib/libdb-6.2.so /usr/lib/libdb-6.2.so
 ln -s /usr/local/BerkeleyDB.6.2/lib/libdb_cxx-6.2.so /usr/lib/libdb_cxx-6.2.so
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
-cd ~
-rm db-6.2.32.NC.tar.gz
-rm -r db-6.2.32.NC
+# cd ~
+# rm db-6.2.32.NC.tar.gz
+# rm -r db-6.2.32.NC
 
 
 # Install CCASH daemon
@@ -255,7 +255,7 @@ chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
 cp -r ~/CampusCash/src/CampusCashd /root/Campusd
-rm -r CampusCash
+# # rm -r CampusCash
 
 
 # Create CCASH directory
