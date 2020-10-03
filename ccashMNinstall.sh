@@ -254,7 +254,7 @@ chmod a+x ~/CampusCash/src
 chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
-cp -r ~/CampusCash/src/CampusCashd /root/Campusd
+cp  CampusCash/src/CampusCashd /root/Campusd
 # # rm -r CampusCash
 
 
