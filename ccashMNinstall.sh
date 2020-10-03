@@ -354,10 +354,6 @@ sudo systemctl start ccash.service
 
 clear
 
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh 
-chmod +x env.sh
-./env.sh
-
 echo "Setting up CCASH daemon..."
 cat > /etc/systemd/system/ccash.service << EOL
 [Unit]
@@ -391,9 +387,13 @@ EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
 
-
 clear
-rm -r env.sh 
+
 rm -rf /root/ccashMNinstall.sh
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh 
+chmod +x env.sh
+./env.sh
+rm -r env.sh 
+. ~/.profile
 echo "" && echo "Masternode setup complete" && echo ""
 
