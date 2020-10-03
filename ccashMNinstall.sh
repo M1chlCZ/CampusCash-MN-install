@@ -354,33 +354,9 @@ sudo systemctl start ccash.service
 
 clear
 
-echo "Setting up enviromental commands..."
-mkdir .commands
-echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
-. ~/.profile
-cat > /root/.commands/getinfo << EOL
-#!/bin/bash    
-~/Campusd getinfo
-EOL
-
-cat > /root/.commands/mnstart << EOL
-#!/bin/bash    
-~/Campusd masternode start
-EOL
-
-cat > /root/.commands/mnstatus << EOL
-#!/bin/bash    
-~/Campusd masternode status
-EOL
-
-chmod +x /root/.commands/getinfo
-chmod +x /root/.commands/mnstart
-chmod +x /root/.commands/mnstatus
-
-source ~/.profile
-
-clear
-
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh 
+chmod +x env.sh
+./env.sh
 
 echo "Setting up CCASH daemon..."
 cat > /etc/systemd/system/ccash.service << EOL
@@ -417,6 +393,7 @@ read -p "Press Enter to continue after read to continue. " -n1 -s
 
 
 clear
+rm -r env.sh 
 rm -rf /root/ccashMNinstall.sh
 echo "" && echo "Masternode setup complete" && echo ""
 
