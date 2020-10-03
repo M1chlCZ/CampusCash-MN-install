@@ -409,7 +409,7 @@ read -p "Press Enter to continue after read to continue. " -n1 -s
 
 cat << EOL
 After full sync block with getinfo = blocks you see in your local wallet (right down corner, however mouse over check sign)
-Type: startmn
+Type: mnstart
 EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
