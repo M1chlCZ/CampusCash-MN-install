@@ -353,9 +353,15 @@ cat > ~/.commands/mnstatus << EOL
 ~/Campusd masternode status
 EOL
 
+cat > ~/.commands/startd << EOL
+#!/bin/bash    
+~/Campusd
+EOL
+
 chmod +x /root/.commands/getinfo
 chmod +x /root/.commands/mnstart
 chmod +x /root/.commands/mnstatus
+chmod +x /root/.commands/startd
 
 source ~/.bashrc
 . ~/.bashrc
