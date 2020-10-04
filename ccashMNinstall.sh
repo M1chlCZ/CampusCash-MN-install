@@ -365,6 +365,7 @@ chmod +x /root/.commands/startd
 
 source ~/.profile
 . ~/.profile
+export PATH="$PATH:/root/.commands"
 export PATH=$PATH:/root/.commands
 sleep 1
 
