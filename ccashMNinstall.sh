@@ -1,3 +1,5 @@
+#!/bin/bash
+
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -335,7 +337,7 @@ sleep 1
 echo "Setting up enviromental commands..."
 cd ~
 mkdir .commands
-echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
+echo "export PATH="$PATH:/root/.commands"" >> ~/.bashrc
 cat > ~/.commands/getinfo << EOL
 #!/bin/bash    
 ~/Campusd getinfo
@@ -355,7 +357,8 @@ chmod +x /root/.commands/getinfo
 chmod +x /root/.commands/mnstart
 chmod +x /root/.commands/mnstatus
 
-source ~/.profile
+source ~/.bashrc
+. ~/.bashrc
 sleep 1
 
 clear
