@@ -1,5 +1,3 @@
-#!/bin/bash
-
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -357,7 +355,7 @@ chmod +x /root/.commands/getinfo
 chmod +x /root/.commands/mnstart
 chmod +x /root/.commands/mnstatus
 
-. ~/.profile
+source ~/.profile
 sleep 1
 
 clear
@@ -392,7 +390,7 @@ EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
 
-. ~/.profile
+source ~/.profile
 
 cat << EOL
 After full sync block with getinfo = blocks you see in your local wallet (right down corner, however mouse over check sign)
