@@ -424,13 +424,12 @@ rm -rf /root/ccashMNinstall.sh
 echo "" && echo "Masternode setup complete" && echo ""
 
 cat << "EOF"
+           |Brought to you by|
   __  __ _  ____ _   _ _     ____ _____
  |  \/  / |/ ___| | | | |   / ___|__  /
  | |\/| | | |   | |_| | |  | |     / / 
  | |  | | | |___|  _  | |__| |___ / /_ 
  |_|  |_|_|\____|_| |_|_____\____/____|
-    For complains Tweet at me @M1chl
-EOF
-                                       
+       For complains Tweet @M1chl 
 
-
+EOF      
