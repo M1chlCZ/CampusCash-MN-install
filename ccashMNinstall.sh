@@ -254,7 +254,7 @@ chmod a+x ~/CampusCash/src
 chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
-cp  CampusCash/src/CampusCashd /root/Campusd
+cp  ~/CampusCash/src/CampusCashd /root/Campusd
 rm -r CampusCash
 
 
@@ -355,6 +355,11 @@ cat > ~/.commands/mnstatus << EOL
 EOL
 
 cat > ~/.commands/startd << EOL
+#!/bin/bash    
+~/Campusd
+EOL
+
+cat > ~/.commands/campusUpdate << EOL
 #!/bin/bash    
 ~/Campusd
 EOL
