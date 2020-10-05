@@ -1,3 +1,4 @@
+#!/bin/bash
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]
@@ -363,10 +364,6 @@ chmod +x /root/.commands/mnstart
 chmod +x /root/.commands/mnstatus
 chmod +x /root/.commands/startd
 
-source ~/.profile
-. ~/.profile
-export PATH="$PATH:/root/.commands"
-export PATH=$PATH:/root/.commands
 sleep 1
 
 clear
@@ -400,8 +397,6 @@ Click Start all at the bottom
 EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
-
-source ~/.profile
 
 cat << EOL
 After full sync block with getinfo = blocks you see in your local wallet (right down corner, however mouse over check sign)
