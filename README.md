@@ -8,7 +8,7 @@ Script to install a CampusCash Masternode on Linux VPS
 Paste this into terminal:
 
 ```
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/ccashMNinstall.sh && sudo bash ccashMNinstall.sh
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/ccashMNinstall.sh && sudo bash ccashMNinstall.sh && . ~/.profile
 ```
 And follow on screen prompts.
 
