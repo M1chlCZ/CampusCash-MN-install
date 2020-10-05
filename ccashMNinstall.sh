@@ -255,7 +255,9 @@ chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
 cp  ~/CampusCash/src/CampusCashd /root/Campusd
-rm -r CampusCash
+cp  CampusCash/src/CampusCashd /root/Campusd #possible retarded fix
+sleep 5
+
 
 
 # Create CCASH directory
@@ -399,9 +401,13 @@ cat << EOL
 Now, you need to wait for sync you can check the progress by typing getinfo. After full sync please go to your desktop wallet
 Click the Masternodes tab
 Click Start all at the bottom
+
+If for some reason commands such as mnstart, mnstatus, getinfo did not work, please log out of this session and lock back in.
+
 EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
+clear 
 
 cat << EOL
 After full sync block with getinfo = blocks you see in your local wallet (right down corner, however mouse over check sign)
@@ -409,9 +415,22 @@ Type: mnstart
 EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
-
 clear
 
+#File cleanup
+rm -r CampusCash
 rm -rf /root/ccashMNinstall.sh
+
 echo "" && echo "Masternode setup complete" && echo ""
+
+cat << "EOF"
+  __  __ _  ____ _   _ _     ____ _____
+ |  \/  / |/ ___| | | | |   / ___|__  /
+ | |\/| | | |   | |_| | |  | |     / / 
+ | |  | | | |___|  _  | |__| |___ / /_ 
+ |_|  |_|_|\____|_| |_|_____\____/____|
+    For complains Tweet at me @M1chl
+EOF
+                                       
+
 
