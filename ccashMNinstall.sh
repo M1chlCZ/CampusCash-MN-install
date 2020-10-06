@@ -359,8 +359,8 @@ echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
 
 cat > ~/.commands/gethelp << EOL
 #!/bin/bash 
-echo "here is list of commands for you CampusCash service"
-echo "you can type these commands anywhere in terminal"
+echo "Here is list of commands for you CampusCash service"
+echo "You can type these commands anywhere in terminal"
 echo "---------------------------------------------------"   
 echo "getinfo -> get wallet info"
 echo ""
@@ -432,6 +432,9 @@ sleep 5
 sudo systemctl start ccash.service
 
 sleep 5
+
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh && bash env.sh
+source . ~/.profile
 
 rm -r CampusCash
 

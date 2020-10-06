@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Setting up enviromental commands..."
 cd ~
-mkdir .commands
+mkdir .commands >/dev/null 2>&1
 echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
 
 rm /root/.commands/getinfo
@@ -112,3 +112,7 @@ chmod +x /root/.commands/mnstart
 chmod +x /root/.commands/mnstatus
 chmod +x /root/.commands/startd
 chmod +x /root/.commands/campusUpdate
+
+source . ~/.profile
+
+rm ~/env.sh
