@@ -13,7 +13,7 @@ wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/ccashM
 And follow on screen prompts.
 
 This script contains additional commands which is set inside the .profile file, which can be used anywhere and those are
-
+```
 Command              | What does it do?
 ---------------------------------------------------
 getinfo              | Get wallet info
@@ -31,3 +31,4 @@ getpeerinfo          | Show peer info
 gethelp              | Show help
 
 ----------------------------------------------------
+```
