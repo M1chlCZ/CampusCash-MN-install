@@ -12,18 +12,31 @@ wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/ccashM
 ```
 And follow on screen prompts.
 
-There are 3 additional commands which is set inside the .profile file, which can be used anywhere and those are
+This script contains additional commands, which can be used anywhere. Here is list of them.
 ```
-getinfo
+Command              | What does it do?
+---------------------------------------------------
+getinfo              | Get wallet info
+
+mnstart              | Start masternode
+
+mnstatus             | Status of the masternode
+
+startd               | Start CampusCash deamon
+
+campusUpdate         | Update CampusCash deamon
+
+getpeerinfo          | Show peer info
+
+gethelp              | Show help
+
+----------------------------------------------------
 ```
-For getting info about Campus Cash daemon
+
+Any help with this script can be provided through:
 
 ```
-mnstart
-```
-For starting masternode
+Discord: https://discord.gg/7uCjtHR
 
+Twitter: @M1chl 
 ```
-mnstatus
-```
-For checking masternode status
