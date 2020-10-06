@@ -160,6 +160,7 @@ else
     USER=root
     UFW="y"
     INSTALLERUSED="#Used Basic Install"
+    BOOTSTRAP="y"
 fi
 
 USERHOME=`eval echo "~$USER"`
@@ -177,11 +178,12 @@ if [ -z "$UFW" ]; then
 fi
 
 if [ -z "$ARGUMENTIP" ]; then
-        read -e -p "Server IP Address: " -i $EXTERNALIP -e IP
+    read -e -p "Server IP Address: " -i $EXTERNALIP -e IP
 fi
 
-
-
+if [ -z "$BOOTSTRAP"]; then
+    read -e -p "Download bootstrap for fast sync? [Y/n] : " BOOTSTRAP
+fi
 
 clear
 
@@ -335,6 +337,20 @@ chmod 0600 /root/.CCASH/CampusCash.conf
 chown -R $USER:$USER /root/.CCASH
 
 sleep 1
+clear
+
+# Bootstrap
+if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
+  echo "Downloading bootstrap..."
+  cd ~
+  git clone https://github.com/M1chlCZ/CampusCash-Bootstrap.git
+  cd CampusCash-Bootstrap
+  mv * /root/.CCASH
+  cd ~
+  sudo rm -r CampusCash-Bootstrap
+fi
+
+clear
 
 echo "Setting up enviromental commands..."
 cd ~
@@ -424,12 +440,14 @@ rm -rf /root/ccashMNinstall.sh
 echo "" && echo "Masternode setup complete" && echo ""
 
 cat << "EOF"
-           |Brought to you by|
+           |Brought to you by|         
   __  __ _  ____ _   _ _     ____ _____
  |  \/  / |/ ___| | | | |   / ___|__  /
  | |\/| | | |   | |_| | |  | |     / / 
  | |  | | | |___|  _  | |__| |___ / /_ 
  |_|  |_|_|\____|_| |_|_____\____/____|
        For complains Tweet @M1chl 
+
+CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
 
 EOF      
