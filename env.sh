@@ -1,4 +1,3 @@
-#!/bin/bash
 echo "Setting up enviromental commands..."
 cd ~
 mkdir .commands >/dev/null 2>&1

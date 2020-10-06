@@ -431,9 +431,12 @@ sleep 5
 
 sudo systemctl start ccash.service
 
-sleep 5
 
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh && bash env.sh
+
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
+. env.sh
+
+sleep 5
 source . ~/.profile
 
 rm -r CampusCash
