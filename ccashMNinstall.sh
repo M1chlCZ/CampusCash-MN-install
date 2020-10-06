@@ -62,7 +62,7 @@ case $key in
     ;;
     -h|--help)
     cat << EOL
-CBN Masternode installer arguments:
+CCASH Masternode installer arguments:
     -n --normal               : Run installer in normal mode
     -a --advanced             : Run installer in advanced mode
     -i --externalip <address> : Public IP address of VPS
