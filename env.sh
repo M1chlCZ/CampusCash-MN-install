@@ -4,6 +4,12 @@ cd ~
 mkdir .commands
 echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
 
+rm /root/.commands/getinfo
+rm /root/.commands/mnstart
+rm /root/.commands/mnstatus
+rm /root/.commands/startd
+rm /root/.commands/campusUpdate
+
 cat > ~/.commands/gethelp << EOL
 #!/bin/bash 
 echo "here is list of commands for you CampusCash service"
