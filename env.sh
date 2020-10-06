@@ -117,6 +117,7 @@ EOF
 
 read -p "You may need run mnstart command to start a masternode after update. Press ENTER to continue " -n1 -s
 
+echo ""
 EOL
 
 chmod +x /root/.commands/getinfo
