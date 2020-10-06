@@ -127,6 +127,6 @@ chmod +x /root/.commands/campusUpdate
 chmod +x /root/.commands/gethelp
 chmod +x /root/.commands/getpeerinfo
 
-gethelp
+source gethelp
 
 rm ~/env.sh
