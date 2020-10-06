@@ -358,22 +358,26 @@ mkdir .commands
 echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
 
 cat > ~/.commands/gethelp << EOL
-#!/bin/bash 
+#!/bin/bash
+echo ""
 echo "Here is list of commands for you CampusCash service"
-echo "You can type these commands anywhere in terminal"
-echo "---------------------------------------------------"   
-echo "getinfo -> get wallet info"
+echo "you can type these commands anywhere in terminal."
 echo ""
-echo "mnstart -> start masternode"
-echo ""
-echo "mnstatus -> status of the masternode"
-echo ""
-echo "startd -> start CampusCash deamon"
-echo ""
-echo "campusUpdate -> update CampusCash deamon" 
-echo ""
-echo "gethelp -> shows help"
+echo "Command              | What does it do?"
 echo "---------------------------------------------------"
+echo "getinfo              | Get wallet info"
+echo ""
+echo "mnstart              | Start masternode"
+echo ""
+echo "mnstatus             | Status of the masternode"
+echo ""
+echo "startd               | Start CampusCash deamon"
+echo ""
+echo "campusUpdate         | Update CampusCash deamon"
+echo ""
+echo "gethelp              | Show help"
+echo "---------------------------------------------------"
+echo ""
 
 EOL
 

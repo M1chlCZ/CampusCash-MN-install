@@ -1,7 +1,5 @@
 echo "Setting up enviromental commands..."
 cd ~
-mkdir .commands >/dev/null 2>&1
-echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
 
 rm /root/.commands/getinfo
 rm /root/.commands/mnstart
@@ -10,22 +8,26 @@ rm /root/.commands/startd
 rm /root/.commands/campusUpdate
 
 cat > ~/.commands/gethelp << EOL
-#!/bin/bash 
-echo "here is list of commands for you CampusCash service"
-echo "you can type these commands anywhere in terminal"
-echo "---------------------------------------------------"   
-echo "getinfo -> get wallet info"
+#!/bin/bash
 echo ""
-echo "mnstart -> start masternode"
+echo "Here is list of commands for you CampusCash service"
+echo "you can type these commands anywhere in terminal."
 echo ""
-echo "mnstatus -> status of the masternode"
-echo ""
-echo "startd -> start CampusCash deamon"
-echo ""
-echo "campusUpdate -> update CampusCash deamon" 
-echo ""
-echo "gethelp -> shows help"
+echo "Command              | What does it do?"
 echo "---------------------------------------------------"
+echo "getinfo              | Get wallet info"
+echo ""
+echo "mnstart              | Start masternode"
+echo ""
+echo "mnstatus             | Status of the masternode"
+echo ""
+echo "startd               | Start CampusCash deamon"
+echo ""
+echo "campusUpdate         | Update CampusCash deamon"
+echo ""
+echo "gethelp              | Show help"
+echo "---------------------------------------------------"
+echo ""
 
 EOL
 
@@ -111,7 +113,6 @@ chmod +x /root/.commands/mnstart
 chmod +x /root/.commands/mnstatus
 chmod +x /root/.commands/startd
 chmod +x /root/.commands/campusUpdate
-
-source . ~/.profile
+chmod +x /root/.commands/gethelp
 
 rm ~/env.sh
