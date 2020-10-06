@@ -12,7 +12,7 @@ wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/ccashM
 ```
 And follow on screen prompts.
 
-This script contains additional commands which is set inside the .profile file, which can be used anywhere and those are
+This script contains additional commands, which can be used anywhere. Here is list of them.
 ```
 Command              | What does it do?
 ---------------------------------------------------
