@@ -32,3 +32,11 @@ gethelp              | Show help
 
 ----------------------------------------------------
 ```
+
+Any help with this script can be provided through:
+
+```
+Discord: https://discord.gg/7uCjtHR
+
+Twitter: @M1chl 
+```
