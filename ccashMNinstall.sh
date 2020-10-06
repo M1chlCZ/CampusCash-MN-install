@@ -418,9 +418,9 @@ fi
 
 sudo systemctl stop ccash.service
 
-rm -r CampusCash
-killall Campusd
-rm Campusd
+rm -r CampusCash > /dev/null 2>&1
+killall Campusd > /dev/null 2>&1
+rm Campusd > /dev/null 2>&1
 
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
