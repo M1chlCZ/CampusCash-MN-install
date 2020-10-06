@@ -375,6 +375,8 @@ echo "startd               | Start CampusCash deamon"
 echo ""
 echo "campusUpdate         | Update CampusCash deamon"
 echo ""
+echo "getpeerinfo          | Show peer info"
+echo ""
 echo "gethelp              | Show help"
 echo "---------------------------------------------------"
 echo ""
@@ -384,6 +386,11 @@ EOL
 cat > ~/.commands/getinfo << EOL
 #!/bin/bash    
 ~/Campusd getinfo
+EOL
+
+cat > ~/.commands/getpeerinfo << EOL
+#!/bin/bash    
+~/Campusd getpeerinfo
 EOL
 
 cat > ~/.commands/mnstart << EOL
@@ -435,13 +442,11 @@ sleep 5
 
 sudo systemctl start ccash.service
 
-
-
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
-. env.sh
+source env.sh
 
 sleep 5
-source . ~/.profile
+source ~/.profile
 
 rm -r CampusCash
 
@@ -460,7 +465,7 @@ CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
 
 EOF
 
-read -p "You may need run mnstart to start a masternode after update. Press ENTER to continue " -n1 -s
+read -p "You may need run mnstart command to start a masternode after update. Press ENTER to continue " -n1 -s
 
 EOL
 
@@ -470,6 +475,7 @@ chmod +x /root/.commands/mnstatus
 chmod +x /root/.commands/startd
 chmod +x /root/.commands/campusUpdate
 chmod +x /root/.commands/gethelp
+chmod +x /root/.commands/getpeerinfo
 
 sleep 1
 
