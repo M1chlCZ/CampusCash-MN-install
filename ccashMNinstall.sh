@@ -271,9 +271,9 @@ if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; the
   cd ~
   git clone https://github.com/M1chlCZ/CampusCash-Bootstrap.git
   cd CampusCash-Bootstrap
-  mv * /root/.CCASH
+  mv CampusCash-Bootstrap/* /root/.CCASH
   cd ~
-  #sudo rm -r CampusCash-Bootstrap
+  sudo rm -r CampusCash-Bootstrap
 fi
 
 # Create CampusCash.conf
@@ -511,20 +511,13 @@ Now, you need to wait for sync you can check the progress by typing getinfo. Aft
 Click the Masternodes tab
 Click Start all at the bottom
 
-If for some reason commands such as mnstart, mnstatus, getinfo did not work, please log out of this session and lock back in.
+If for some reason commands such as mnstart, mnstatus, getinfo did not work, please log out of this session and log back in.
 
 EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
 clear 
 
-cat << EOL
-After full sync block with getinfo = blocks you see in your local wallet (right down corner, however mouse over check sign)
-Type: mnstart
-EOL
-
-read -p "Press Enter to continue after read to continue. " -n1 -s
-clear
 
 #File cleanup
 rm -r CampusCash
