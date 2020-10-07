@@ -265,6 +265,16 @@ sleep 5
 # Create CCASH directory
 mkdir /root/.CCASH
 
+# Bootstrap
+if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
+  echo "Downloading bootstrap..."
+  cd ~
+  git clone https://github.com/M1chlCZ/CampusCash-Bootstrap.git
+  cd CampusCash-Bootstrap
+  mv * /root/.CCASH
+  cd ~
+  #sudo rm -r CampusCash-Bootstrap
+fi
 
 # Create CampusCash.conf
 touch /root/.CCASH/CampusCash.conf
@@ -339,19 +349,11 @@ chown -R $USER:$USER /root/.CCASH
 sleep 1
 clear
 
-# Bootstrap
-if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
-  echo "Downloading bootstrap..."
-  cd ~
-  git clone https://github.com/M1chlCZ/CampusCash-Bootstrap.git
-  cd CampusCash-Bootstrap
-  mv * /root/.CCASH
-  cd ~
-  sudo rm -r CampusCash-Bootstrap
-fi
+
 
 clear
 
+#Set up enviroment variables
 echo "Setting up enviromental commands..."
 cd ~
 mkdir .commands
