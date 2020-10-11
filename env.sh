@@ -1,11 +1,11 @@
 echo "Setting up enviromental commands..."
 cd ~
 
-rm /root/.commands/getinfo
-rm /root/.commands/mnstart
-rm /root/.commands/mnstatus
-rm /root/.commands/startd
-rm /root/.commands/campusUpdate
+rm /root/.commands/getinfo > /dev/null 2>&1
+rm /root/.commands/mnstart > /dev/null 2>&1
+rm /root/.commands/mnstatus > /dev/null 2>&1
+rm /root/.commands/startd > /dev/null 2>&1
+rm /root/.commands/campusUpdate > /dev/null 2>&1
 
 cat > ~/.commands/gethelp << EOL
 #!/bin/bash
