@@ -76,15 +76,17 @@ cat > ~/.commands/mnstatus << EOL
 EOL
 
 cat > ~/.commands/startd << EOL
-#!/bin/bash    
+#!/bin/bash
 systemctl start ccash.service > /dev/null 2>&1
+echo "CampusCash Deamon is running..."
 EOL
 
 cat > ~/.commands/stopd << EOL
-#!/bin/bash    
+#!/bin/bash
 systemctl stop ccash.service
 sleep 1
 if pgrep Campusd &> /dev/null ; then killall Campusd > /dev/null 2>&1 ; fi
+echo "CampusCash Deamon is innactive..."
 EOL
 
 cat > ~/.commands/clearbanned << EOL
@@ -194,4 +196,4 @@ chmod +x /root/.commands/clearbanned
 
 . .commands/gethelp
 
-rm ~/env.sh
+rm ~/env.sh > /dev/null 2>&1
