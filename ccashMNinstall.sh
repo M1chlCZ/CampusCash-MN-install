@@ -150,13 +150,10 @@ if [ -z "$ADVANCED" ]; then
 fi
 
 if [[ ("$ADVANCED" == "y" || "$ADVANCED" == "Y") ]]; then
-    USER=ccash
-
-    adduser $USER --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password > /dev/null
-
+    USER=root
     INSTALLERUSED="#Used Advanced Install"
 
-    echo "" && echo 'Added user "ccash"' && echo ""
+    echo "" && echo 'Using advance install' && echo ""
     sleep 1
 else
     USER=root
