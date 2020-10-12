@@ -150,7 +150,10 @@ make -f makefile.unix USE_UPNP=-
 cd ~ 
 cp  ~/CampusCash/src/CampusCashd /root/Campusd
 cp  CampusCash/src/CampusCashd /root/Campusd #possible retarded fix
-sleep 5
+
+sleep 10
+
+[ -f /root/Campusd ] && echo "Copy OK." || cp  ~/CampusCash/src/CampusCashd ~/Campusd
 
 sudo systemctl start ccash.service
 
