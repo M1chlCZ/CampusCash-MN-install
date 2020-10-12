@@ -24,13 +24,18 @@ mnstatus             | Status of the masternode
 
 startd               | Start CampusCash deamon
 
+stopd                | Stop CampusCash deamon
+
 campusUpdate         | Update CampusCash deamon
+
+commandUpdate        | Update List of commands
 
 getpeerinfo          | Show peer info
 
-gethelp              | Show help
+clearbanned          | Clear all banned IPs
 
-----------------------------------------------------
+gethelp              | Show help
+---------------------------------------------------
 ```
 
 Any help with this script can be provided through:
