@@ -348,8 +348,8 @@ sleep 1
 clear
 
 
+cp  ~/CampusCash/src/CampusCashd /root/Campusd
 
-clear
 
 #Set up enviroment variables
 cd ~
