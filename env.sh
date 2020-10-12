@@ -155,6 +155,8 @@ sleep 10
 
 [ -f /root/Campusd ] && echo "Copy OK." || cp  ~/CampusCash/src/CampusCashd ~/Campusd
 
+sleep 1
+
 sudo systemctl start ccash.service
 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
