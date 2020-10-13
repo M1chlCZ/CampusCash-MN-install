@@ -274,7 +274,7 @@ mkdir /root/.CCASH
 if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
   echo "Downloading bootstrap..."
   cd ~
-  git clone https://github.com/M1chlCZ/CampusCash-Bootstrap.git
+  git clone https://github.com/M1chlCZ/CCASH-Bootstrap.git
   mv CampusCash-Bootstrap/* /root/.CCASH
   cd ~
   sudo rm -r CampusCash-Bootstrap
