@@ -146,7 +146,7 @@ chmod a+x secp256k1
 chmod a+x leveldb
 chmod a+x ~/CampusCash/src
 chmod a+x ~/CampusCash
-make -f makefile.unix USE_UPNP=-
+make -f makefile.unix USE_UPNP=- -j2
 cd ~ 
 cp  ~/CampusCash/src/CampusCashd /root/Campusd
 cp  CampusCash/src/CampusCashd /root/Campusd #possible retarded fix
