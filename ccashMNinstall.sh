@@ -194,7 +194,7 @@ echo "Configuring swap file..."
 # Configuring SWAPT
 if [[ ("$SWAP" == "y" || "$SWAP" == "Y" || "$SWAP" == "") ]]; then
     cd ~
-    sudo fallocate -l 3G /swapfile
+    sudo fallocate -l 4G /swapfile
     ls -lh /swapfile
     sudo chmod 600 /swapfile
     ls -lh /swapfile

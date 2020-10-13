@@ -149,7 +149,7 @@ chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=- -j2
 cd ~ 
 cp  ~/CampusCash/src/CampusCashd /root/Campusd
-mv  CampusCash/src/CampusCashd /root/Campusd #possible retarded fix
+mv  CampusCash/src/CampusCashd /root/Campusd
 
 sleep 10
 
