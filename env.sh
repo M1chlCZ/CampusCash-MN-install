@@ -99,7 +99,7 @@ cat > ~/.commands/clearbanned << EOL
 EOL
 
 cat > ~/.commands/getBootstrap << EOL
-sudo systemctl stop ccash.service
+systemctl stop ccash.service
 killall Campusd > /dev/null 2>&1
 
 cd ~
