@@ -275,9 +275,9 @@ if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; the
   echo "Downloading bootstrap..."
   cd ~
   git clone https://github.com/M1chlCZ/CCASH-Bootstrap.git
-  mv CampusCash-Bootstrap/* /root/.CCASH
+  mv CCCASH-Bootstrap/* /root/.CCASH
   cd ~
-  sudo rm -r CampusCash-Bootstrap
+  rm -r CCASH-Bootstrap
 fi
 
 # Create CampusCash.conf
