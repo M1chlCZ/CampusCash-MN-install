@@ -120,7 +120,8 @@ echo "CampusCash Deamon is running..."
 EOL
 
 cat > ~/.commands/commandUpdate << EOL
-#!/bin/bash    
+#!/bin/bash
+cd ~ 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh > /dev/null 2>&1
 source env.sh
 clear
