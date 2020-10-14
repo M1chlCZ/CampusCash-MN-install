@@ -96,20 +96,21 @@ cat > ~/.commands/clearbanned << EOL
 EOL
 
 cat > ~/.commands/getBootstrap << EOL
-apt-get install -y unzip
 sudo systemctl stop ccash.service
 killall Campusd > /dev/null 2>&1
 
-cd ~/.CCASH
-mv CampusCash.conf /root/CampusCash.conf
-mv wallet.dat /root/wallet.dat
-rm -rf *
-wget https://github.com/SaltineChips/CampusCash/releases/download/1.0.0.0/CCASH_bootstrap.zip
-unzip -o CCASH_snapshot.zip
-rm CCASH_snapshot.zip
-mv /root/CampusCash.conf CampusCash.conf
-mv /root/wallet.dat wallet.dat
-cd ~;
+cd ~
+mv /root/.CCASH/CampusCash.conf CampusCash.conf
+mv /root/.CCASH/wallet.dat wallet.dat
+rm -rf /root/.CCASH/*
+rm -rf /root/.CCASH/.lock
+
+git clone https://github.com/M1chlCZ/CCASH-Bootstrap.git
+mv CampusCash-Bootstrap/* /root/.CCASH
+sudo rm -r CampusCash-Bootstrap
+mv CampusCash.conf /root/.CCASH/CampusCash.conf
+mv wallet.dat /root/.CCASH/wallet.dat
+
 systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
