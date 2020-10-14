@@ -107,6 +107,7 @@ mv /root/.CCASH/CampusCash.conf CampusCash.conf
 mv /root/.CCASH/wallet.dat wallet.dat
 rm -rf /root/.CCASH/*
 rm -rf /root/.CCASH/.lock
+cd ~
 
 git clone https://github.com/M1chlCZ/CCASH-Bootstrap.git
 mv CampusCash-Bootstrap/* /root/.CCASH
