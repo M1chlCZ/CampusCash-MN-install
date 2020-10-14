@@ -9,6 +9,7 @@ rm /root/.commands/stopd > /dev/null 2>&1
 rm /root/.commands/commandUpdate > /dev/null 2>&1
 rm /root/.commands/campusUpdate > /dev/null 2>&1
 rm /root/.commands/clearbanned > /dev/null 2>&1
+rm /root/.commands/getBootstrap > /dev/null 2>&1
 
 cat > ~/.commands/gethelp << EOL
 #!/bin/bash
@@ -92,6 +93,25 @@ EOL
 cat > ~/.commands/clearbanned << EOL
 #!/bin/bash    
 ~/Campusd clearbanned
+EOL
+
+cat > ~/.commands/getBootstrap << EOL
+apt-get install -y unzip
+sudo systemctl stop ccash.service
+killall Campusd > /dev/null 2>&1
+
+cd ~/.CCASH
+mv CampusCash.conf /root/CampusCash.conf
+mv wallet.dat /root/wallet.dat
+rm -rf *
+wget https://github.com/SaltineChips/CampusCash/releases/download/1.0.0.0/CCASH_bootstrap.zip
+unzip -o CCASH_snapshot.zip
+rm CCASH_snapshot.zip
+mv /root/CampusCash.conf CampusCash.conf
+mv /root/wallet.dat wallet.dat
+cd ~;
+systemctl start ccash.service > /dev/null 2>&1
+echo "CampusCash Deamon is running..."
 EOL
 
 cat > ~/.commands/commandUpdate << EOL
@@ -198,6 +218,7 @@ chmod +x /root/.commands/campusUpdate
 chmod +x /root/.commands/gethelp
 chmod +x /root/.commands/getpeerinfo
 chmod +x /root/.commands/clearbanned
+chmod +x /root/.commands/getBootstrap
 
 . .commands/gethelp
 
