@@ -1,6 +1,7 @@
 echo "Setting up enviromental commands..."
 cd ~
 
+rm /root/.commands/gethelp > /dev/null 2>&1
 rm /root/.commands/getinfo > /dev/null 2>&1
 rm /root/.commands/mnstart > /dev/null 2>&1
 rm /root/.commands/mnstatus > /dev/null 2>&1
