@@ -256,12 +256,7 @@ chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=- -j2
 sleep 1
 cd ~ 
-cp  ~/CampusCash/src/CampusCashd /root/Campusd
-cp  CampusCash/src/CampusCashd /root/Campusd #possible retarded fix
-
-sleep 10
-
-[ -f /root/Campusd ] && echo "Copy OK." || cp  ~/CampusCash/src/CampusCashd ~/Campusd
+cp  CampusCash/src/CampusCashd /root/Campusd
 
 sleep 1
 
