@@ -199,7 +199,6 @@ if [[ ("$SWAP" == "y" || "$SWAP" == "Y" || "$SWAP" == "") ]]; then
     sudo chmod 600 /swapfile;
     sudo mkswap /swapfile;
     sudo swapon /swapfile;
-    sudo swapon --show;
 fi
 clear
 
