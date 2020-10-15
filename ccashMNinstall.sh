@@ -394,8 +394,8 @@ clear
 
 
 #File cleanup
-rm -r ~/CampusCash
-rm -rf ~/ccashMNinstall.sh
+#rm -r ~/CampusCash
+#rm -rf ~/ccashMNinstall.sh
 
 echo "" && echo "Masternode setup complete" && echo ""
 
