@@ -194,15 +194,12 @@ echo "Configuring swap file..."
 # Configuring SWAPT
 if [[ ("$SWAP" == "y" || "$SWAP" == "Y" || "$SWAP" == "") ]]; then
     cd ~
-    sudo fallocate -l 6G /swapfile
-    ls -lh /swapfile
-    sudo chmod 600 /swapfile
-    ls -lh /swapfile
-    sudo mkswap /swapfile
-    sudo swapon /swapfile
-    sudo swapon --show
-    sudo cp /etc/fstab /etc/fstab.bak
-    echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+    sudo swapoff -a;
+    sudo dd if=/dev/zero of=/swapfile bs=6144 count=1048576;
+    sudo chmod 600 /swapfile;
+    sudo mkswap /swapfile;
+    sudo swapon /swapfile;
+    sudo swapon --show;
 fi
 clear
 
