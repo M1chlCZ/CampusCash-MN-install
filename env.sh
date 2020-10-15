@@ -99,7 +99,7 @@ cat > ~/.commands/clearbanned << EOL
 EOL
 
 cat > ~/.commands/getBootstrap << EOL
-systemctl stop ccash.service
+systemctl stop ccash.service 
 killall Campusd > /dev/null 2>&1
 
 cd ~
@@ -174,8 +174,7 @@ chmod a+x ~/CampusCash/src
 chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=- -j2
 cd ~ 
-cp  ~/CampusCash/src/CampusCashd /root/Campusd
-mv  CampusCash/src/CampusCashd /root/Campusd
+cp  CampusCash/src/CampusCashd /root/Campusd
 
 sleep 10
 
