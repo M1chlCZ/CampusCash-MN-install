@@ -194,7 +194,7 @@ echo "Configuring swap file..."
 # Configuring SWAPT
 if [[ ("$SWAP" == "y" || "$SWAP" == "Y" || "$SWAP" == "") ]]; then
     cd ~
-    sudo fallocate -l 4G /swapfile
+    sudo fallocate -l 6G /swapfile
     ls -lh /swapfile
     sudo chmod 600 /swapfile
     ls -lh /swapfile
@@ -228,6 +228,7 @@ clear
 
 # Install Berkley DB 5.6
 echo "Installing Berkley DB..."
+cd ~
 wget http://download.oracle.com/berkeley-db/db-6.2.32.NC.tar.gz
 tar zxf db-6.2.32.NC.tar.gz
 cd db-6.2.32.NC/build_unix
@@ -255,9 +256,8 @@ chmod a+x ~/CampusCash/src
 chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
 sleep 1
+cp  CampusCashd ~/Campusd
 cd ~ 
-cp  CampusCash/src/CampusCashd /root/Campusd
-
 sleep 1
 
 clear
@@ -270,14 +270,14 @@ if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; the
   echo "Downloading bootstrap..."
   cd ~
   git clone https://github.com/M1chlCZ/CCASH-Bootstrap.git
-  mv CCASH-Bootstrap/* /root/.CCASH
+  mv CCASH-Bootstrap/* ~/.CCASH
   cd ~
   rm -r CCASH-Bootstrap
 fi
 
 # Create CampusCash.conf
-touch /root/.CCASH/CampusCash.conf
-cat > /root/.CCASH/CampusCash.conf << EOL
+touch ~/.CCASH/CampusCash.conf
+cat > ~/.CCASH/CampusCash.conf << EOL
 ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
@@ -342,8 +342,8 @@ addnode=89.216.28.76:50571
 addnode=93.233.193.196:26900
 addnode=95.179.169.186:59288
 EOL
-chmod 0600 /root/.CCASH/CampusCash.conf
-chown -R $USER:$USER /root/.CCASH
+chmod 0600 ~/.CCASH/CampusCash.conf
+chown -R $USER:$USER ~/.CCASH
 
 sleep 1
 clear
@@ -353,7 +353,7 @@ clear
 #Set up enviroment variables
 cd ~
 mkdir .commands
-echo "export PATH="$PATH:/root/.commands"" >> ~/.profile
+echo "export PATH="$PATH:~/.commands"" >> ~/.profile
 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
 source env.sh
@@ -397,8 +397,8 @@ clear
 
 
 #File cleanup
-#rm -r CampusCash
-#rm -rf /root/ccashMNinstall.sh
+rm -r ~/CampusCash
+rm -rf ~/ccashMNinstall.sh
 
 echo "" && echo "Masternode setup complete" && echo ""
 
