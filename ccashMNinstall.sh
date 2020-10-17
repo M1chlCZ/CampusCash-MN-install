@@ -207,7 +207,7 @@ echo "Installing dependencies..."
 apt-get update 
 apt-get upgrade -y
 apt-get -qq -y install ntp build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev libcurl4-openssl-dev curl libzip-dev
-apt-get -qq -y install make automake build-essential libboost-all-dev yasm binutils libcurl4-openssl-dev openssl libgmp-dev libtool libssl-dev
+apt-get -qq -y install make automake build-essential libboost-all-dev yasm binutils libcurl4-openssl-dev openssl libgmp-dev libtool libssl-dev unzip
 clear
 
 echo "Configuring UFW..."
@@ -264,11 +264,11 @@ mkdir /root/.CCASH
 # Bootstrap
 if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
   echo "Downloading bootstrap..."
+  cd /root/.CCASH
+  wget https://github.com/SaltineChips/CampusCash/releases/download/1.0.0.0/CCASH_bootstrap.zip
+  unzip CCASH_bootstrap.zip;
+  rm CCASH_bootstrap.zip;
   cd ~
-  git clone https://github.com/M1chlCZ/CCASH-Bootstrap.git
-  mv CCASH-Bootstrap/* ~/.CCASH
-  cd ~
-  rm -r CCASH-Bootstrap
 fi
 
 # Create CampusCash.conf
