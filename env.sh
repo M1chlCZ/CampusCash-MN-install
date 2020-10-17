@@ -109,9 +109,13 @@ rm -rf /root/.CCASH/*
 rm -rf /root/.CCASH/.lock
 cd ~
 
-git clone https://github.com/M1chlCZ/CCASH-Bootstrap.git
-mv CCASH-Bootstrap/* /root/.CCASH
-rm -r CCASH-Bootstrap
+apt-get install -y unzip;
+cd ~/.CCASH;
+rm -rf *;
+wget https://github.com/SaltineChips/CampusCash/releases/download/1.0.0.0/CCASH_bootstrap.zip;
+unzip CCASH_bootstrap.zip;
+rm CCASH_bootstrap.zip;
+cd ~
 mv CampusCash.conf /root/.CCASH/CampusCash.conf
 mv wallet.dat /root/.CCASH/wallet.dat
 
