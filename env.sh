@@ -217,8 +217,13 @@ EOL
 
 cat > ~/.commands/mn2setup << EOL
 #!/bin/bash    
+
+read -p "This is utility for setting up second MN on VPS with additional IPv6, refer to your VPS provider for info how to set it up. \n Press enter to continue, or ctrl+c to terminate this procedure " -n1 -s
+
 cp ~/.CCASH ~/.CCASH2
 rm ~/.CCASH2/CampusCash.conf
+
+
 
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -230,8 +235,8 @@ fi
 if [ -z "$ARGUMENTIP" ]; then
       if [ -z "$EXTERNALIP" ]; then
             echo "Script tried unsuccessfully find your IPv6 interface, please make sure you have IPv6 activated on this VPS"
-            echo "If everything is in order, then please enter your IPv6 manually"
-            sleep 5
+            echo "If everything is in order and you are sure of it, please enter your IPv6 manually"
+            sleep 2
       fi
     read -e -p "Server IP Address: " -i $EXTERNALIP -e IP
 fi
