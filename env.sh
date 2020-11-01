@@ -229,7 +229,7 @@ read -p "This is utility for setting up second MN on VPS with additional IPv6, r
 
 clear
 
-cp ~/.CCASH ~/.CCASH2
+cp -r ~/.CCASH ~/.CCASH2
 rm ~/.CCASH2/CampusCash.conf
 
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
