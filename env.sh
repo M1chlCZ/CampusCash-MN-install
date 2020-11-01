@@ -11,6 +11,11 @@ rm /root/.commands/commandUpdate > /dev/null 2>&1
 rm /root/.commands/campusUpdate > /dev/null 2>&1
 rm /root/.commands/clearbanned > /dev/null 2>&1
 rm /root/.commands/getBootstrap > /dev/null 2>&1
+rm /root/.commands/mn2setup > /dev/null 2>&1
+rm /root/.commands/mn2start > /dev/null 2>&1
+rm /root/.commands/mn2status > /dev/null 2>&1
+rm /root/.commands/startd2 > /dev/null 2>&1
+rm/root/.commands/stopd2 > /dev/null 2>&1
 
 cat > ~/.commands/gethelp << EOL
 #!/bin/bash
