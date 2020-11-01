@@ -238,6 +238,7 @@ RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 if [ -z "$EXTERNALIP" ]; then
     echo "getting IPv6..."
     EXTERNALIP=`dig +short -6 myip.opendns.com aaaa @resolver1.ipv6-sandbox.opendns.com`
+    echo $EXTERNALIP
 fi
 
 if [ -z "$ARGUMENTIP" ]; then
