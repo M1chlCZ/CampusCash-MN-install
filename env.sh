@@ -233,7 +233,7 @@ echo ""
 EOL
 
 cat > ~/.commands/mn2setup << EOL
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mn2.sh
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mn2.sh > /dev/null 2>&1
 source mn2.sh
 EOL
 
