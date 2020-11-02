@@ -2,7 +2,8 @@
 
 clear 
 
-read -p "This is utility for setting up second MN on VPS with additional IPv6, refer to your VPS provider for info how to set it up. Press enter to continue, or ctrl+c to terminate this procedure " -n1 -s
+echo "This is utility for setting up second MN on VPS with additional IPv6, refer to your VPS provider for info how to set it up."
+read -p "Press enter to continue, or ctrl+c to terminate this procedure " -n1 -s
 
 clear
 
