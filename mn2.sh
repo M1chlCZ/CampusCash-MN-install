@@ -81,7 +81,7 @@ EOL
 chmod 0600 ~/.CCASH2/CampusCash.conf
 chown -R $USER:$USER ~/.CCASH2
 
-cat > /etc/systemd/system/ccash2.service << "EOF"
+cat > /etc/systemd/system/ccash2.service << EOL
 [Unit]
 Description=CCASHD2
 After=network.target
@@ -94,7 +94,7 @@ ExecStop=/root/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
-EOF
+EOL
 
 sudo systemctl daemon-reload
 sudo systemctl enable ccash2.service
