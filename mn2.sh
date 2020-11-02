@@ -12,7 +12,6 @@ rm ~/.CCASH/debug.log
 touch ~/.CCASH/debug.log
 rsync -ah --progress ~/.CCASH ~/.CCASH2
 rm ~/.CCASH2/CampusCash.conf
-rm ~/.CCASH2/wallet.dat
 
 clear
 
