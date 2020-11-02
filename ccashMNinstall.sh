@@ -284,6 +284,7 @@ daemon=1
 logtimestamps=1
 logips=1
 externalip=${IP}
+bind=${IP}:19427
 masternodeaddr=${IP}:19427
 masternodeprivkey=${KEY}
 masternode=1
