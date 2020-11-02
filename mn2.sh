@@ -51,6 +51,7 @@ server=1
 daemon=1
 maxconnections=150
 externalip=[${IP}]
+bind=[${IP}]:12001
 masternodeaddr=[${IP}]:19427
 masternodeprivkey=${KEY}
 masternode=1
