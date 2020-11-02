@@ -6,8 +6,12 @@ read -p "This is utility for setting up second MN on VPS with additional IPv6, r
 
 clear
 
-cp -r ~/.CCASH ~/.CCASH2
+echo "Copying blockchain for Mastenode #2"
+rsync -ah --progress ~/.CCASH ~/.CCASH2
 rm ~/.CCASH2/CampusCash.conf
+rm ~/.CCASH2/wallet.dat
+
+clear
 
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -15,7 +19,6 @@ RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 if [ -z "$EXTERNALIP" ]; then
     echo "getting IPv6..."
     EXTERNALIP=`dig +short -6 myip.opendns.com aaaa @resolver1.ipv6-sandbox.opendns.com`
-    echo "IP" $EXTERNALIP
 fi
 
 if [ -z "$ARGUMENTIP" ]; then
