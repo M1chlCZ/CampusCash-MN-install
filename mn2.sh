@@ -41,7 +41,7 @@ if [ -z "$KEY" ]; then
 fi
 
 touch ~/.CCASH2/CampusCash.conf
-cat > ~/.CCASH2/CampusCash.conf << "EOF"
+cat > ~/.CCASH2/CampusCash.conf << EOL
 ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
@@ -76,7 +76,7 @@ addnode=185.81.167.251:19427
 addnode=82.165.119.20:19427
 addnode=104.238.156.128:19427
 addnode=85.214.212.126:19427
-EOF
+EOL
 
 chmod 0600 ~/.CCASH2/CampusCash.conf
 chown -R $USER:$USER ~/.CCASH2
