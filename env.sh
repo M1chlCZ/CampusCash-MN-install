@@ -11,6 +11,7 @@ rm /root/.commands/commandUpdate > /dev/null 2>&1
 rm /root/.commands/campusUpdate > /dev/null 2>&1
 rm /root/.commands/clearbanned > /dev/null 2>&1
 rm /root/.commands/getBootstrap > /dev/null 2>&1
+rm /root/.commands/getBootstrap2 > /dev/null 2>&1
 rm /root/.commands/mn2setup > /dev/null 2>&1
 rm /root/.commands/mn2start > /dev/null 2>&1
 rm /root/.commands/mn2status > /dev/null 2>&1
@@ -330,6 +331,7 @@ chmod +x /root/.commands/gethelp
 chmod +x /root/.commands/getpeerinfo
 chmod +x /root/.commands/clearbanned
 chmod +x /root/.commands/getBootstrap
+chmod +x /root/.commands/getBootstrap2
 chmod +x /root/.commands/mn2setup
 chmod +x /root/.commands/mn2start
 chmod +x /root/.commands/mn2status
