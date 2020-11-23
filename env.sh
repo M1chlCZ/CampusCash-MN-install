@@ -117,7 +117,6 @@ EOL
 
 cat > ~/.commands/getBootstrap << EOL
 systemctl stop ccash.service 
-killall Campusd > /dev/null 2>&1
 
 cd ~
 
@@ -136,6 +135,56 @@ mv CampusCash.conf /root/.CCASH/CampusCash.conf
 mv wallet.dat /root/.CCASH/wallet.dat
 
 systemctl start ccash.service > /dev/null 2>&1
+echo "CampusCash Deamon is running..."
+EOL
+
+cat > ~/.commands/commandUpdate << EOL
+#!/bin/bash
+cd ~ 
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh > /dev/null 2>&1
+source env.sh
+clear
+
+cat << "EOF"
+            Update complete!
+
+           |Brought to you by|         
+  __  __ _  ____ _   _ _     ____ _____
+ |  \/  / |/ ___| | | | |   / ___|__  /
+ | |\/| | | |   | |_| | |  | |     / / 
+ | |  | | | |___|  _  | |__| |___ / /_ 
+ |_|  |_|_|\____|_| |_|_____\____/____|
+       For complains Tweet @M1chl 
+
+CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
+
+EOF
+
+. ~/.commands/gethelp
+
+echo ""
+EOL
+
+cat > ~/.commands/getBootstrap2 << EOL
+systemctl stop ccash2.service 
+
+cd ~
+
+mv /root/.CCASH2/CampusCash.conf CampusCash.conf
+mv /root/.CCASH2/wallet.dat wallet.dat
+
+apt-get install -y unzip
+cd ~/.CCASH2
+rm -rf *
+wget https://github.com/SaltineChips/CampusCash/releases/download/1.0.0.0/CCASH_bootstrap.zip;
+unzip CCASH_bootstrap.zip
+rm CCASH_bootstrap.zip
+cd ~
+
+mv CampusCash.conf /root/.CCASH2/CampusCash.conf
+mv wallet.dat /root/.CCASH2/wallet.dat
+
+systemctl start ccash2.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
