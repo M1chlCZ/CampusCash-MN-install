@@ -34,6 +34,18 @@ getpeerinfo          | Show peer info
 
 clearbanned          | Clear all banned IPs
 
+mn2setup             | Set up MN #2
+
+mn2start             | Start MN #2
+
+mn2status            | Status of MN #2
+
+startd2              | Start CampusCash deamon for MN #2
+
+stopd2               | Stop CampusCash deamon for MN #2
+
+getBootstrap2        | Get a bootstrap for MN #2
+
 gethelp              | Show help
 ---------------------------------------------------
 ```
