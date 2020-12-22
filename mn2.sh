@@ -38,6 +38,7 @@ fi
 if [ -z "$KEY" ]; then
     read -e -p "Masternode Private Key for your second MN : " KEY
 fi
+
 echo "Paste this to your masternode.conf: " && echo "[" && echo $EXTERNALIP && echo "]:19427 " && echo $KEY && echo " <TX ID>"
 read -p "Press Enter to continue" -n1 -s
 
