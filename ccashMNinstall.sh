@@ -367,7 +367,7 @@ Type=forking
 User=${USER}
 WorkingDirectory=/root/
 ExecStart=/root/Campusd -conf=/root/.CCASH/CampusCash.conf -datadir=/root/.CCASH
-ExecStop=/root/Campusd -conf=/root/.CCASH/CampusCash.conf -datadir=/root/.CCASH
+ExecStop=/root/Campusd -conf=/root/.CCASH/CampusCash.conf -datadir=/root/.CCASH stop
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
