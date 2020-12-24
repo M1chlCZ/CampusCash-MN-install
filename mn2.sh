@@ -7,14 +7,18 @@ read -p "Press enter to continue, or ctrl+c to terminate this procedure " -n1 -s
 
 clear
 
+systemctl stop ccash.service 
+sleep 2
+
 echo "Copying blockchain for Mastenode #2"
 rm ~/.CCASH/debug.log
+rm ~/.CCASH/wallet.dat
 touch ~/.CCASH/debug.log
 rsync -ah --progress ~/.CCASH ~/.CCASH2
 rm ~/.CCASH2/CampusCash.conf
 
 clear
-
+USER=root
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
