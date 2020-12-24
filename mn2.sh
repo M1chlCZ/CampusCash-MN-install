@@ -12,9 +12,9 @@ sleep 2
 
 echo "Copying blockchain for Mastenode #2"
 rm ~/.CCASH/debug.log
-rm ~/.CCASH/wallet.dat
 touch ~/.CCASH/debug.log
 rsync -ah --progress ~/.CCASH ~/.CCASH2
+rm ~/.CCASH2/wallet.dat
 rm ~/.CCASH2/CampusCash.conf
 
 clear
