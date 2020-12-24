@@ -13,10 +13,10 @@ sleep 2
 echo "Copying blockchain for Mastenode #2"
 rm ~/.CCASH/debug.log
 touch ~/.CCASH/debug.log
-rsync -ah --progress ~/.CCASH ~/.CCASH2
+rsync -av --progress ~/.CCASH/* ~/.CCASH2
 rm ~/.CCASH2/wallet.dat
 rm ~/.CCASH2/CampusCash.conf
-
+systemctl start ccash.service 
 clear
 USER=root
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
