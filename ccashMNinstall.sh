@@ -98,7 +98,6 @@ fi
 echo "Preparing installation..."
 apt-get install git dnsutils systemd -y > /dev/null 2>&1
 killall Campusd > /dev/null 2>&1
-rm Campusd > /dev/null 2>&1
 
 # Check for systemd
 systemctl --version >/dev/null 2>&1 || { echo "systemd is required. Are you using Ubuntu 16.04?"  >&2; exit 1; }
