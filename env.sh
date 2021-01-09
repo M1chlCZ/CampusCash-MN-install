@@ -129,7 +129,7 @@ mv /root/.CCASH/wallet.dat wallet.dat
 apt-get install -y unzip
 cd ~/.CCASH
 rm -rf *
-wget https://github.com/SaltineChips/CampusCash/releases/download/1.0.0.1/CampusCash_SnapShot.zip;
+wget https://github.com/M1chlCZ/CampusCash-MN-install/releases/download/1.0.12.7/CCASH_bootstrap.zip;
 unzip CampusCash_SnapShot.zip
 rm CampusCash_SnapShot.zip
 cd ~
@@ -179,7 +179,7 @@ mv /root/.CCASH2/wallet.dat wallet.dat
 apt-get install -y unzip
 cd ~/.CCASH2
 rm -rf *
-wget https://github.com/SaltineChips/CampusCash/releases/download/1.0.0.1/CampusCash_SnapShot.zip;
+wget https://github.com/M1chlCZ/CampusCash-MN-install/releases/download/1.0.12.7/CCASH_bootstrap.zip;
 unzip CampusCash_SnapShot.zip
 rm CampusCash_SnapShot.zip
 cd ~
