@@ -130,8 +130,8 @@ apt-get install -y unzip
 cd ~/.CCASH
 rm -rf *
 wget https://github.com/M1chlCZ/CampusCash-MN-install/releases/download/1.0.12.7/CCASH_bootstrap.zip;
-unzip CampusCash_SnapShot.zip
-rm CampusCash_SnapShot.zip
+unzip CCASH_bootstrap.zip.zip
+rm CCASH_bootstrap.zip.zip
 cd ~
 
 mv CampusCash.conf /root/.CCASH/CampusCash.conf
@@ -180,8 +180,8 @@ apt-get install -y unzip
 cd ~/.CCASH2
 rm -rf *
 wget https://github.com/M1chlCZ/CampusCash-MN-install/releases/download/1.0.12.7/CCASH_bootstrap.zip;
-unzip CampusCash_SnapShot.zip
-rm CampusCash_SnapShot.zip
+unzip CCASH_bootstrap.zip.zip
+rm CCASH_bootstrap.zip.zip
 cd ~
 
 mv CampusCash.conf /root/.CCASH2/CampusCash.conf
