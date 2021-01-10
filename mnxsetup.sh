@@ -11,10 +11,11 @@ systemctl --version >/dev/null 2>&1 || { echo "Ubuntu 18.04+ is required. Are yo
 
 clear 
 
-#echo "This is utility for setting up second MN on VPS with additional IPv6, refer to your VPS provider for info how to set it up."
-#read -p "Press enter to continue, or ctrl+c to terminate this procedure " -n1 -s
+echo "This is utility for setting up second MN on VPS with additional IPv6, refer to your VPS provider for info how to set it up."
+echo "!IMPORTANT! Please make sure that your daemon is fully synced!"
+read -p "Press enter to continue, or ctrl+c to terminate this procedure " -n1 -s
 
-#echo "Checking IPv6, please wait"
+echo "Checking IPv6, please wait"
 
 if [ -z "$EXTERNALIP" ]; then
     EXTERNALIP=`dig +short -6 myip.opendns.com aaaa @resolver1.ipv6-sandbox.opendns.com`
@@ -37,7 +38,7 @@ NETMASK=$(ifconfig | grep $EXTERNALIP | grep -oP '(?<=prefixlen )[^ ]*')
 NETMASK4=$(ifconfig | grep -oP '(?<=netmask )[^ ]*' | head -n1)
 IP4=$(ifconfig | grep -oP '(?<=inet )[^ ]*' | head -n1)
 GATEWAY=$(/bin/ip route | grep -oP '(?<=via )[^ ]*' | head -n 1)
-LASTNUM=$($EXTERNALIP | cut -d':' -f 8)
+LASTNUM=$(echo "$EXTERNALIP" | cut -d':' -f 8)
 CUTIP=$(echo "$EXTERNALIP" | rev | cut -c5- | rev)
 INTERFACE=$(/bin/ip link show | grep -oP '(?<=2: )[^ ]*' | cut -d':' -f 1)
 
@@ -113,63 +114,64 @@ netplan apply
 
 cd
 
-clear
 
-systemctl stop ccash.service 
+systemctl stop ccash.service
 sleep 2
 
-echo "Copying blockchain for Mastenode #2"
 rm ~/.CCASH/debug.log
 touch ~/.CCASH/debug.log
-rsync -av --progress ~/.CCASH/* ~/.CCASH2
-rm ~/.CCASH2/wallet.dat
-rm ~/.CCASH2/CampusCash.conf
-systemctl start ccash.service 
+
+for ((i=1; i<$NUMBER+1; i++));
+do
+    echo "Copying blockchain for Mastenode $i"
+    rsync -av --progress ~/.CCASH/* ~/.CCASH$i
+    rm ~/.CCASH$i/wallet.dat
+    rm ~/.CCASH$i/CampusCash.conf
+    clear
+done
+
+
+systemctl start ccash.service
 
 clear
 
-USER=root
-RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
-RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+echo "setting up configs"
 
+for ((i=1; i<$NUMBER+1; i++));
+do
 
+    if [ $i -lt 10 ]; then
+        PR="000"
+    elif [ $i -lt 100 ]; then
+        PR="00"
+    elif [ $i -lt 1000 ]; then
+        PR="0"
+    fi
+    read -p "Please enter Masternode #$i key: " MNK
 
+    echo ""
+    echo "Add this to your masternode.conf on your local machine: <MN name> [${EXTERNALIP}]:19427 ${MNK} <TX ID>"
+    echo ""
 
-if [ -z "$ARGUMENTIP" ]; then
-      if [ -z "$EXTERNALIP" ]; then
-            echo "Script tried unsuccessfully find your IPv6 interface, please make sure you have IPv6 activated on this VPS"
-            echo "If everything is in order and you are sure of it, please enter your IPv6 manually"
-            echo ""
-            sleep 2
-       else
-            echo "Please confirm your IP address by pressing ENTER"
-            echo ""
-      fi
-    read -e -p "Server IPv6 Address: " -i $EXTERNALIP -e IP
-fi
+    USER=root
+    RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
+    RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
-if [ -z "$KEY" ]; then
-    read -e -p "Masternode Private Key for your second MN : " KEY
-fi
-echo ""
-echo "Paste this to your masternode.conf: <MN name> [${EXTERNALIP}]:19427 ${KEY} <TX ID>"
-read -p "Press Enter to continue" -n1 -s
-
-touch ~/.CCASH2/CampusCash.conf
-cat > ~/.CCASH2/CampusCash.conf << EOL
+touch ~/.CCASH$i/CampusCash.conf
+cat > ~/.CCASH$i/CampusCash.conf << EOL
 ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
 rpcallowip=127.0.0.1
-rpcport=12001
+rpcport=12$PR$i
 listen=1
 server=1
 daemon=1
 maxconnections=150
-externalip=[${IP}]
-bind=[${IP}]:19427
-masternodeaddr=[${IP}]:19427
-masternodeprivkey=${KEY}
+externalip=[$CUTIP$i]
+bind=[$CUTIP$i]:19427
+masternodeaddr=[$CUTIP$i]:19427
+masternodeprivkey=$MNK
 masternode=1
 addnode=157.230.107.144:19427
 addnode=89.40.10.129:19427
@@ -194,31 +196,31 @@ addnode=104.238.156.128:19427
 addnode=85.214.212.126:19427
 EOL
 
-chmod 0600 ~/.CCASH2/CampusCash.conf
-chown -R $USER:$USER ~/.CCASH2
+chmod 0600 ~/.CCASH$i/CampusCash.conf
+chown -R $USER:$USER ~/.CCASH$i
 
-cat > /etc/systemd/system/ccash2.service << EOL
+cat > /etc/systemd/system/ccash$i.service << EOL
 [Unit]
-Description=CCASHD2
+Description=CCASHD$i
 After=network.target
 [Service]
 Type=forking
 User=root
 WorkingDirectory=/root/
-ExecStart=/root/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 -listen=12001
-ExecStop=/root/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 -listen=12001
+ExecStart=/root/Campusd -conf=/root/.CCASH$i/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$i
+ExecStop=/root/Campusd -conf=/root/.CCASH$i/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$i
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOL
 
-sudo systemctl daemon-reload
-sudo systemctl enable ccash2.service
-sudo systemctl start ccash2.service
 
+    sudo systemctl enable ccash$i.service
+    sudo systemctl start ccash$i.service
+done
 clear
 
-echo "" && echo "Masternode #2 setup complete" && echo ""
+echo "" && echo "Masternodes $Number are completed" && echo ""
 
 cat << "EOF"
            |Brought to you by|         
