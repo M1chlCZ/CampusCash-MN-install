@@ -1,25 +1,40 @@
 #!/bin/bash    
-NUMBER=$1
 
-#for ((i=0; i<$NUMBER; i++)); 
-#do
-#  echo "Welcome $i times"
-#done
 
-if [ -z "$NUMBER" ]; then
-    echo "You must specified number of MNs! mnxsetup <number>"
-    exit 1
-fi
 # Check for systemd
 systemctl --version >/dev/null 2>&1 || { echo "Ubuntu 18.04+ is required. Are you using Ubuntu 16.04?"  >&2; exit 1; }
 
 clear 
 
+
 echo "This is utility for setting up second MN on VPS with additional IPv6, refer to your VPS provider for info how to set it up."
-echo "!IMPORTANT! Please make sure that your daemon is fully synced!"
+echo "!IMPORTANT! Please make sure that your daemon is fully synced! Otherwise you are going to have sync each MN"
 read -p "Press enter to continue, or ctrl+c to terminate this procedure " -n1 -s
+clear
 
 echo "Checking IPv6, please wait"
+
+if [ -z "$NUMBER" ]; then
+    read -p "Please enter how much masternodes you want to setup: " NUMBER
+fi
+
+if [ -z "$ARGUMENTNUMBER" ]; then
+        if [ -z "$NUMBER" ]; then
+            echo "You must specified number of MNs!"
+            exit 1
+        else
+            re='^[0-9]+$'
+            if ! [[ $NUMBER =~ $re ]] ; then
+                echo "error: Not a number" >&2
+                exit 1
+            fi
+            clear
+            echo "Script will setup ${NUMBER} Mastenodes"
+            sleep 2
+        fi
+            
+fi
+
 
 if [ -z "$EXTERNALIP" ]; then
     EXTERNALIP=`dig +short -6 myip.opendns.com aaaa @resolver1.ipv6-sandbox.opendns.com`
@@ -38,12 +53,27 @@ if [ -z "$ARGUMENTIP" ]; then
     read -e -p "Server IPv6 Address: " -i $EXTERNALIP -e IP
 fi
 
+IFS=':' read -r -a array <<< "$EXTERNALIP"
+CUTIP=""
+
+arraylength=${#array[@]}
+for ((i=1; i<arraylength+1; i++));
+do
+
+if [ $i -ne $arraylength ]; then
+        CUTIP+="${array[$i-1]}:"
+else
+        CUTIP+=""
+fi
+done
+
+
 NETMASK=$(ifconfig | grep $EXTERNALIP | grep -oP '(?<=prefixlen )[^ ]*')
 NETMASK4=$(ifconfig | grep -oP '(?<=netmask )[^ ]*' | head -n1)
 IP4=$(ifconfig | grep -oP '(?<=inet )[^ ]*' | head -n1)
 GATEWAY=$(/bin/ip route | grep -oP '(?<=via )[^ ]*' | head -n 1)
 LASTNUM=$(echo "$EXTERNALIP" | cut -d':' -f 8)
-CUTIP=$(echo "$EXTERNALIP" | rev | cut -c5- | rev)
+#CUTIP=$(echo "$EXTERNALIP" | rev | cut -c5- | rev)
 INTERFACE=$(/bin/ip link show | grep -oP '(?<=2: )[^ ]*' | cut -d':' -f 1)
 
 
@@ -94,7 +124,7 @@ done
 
 
 cd /etc/netplan
-rm *
+
 touch 10-ens3.yaml
 
 cat > 10-ens3.yaml << EOL
