@@ -47,7 +47,7 @@ if [ -z "$KEY" ]; then
     read -e -p "Masternode Private Key for your second MN : " KEY
 fi
 echo ""
-echo "Paste this to your masternode.conf: <MN name> [${EXTERNALIP}]:19427 ${KEY} <TX ID>"
+echo "Add this to your masternode.conf on your local machine: <MN name> [${EXTERNALIP}]:19427 ${KEY} <TX ID>"
 read -p "Press Enter to continue" -n1 -s
 
 touch ~/.CCASH2/CampusCash.conf
