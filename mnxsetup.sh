@@ -6,6 +6,10 @@ NUMBER=$1
 #  echo "Welcome $i times"
 #done
 
+if [ -z "$NUMBER" ]; then
+    echo "You must specified number of MNs! mnxsetup <number>"
+    exit 1
+fi
 # Check for systemd
 systemctl --version >/dev/null 2>&1 || { echo "Ubuntu 18.04+ is required. Are you using Ubuntu 16.04?"  >&2; exit 1; }
 
@@ -220,7 +224,7 @@ EOL
 done
 clear
 
-echo "" && echo "Masternodes $Number are completed" && echo ""
+echo "" && echo "$Number Masternodes are completed" && echo ""
 
 cat << "EOF"
            |Brought to you by|         
@@ -235,5 +239,5 @@ CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
 
 EOF
 
-rm ~/mn2.sh
+rm ~/mnxsetup.sh
 read -p "Press Enter to continue" -n1 -s
