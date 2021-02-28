@@ -241,14 +241,14 @@ rm -r db-6.2.32.NC
 
 # Install CCASH daemon
 cd ~
-git clone https://github.com/CampusCash/CampusCash_Release.git CampusCash
-cd ~/CampusCash/src
+git clone https://github.com/CampusCash/CampusCash_Release.git
+cd ~/CampusCash_Release/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
 chmod a+x secp256k1
 chmod a+x leveldb
-chmod a+x ~/CampusCash/src
-chmod a+x ~/CampusCash
+chmod a+x ~/CampusCash_Release/src
+chmod a+x ~/CampusCash_Release
 make -f makefile.unix USE_UPNP=-
 sleep 1
 cp  CampusCashd ~/Campusd
@@ -392,7 +392,7 @@ clear
 
 
 #File cleanup
-rm -r ~/CampusCash
+rm -r ~/CampusCash_Release
 rm -rf ~/ccashMNinstall.sh
 
 echo "" && echo "Masternode setup complete" && echo ""
