@@ -237,17 +237,17 @@ export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
 cd ~
-git clone https://github.com/CampusCash/CampusCash_Release.git CampusCash
-cd ~/CampusCash/src
+git clone https://github.com/CampusCash/CampusCash_Release.git
+cd ~/CampusCash_Release/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
 chmod a+x secp256k1
 chmod a+x leveldb
-chmod a+x ~/CampusCash/src
-chmod a+x ~/CampusCash
+chmod a+x ~/CampusCash_Release/src
+chmod a+x ~/CampusCash_Release
 make -f makefile.unix USE_UPNP=-
 cd ~ 
-cp  CampusCash/src/CampusCashd /root/Campusd
+cp  CampusCash_Release/src/CampusCashd /root/Campusd
 
 sleep 10
 
@@ -264,7 +264,7 @@ source env.sh
 sleep 5
 source ~/.profile
 
-rm -r CampusCash
+rm -r CampusCash_Release
 
 cat << "EOF"
             Update complete!
