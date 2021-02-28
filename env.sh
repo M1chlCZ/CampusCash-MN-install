@@ -237,7 +237,7 @@ export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
 cd ~
-git clone https://github.com/CampusCash/CampusCash_Release.git
+git clone https://github.com/CampusCash/CampusCash_Release.git CampusCash
 cd ~/CampusCash/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
