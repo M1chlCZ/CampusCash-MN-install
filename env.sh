@@ -251,7 +251,7 @@ cp  CampusCash_Release/src/CampusCashd /root/Campusd
 
 sleep 10
 
-[ -f /root/Campusd ] && echo "Copy OK." || cp  ~/CampusCash/src/CampusCashd ~/Campusd
+[ -f /root/Campusd ] && echo "Copy OK." || cp  ~/CampusCash_Release/src/CampusCashd ~/Campusd
 
 sleep 1
 
