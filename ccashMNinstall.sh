@@ -241,7 +241,7 @@ rm -r db-6.2.32.NC
 
 # Install CCASH daemon
 cd ~
-git clone https://github.com/SaltineChips/CampusCash CampusCash
+git clone https://github.com/CampusCash/CampusCash_Release.git CampusCash
 cd ~/CampusCash/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
