@@ -16,7 +16,8 @@ rm /root/.commands/mn2setup > /dev/null 2>&1
 rm /root/.commands/mn2start > /dev/null 2>&1
 rm /root/.commands/mn2status > /dev/null 2>&1
 rm /root/.commands/startd2 > /dev/null 2>&1
-rm/root/.commands/stopd2 > /dev/null 2>&1
+rm /root/.commands/stopd2 > /dev/null 2>&1
+rm /root/.commands/campusBetaInstall > /dev/null 2>&1
 
 cat > ~/.commands/gethelp << EOL
 #!/bin/bash
@@ -406,6 +407,7 @@ chmod +x /root/.commands/mn2start
 chmod +x /root/.commands/mn2status
 chmod +x /root/.commands/startd2
 chmod +x /root/.commands/stopd2
+chmod +x /root/.commands/campusBetaInstall
 
 . .commands/gethelp
 
