@@ -374,7 +374,7 @@ EOL
 cat > ~/.commands/mnxstart << EOL
 #!/bin/bash    
 PORT=$1-1
-./Campusd -conf=/root/.CCASH$1/CampusCash.conf -datadir=/root/.CCASH$1 -port=1200$PORTmasternode start
+./Campusd -conf=/root/.CCASH$1/CampusCash.conf -datadir=/root/.CCASH$1 -port=1200$PORT masternode start
 EOL
 
 cat > ~/.commands/mn2status << EOL
