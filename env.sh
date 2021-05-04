@@ -13,6 +13,7 @@ rm /root/.commands/clearbanned > /dev/null 2>&1
 rm /root/.commands/getBootstrap > /dev/null 2>&1
 rm /root/.commands/getBootstrap2 > /dev/null 2>&1
 rm /root/.commands/mn2setup > /dev/null 2>&1
+rm /root/.commands/mnxsetup > /dev/null 2>&1
 rm /root/.commands/mn2start > /dev/null 2>&1
 rm /root/.commands/mn2status > /dev/null 2>&1
 rm /root/.commands/startd2 > /dev/null 2>&1
@@ -370,6 +371,12 @@ cat > ~/.commands/mn2start << EOL
 ./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode start
 EOL
 
+cat > ~/.commands/mnxstart << EOL
+#!/bin/bash    
+PORT=$1-1
+./Campusd -conf=/root/.CCASH$1/CampusCash.conf -datadir=/root/.CCASH$1 -port=1200$PORTmasternode start
+EOL
+
 cat > ~/.commands/mn2status << EOL
 #!/bin/bash    
 ./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode status
@@ -403,6 +410,7 @@ chmod +x /root/.commands/getBootstrap
 chmod +x /root/.commands/getBootstrap2
 chmod +x /root/.commands/getinfo2
 chmod +x /root/.commands/mn2setup
+chmod +x /root/.commands/mnxsetup
 chmod +x /root/.commands/mn2start
 chmod +x /root/.commands/mn2status
 chmod +x /root/.commands/startd2
