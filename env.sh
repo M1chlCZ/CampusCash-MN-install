@@ -410,7 +410,7 @@ chmod +x /root/.commands/getBootstrap
 chmod +x /root/.commands/getBootstrap2
 chmod +x /root/.commands/getinfo2
 chmod +x /root/.commands/mn2setup
-chmod +x /root/.commands/mnxsetup
+chmod +x /root/.commands/mnxstart
 chmod +x /root/.commands/mn2start
 chmod +x /root/.commands/mn2status
 chmod +x /root/.commands/startd2
