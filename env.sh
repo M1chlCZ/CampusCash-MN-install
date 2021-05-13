@@ -143,6 +143,29 @@ systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
+cat > ~/.commands/getBootstrapx << EOL
+systemctl stop ccash\$1.service 
+
+cd ~
+
+mv /root/.CCASH\$1/CampusCash.conf CampusCash.conf
+mv /root/.CCASH\$1/wallet.dat wallet.dat
+
+apt-get install -y unzip
+cd ~/.CCASH\$1
+rm -rf *
+wget https://bootstrap.campuscash.org/boot_strap.zip
+unzip boot_strap.zip
+rm boot_strap.zip
+cd ~
+
+mv CampusCash.conf /root/.CCASH\$1/CampusCash.conf
+mv wallet.dat /root/.CCASH\$1/wallet.dat
+
+systemctl start ccash\$1.service > /dev/null 2>&1
+echo "CampusCash Deamon is running..."
+EOL
+
 cat > ~/.commands/commandUpdate << EOL
 #!/bin/bash
 cd ~ 
