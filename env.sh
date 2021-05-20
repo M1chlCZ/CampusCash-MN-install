@@ -1,24 +1,25 @@
 echo "Setting up enviromental commands..."
 cd ~
 
-rm /root/.commands/gethelp > /dev/null 2>&1
-rm /root/.commands/getinfo > /dev/null 2>&1
-rm /root/.commands/mnstart > /dev/null 2>&1
-rm /root/.commands/mnstatus > /dev/null 2>&1
-rm /root/.commands/startd > /dev/null 2>&1
-rm /root/.commands/stopd > /dev/null 2>&1
-rm /root/.commands/commandUpdate > /dev/null 2>&1
-rm /root/.commands/campusUpdate > /dev/null 2>&1
-rm /root/.commands/clearbanned > /dev/null 2>&1
-rm /root/.commands/getBootstrap > /dev/null 2>&1
-rm /root/.commands/getBootstrap2 > /dev/null 2>&1
-rm /root/.commands/mn2setup > /dev/null 2>&1
-rm /root/.commands/mnxsetup > /dev/null 2>&1
-rm /root/.commands/mn2start > /dev/null 2>&1
-rm /root/.commands/mn2status > /dev/null 2>&1
-rm /root/.commands/startd2 > /dev/null 2>&1
-rm /root/.commands/stopd2 > /dev/null 2>&1
-rm /root/.commands/campusBetaInstall > /dev/null 2>&1
+rm  ~/.commands/gethelp > /dev/null 2>&1
+rm  ~/.commands/getinfo > /dev/null 2>&1
+rm  ~/.commands/mnstart > /dev/null 2>&1
+rm  ~/.commands/mnstatus > /dev/null 2>&1
+rm  ~/.commands/startd > /dev/null 2>&1
+rm  ~/.commands/stopd > /dev/null 2>&1
+rm  ~/.commands/commandUpdate > /dev/null 2>&1
+rm  ~/.commands/campusUpdate > /dev/null 2>&1
+rm  ~/.commands/clearbanned > /dev/null 2>&1
+rm  ~/.commands/getBootstrap > /dev/null 2>&1
+rm  ~/.commands/getBootstrap2 > /dev/null 2>&1
+rm  ~/.commands/mn2setup > /dev/null 2>&1
+rm  ~/.commands/mnxsetup > /dev/null 2>&1
+rm  ~/.commands/mn2start > /dev/null 2>&1
+rm  ~/.commands/mn2status > /dev/null 2>&1
+rm  ~/.commands/startd2 > /dev/null 2>&1
+rm  ~/.commands/stopd2 > /dev/null 2>&1
+rm  ~/.commands/campusBetaInstall > /dev/null 2>&1
+rm  ~/.commands/getBootstrapx > /dev/null 2>&1
 
 cat > ~/.commands/gethelp << EOL
 #!/bin/bash
@@ -125,8 +126,8 @@ systemctl stop ccash.service
 
 cd ~
 
-mv /root/.CCASH/CampusCash.conf CampusCash.conf
-mv /root/.CCASH/wallet.dat wallet.dat
+mv  ~/.CCASH/CampusCash.conf CampusCash.conf
+mv  ~/.CCASH/wallet.dat wallet.dat
 
 apt-get install -y unzip
 cd ~/.CCASH
@@ -136,8 +137,8 @@ unzip boot_strap.zip
 rm boot_strap.zip
 cd ~
 
-mv CampusCash.conf /root/.CCASH/CampusCash.conf
-mv wallet.dat /root/.CCASH/wallet.dat
+mv CampusCash.conf  ~/.CCASH/CampusCash.conf
+mv wallet.dat  ~/.CCASH/wallet.dat
 
 systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
@@ -148,8 +149,8 @@ systemctl stop ccash\$1.service
 
 cd ~
 
-mv /root/.CCASH\$1/CampusCash.conf CampusCash.conf
-mv /root/.CCASH\$1/wallet.dat wallet.dat
+mv  ~/.CCASH\$1/CampusCash.conf CampusCash.conf
+mv  ~/.CCASH\$1/wallet.dat wallet.dat
 
 apt-get install -y unzip
 cd ~/.CCASH\$1
@@ -159,8 +160,8 @@ unzip boot_strap.zip
 rm boot_strap.zip
 cd ~
 
-mv CampusCash.conf /root/.CCASH\$1/CampusCash.conf
-mv wallet.dat /root/.CCASH\$1/wallet.dat
+mv CampusCash.conf  ~/.CCASH\$1/CampusCash.conf
+mv wallet.dat  ~/.CCASH\$1/wallet.dat
 
 systemctl start ccash\$1.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
@@ -198,8 +199,8 @@ systemctl stop ccash2.service
 
 cd ~
 
-mv /root/.CCASH2/CampusCash.conf CampusCash.conf
-mv /root/.CCASH2/wallet.dat wallet.dat
+mv  ~/.CCASH2/CampusCash.conf CampusCash.conf
+mv  ~/.CCASH2/wallet.dat wallet.dat
 
 apt-get install -y unzip
 cd ~/.CCASH2
@@ -209,8 +210,8 @@ unzip boot_strap.zip
 rm boot_strap.zip
 cd ~
 
-mv CampusCash.conf /root/.CCASH2/CampusCash.conf
-mv wallet.dat /root/.CCASH2/wallet.dat
+mv CampusCash.conf  ~/.CCASH2/CampusCash.conf
+mv wallet.dat  ~/.CCASH2/wallet.dat
 
 systemctl start ccash2.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
@@ -272,11 +273,11 @@ chmod a+x ~/CampusCash_Release/src
 chmod a+x ~/CampusCash_Release
 make -f makefile.unix USE_UPNP=-
 cd ~ 
-cp  CampusCash_Release/src/CampusCashd /root/Campusd
+cp  CampusCash_Release/src/CampusCashd  ~/Campusd
 
 sleep 10
 
-[ -f /root/Campusd ] && echo "Copy OK." || cp  ~/CampusCash_Release/src/CampusCashd ~/Campusd
+[ -f  ~/Campusd ] && echo "Copy OK." || cp  ~/CampusCash_Release/src/CampusCashd ~/Campusd
 
 sleep 1
 
@@ -340,11 +341,11 @@ chmod a+x ~/CampusCash/src
 chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
-cp  CampusCash/src/CampusCashd /root/Campusd
+cp  CampusCash/src/CampusCashd ~/Campusd
 
 sleep 10
 
-[ -f /root/Campusd ] && echo "Copy OK." || cp  ~/CampusCash/src/CampusCashd ~/Campusd
+[ -f ~/Campusd ] && echo "Copy OK." || cp  ~/CampusCash/src/CampusCashd ~/Campusd
 
 sleep 1
 
@@ -386,23 +387,23 @@ EOL
 
 cat > ~/.commands/getinfo2 << EOL
 #!/bin/bash    
-./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 getinfo
+./Campusd -conf= ~/.CCASH2/CampusCash.conf -datadir= ~/.CCASH2 getinfo
 EOL
 
 cat > ~/.commands/mn2start << EOL
 #!/bin/bash    
-./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode start
+./Campusd -conf= ~/.CCASH2/CampusCash.conf -datadir= ~/.CCASH2 masternode start
 EOL
 
 cat > ~/.commands/mnxstart << EOL
 #!/bin/bash    
 PORT=\$1-1
-./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode start
+./Campusd -conf= ~/.CCASH\$1/CampusCash.conf -datadir= ~/.CCASH\$1 -port=1200\$PORT masternode start
 EOL
 
 cat > ~/.commands/mn2status << EOL
 #!/bin/bash    
-./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode status
+./Campusd -conf= ~/.CCASH2/CampusCash.conf -datadir= ~/.CCASH2 masternode status
 EOL
 
 cat > ~/.commands/startd2 << EOL
@@ -419,26 +420,27 @@ echo "CampusCash Deamon #2 is innactive..."
 EOL
 
 
-chmod +x /root/.commands/getinfo
-chmod +x /root/.commands/mnstart
-chmod +x /root/.commands/mnstatus
-chmod +x /root/.commands/startd
-chmod +x /root/.commands/stopd
-chmod +x /root/.commands/commandUpdate
-chmod +x /root/.commands/campusUpdate
-chmod +x /root/.commands/gethelp
-chmod +x /root/.commands/getpeerinfo
-chmod +x /root/.commands/clearbanned
-chmod +x /root/.commands/getBootstrap
-chmod +x /root/.commands/getBootstrap2
-chmod +x /root/.commands/getinfo2
-chmod +x /root/.commands/mn2setup
-chmod +x /root/.commands/mnxstart
-chmod +x /root/.commands/mn2start
-chmod +x /root/.commands/mn2status
-chmod +x /root/.commands/startd2
-chmod +x /root/.commands/stopd2
-chmod +x /root/.commands/campusBetaInstall
+chmod +x  ~/.commands/getinfo
+chmod +x  ~/.commands/mnstart
+chmod +x  ~/.commands/mnstatus
+chmod +x  ~/.commands/startd
+chmod +x  ~/.commands/stopd
+chmod +x  ~/.commands/commandUpdate
+chmod +x  ~/.commands/campusUpdate
+chmod +x  ~/.commands/gethelp
+chmod +x  ~/.commands/getpeerinfo
+chmod +x  ~/.commands/clearbanned
+chmod +x  ~/.commands/getBootstrap
+chmod +x  ~/.commands/getBootstrap2
+chmod +x  ~/.commands/getinfo2
+chmod +x  ~/.commands/mn2setup
+chmod +x  ~/.commands/mnxstart
+chmod +x  ~/.commands/mn2start
+chmod +x  ~/.commands/mn2status
+chmod +x  ~/.commands/startd2
+chmod +x  ~/.commands/stopd2
+chmod +x  ~/.commands/campusBetaInstall
+chmod +x  ~/.commands/getBootstrapx
 
 . .commands/gethelp
 

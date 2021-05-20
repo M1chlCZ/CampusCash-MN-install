@@ -1,67 +1,66 @@
 #!/bin/bash
 
 POSITIONAL=()
-while [[ $# -gt 0 ]]
-do
-key="$1"
+while [[ $# -gt 0 ]]; do
+    key="$1"
 
-case $key in
-    -a|--advanced)
-    ADVANCED="y"
-    shift
-    ;;
-    -n|--normal)
-    ADVANCED="n"
-    FAIL2BAN="y"
-    UFW="y"
-    BOOTSTRAP="y"
-    shift
-    ;;
-    -i|--externalip)
-    EXTERNALIP="$2"
-    ARGUMENTIP="y"
-    shift
-    shift
-    ;;
-    -k|--privatekey)
-    KEY="$2"
-    shift
-    shift
-    ;;
-    -f|--fail2ban)
-    FAIL2BAN="y"
-    shift
-    ;;
+    case $key in
+    -a | --advanced)
+        ADVANCED="y"
+        shift
+        ;;
+    -n | --normal)
+        ADVANCED="n"
+        FAIL2BAN="y"
+        UFW="y"
+        BOOTSTRAP="y"
+        shift
+        ;;
+    -i | --externalip)
+        EXTERNALIP="$2"
+        ARGUMENTIP="y"
+        shift
+        shift
+        ;;
+    -k | --privatekey)
+        KEY="$2"
+        shift
+        shift
+        ;;
+    -f | --fail2ban)
+        FAIL2BAN="y"
+        shift
+        ;;
     --no-fail2ban)
-    FAIL2BAN="n"
-    shift
-    ;;
-    -u|--ufw)
-    UFW="y"
-    shift
-    ;;
+        FAIL2BAN="n"
+        shift
+        ;;
+    -u | --ufw)
+        UFW="y"
+        shift
+        ;;
     --no-ufw)
-    UFW="n"
-    shift
-    ;;
-    -b|--bootstrap)
-    BOOTSTRAP="y"
-    shift
-    ;;
+        UFW="n"
+        shift
+        ;;
+    -b | --bootstrap)
+        BOOTSTRAP="y"
+        shift
+        ;;
     --no-bootstrap)
-    BOOTSTRAP="n"
-    shift
-    ;;
-    -s|--swap)
-    SWAP="y"
-    shift
-    ;;
+        BOOTSTRAP="n"
+        shift
+        ;;
+    -s | --swap)
+        SWAP="y"
+        shift
+        ;;
     --no-swap)
-    SWAP="n"
-    shift
-    ;;
-    -h|--help)
-    cat << EOL
+        SWAP="n"
+        shift
+        ;;
+    -h | --help)
+        cat <<EOL
 CCASH Masternode installer arguments:
     -n --normal               : Run installer in normal mode
     -a --advanced             : Run installer in advanced mode
@@ -76,13 +75,13 @@ CCASH Masternode installer arguments:
     -h --help                 : Display this help text.
     -s --swap                 : Create swap for <2GB RAM
 EOL
-    exit
-    ;;
-    *)    # unknown option
-    POSITIONAL+=("$1") # save it in an array for later
-    shift
-    ;;
-esac
+        exit
+        ;;
+    *)                     # unknown option
+        POSITIONAL+=("$1") # save it in an array for later
+        shift
+        ;;
+    esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 
@@ -90,27 +89,30 @@ clear
 
 # Check if we are root
 if [ "$(id -u)" != "0" ]; then
-   echo "This script must be run as root! Aborting..." 1>&2
-   exit 1
+    echo "This script must be run as root! Aborting..." 1>&2
+    exit 1
 fi
 
 # Install tools for dig and systemctl
 echo "Preparing installation..."
-apt-get install git dnsutils systemd -y > /dev/null 2>&1
-killall Campusd > /dev/null 2>&1
+apt-get install git dnsutils systemd -y >/dev/null 2>&1
+killall Campusd >/dev/null 2>&1
 
 # Check for systemd
-systemctl --version >/dev/null 2>&1 || { echo "systemd is required. Are you using Ubuntu 16.04?"  >&2; exit 1; }
+systemctl --version >/dev/null 2>&1 || {
+    echo "systemd is required. Are you using Ubuntu 16.04?" >&2
+    exit 1
+}
 
 # Getting external IP
 if [ -z "$EXTERNALIP" ]; then
-    EXTERNALIP=`dig +short myip.opendns.com @resolver1.opendns.com`
+    EXTERNALIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 fi
 clear
 
 if [ -z "$ADVANCED" ]; then
 
-cat << "EOF" 
+    cat <<"EOF"
   _____                         _____         __     __  ____  __  ____    __          
  / ___/__ ___ _  ___  __ _____ / ___/__ ____ / /    /  |/  / |/ / / __/__ / /___ _____ 
 / /__/ _ `/  ' \/ _ \/ // (_-</ /__/ _ `(_-</ _ \  / /|_/ /    / _\ \/ -_) __/ // / _ \
@@ -118,7 +120,7 @@ cat << "EOF"
               /_/                                                               /_/   
 EOF
 
-echo "
+    echo "
 
      +---------MASTERNODE INSTALLER v1 ---------+
  |                                                  |
@@ -141,7 +143,7 @@ echo "
 
 "
 
-sleep 5
+    sleep 5
 fi
 
 if [ -z "$ADVANCED" ]; then
@@ -161,7 +163,7 @@ else
     BOOTSTRAP="y"
 fi
 
-USERHOME=`eval echo "~$USER"`
+USERHOME=$(eval echo "~$USER")
 
 if [ -z "$KEY" ]; then
     read -e -p "Masternode Private Key : " KEY
@@ -193,17 +195,17 @@ echo "Configuring swap file..."
 # Configuring SWAPT
 if [[ ("$SWAP" == "y" || "$SWAP" == "Y" || "$SWAP" == "") ]]; then
     cd ~
-    sudo swapoff -a;
-    sudo dd if=/dev/zero of=/swapfile bs=6144 count=1048576;
-    sudo chmod 600 /swapfile;
-    sudo mkswap /swapfile;
-    sudo swapon /swapfile;
+    sudo swapoff -a
+    sudo dd if=/dev/zero of=/swapfile bs=6144 count=1048576
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
 fi
 clear
 
 # update packages and upgrade Ubuntu
 echo "Installing dependencies..."
-apt-get update 
+apt-get update
 apt-get upgrade -y
 apt-get -qq -y install ntp build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev libcurl4-openssl-dev curl libzip-dev
 apt-get -qq -y install make automake build-essential libboost-all-dev yasm binutils libcurl4-openssl-dev openssl libgmp-dev libtool libssl-dev unzip
@@ -212,12 +214,12 @@ clear
 echo "Configuring UFW..."
 # Install UFW
 if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
-  apt-get -qq install ufw
-  ufw default deny incoming
-  ufw default allow outgoing
-  ufw allow ssh
-  ufw allow 19427/tcp
-  yes | ufw enable
+    apt-get -qq install ufw
+    ufw default deny incoming
+    ufw default allow outgoing
+    ufw allow ssh
+    ufw allow 19427/tcp
+    yes | ufw enable
 fi
 clear
 
@@ -238,7 +240,6 @@ cd ~
 rm db-6.2.32.NC.tar.gz
 rm -r db-6.2.32.NC
 
-
 # Install CCASH daemon
 cd ~
 git clone https://github.com/CampusCash/CampusCash_Release.git CampusCash
@@ -251,8 +252,8 @@ chmod a+x ~/CampusCash/src
 chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
 sleep 1
-cp  CampusCashd ~/Campusd
-cd ~ 
+cp CampusCashd ~/Campusd
+cd ~
 sleep 1
 
 clear
@@ -262,17 +263,17 @@ mkdir /root/.CCASH
 
 # Bootstrap
 if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
-  echo "Downloading bootstrap..."
-  cd ~/.CCASH
-  wget https://github.com/M1chlCZ/CampusCash-MN-install/releases/download/1.0.12.7/CCASH_bootstrap.zip
-  unzip CCASH_bootstrap.zip
-  rm CCASH_bootstrap.zip
-  cd ~
+    echo "Downloading bootstrap..."
+    cd ~/.CCASH
+    wget https://bootstrap.campuscash.org/boot_strap.zip
+    unzip boot_strap.zip
+    rm boot_strap.zip
+    cd ~
 fi
 
 # Create CampusCash.conf
 touch ~/.CCASH/CampusCash.conf
-cat > ~/.CCASH/CampusCash.conf << EOL
+cat >~/.CCASH/CampusCash.conf <<EOL
 ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
@@ -343,12 +344,10 @@ chown -R $USER:$USER ~/.CCASH
 sleep 1
 clear
 
-
-
 #Set up enviroment variables
 cd ~
 mkdir .commands
-echo "export PATH="$PATH:~/.commands"" >> ~/.profile
+echo "export PATH="$PATH:~/.commands"" >>~/.profile
 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
 source env.sh
@@ -357,7 +356,7 @@ source ~/.profile
 clear
 
 echo "Setting up CCASH daemon..."
-cat > /etc/systemd/system/ccash.service << EOL
+cat >/etc/systemd/system/ccash.service <<EOL
 [Unit]
 Description=CCASHD
 After=network.target
@@ -377,8 +376,7 @@ sudo systemctl start ccash.service
 
 clear
 
-
-cat << EOL
+cat <<EOL
 Now, you need to wait for sync you can check the progress by typing getinfo. After full sync please go to your desktop wallet
 Click the Masternodes tab
 Click Start all at the bottom
@@ -388,8 +386,7 @@ If for some reason commands such as mnstart, mnstatus, getinfo did not work, ple
 EOL
 
 read -p "Press Enter to continue after read to continue. " -n1 -s
-clear 
-
+clear
 
 #File cleanup
 rm -r ~/CampusCash
@@ -397,7 +394,7 @@ rm -rf ~/ccashMNinstall.sh
 
 echo "" && echo "Masternode setup complete" && echo ""
 
-cat << "EOF"
+cat <<"EOF"
            |Brought to you by|         
   __  __ _  ____ _   _ _     ____ _____
  |  \/  / |/ ___| | | | |   / ___|__  /
