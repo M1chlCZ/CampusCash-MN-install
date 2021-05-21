@@ -398,13 +398,13 @@ EOL
 
 cat > ~/.commands/mnxstart << EOL
 #!/bin/bash    
-PORT=$((\$1 - 1))
+PORT=\$((\$1 - 1))
 ./Campusd -conf= ~/.CCASH\$1/CampusCash.conf -datadir= ~/.CCASH\$1 -port=1200\$PORT masternode start
 EOL
 
 cat > ~/.commands/getxinfo << EOL
 #!/bin/bash    
-PORT=$((\$1 - 1))
+PORT=\$((\$1 - 1))
 ./Campusd -conf= ~/.CCASH\$1/CampusCash.conf -datadir= ~/.CCASH\$1 -port=1200\$PORT getinfo
 EOL
 
