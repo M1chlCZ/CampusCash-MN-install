@@ -20,6 +20,7 @@ rm  ~/.commands/startd2 > /dev/null 2>&1
 rm  ~/.commands/stopd2 > /dev/null 2>&1
 rm  ~/.commands/campusBetaInstall > /dev/null 2>&1
 rm  ~/.commands/getBootstrapx > /dev/null 2>&1
+rm  ~/.commands/getxinfo > /dev/null 2>&1
 
 cat > ~/.commands/gethelp << EOL
 #!/bin/bash
@@ -397,8 +398,14 @@ EOL
 
 cat > ~/.commands/mnxstart << EOL
 #!/bin/bash    
-PORT=\$1-1
+PORT=$[\$1 - 1]
 ./Campusd -conf= ~/.CCASH\$1/CampusCash.conf -datadir= ~/.CCASH\$1 -port=1200\$PORT masternode start
+EOL
+
+cat > ~/.commands/getxinfo << EOL
+#!/bin/bash    
+PORT=$[\$1 - 1]
+./Campusd -conf= ~/.CCASH\$1/CampusCash.conf -datadir= ~/.CCASH\$1 -port=1200\$PORT getinfo
 EOL
 
 cat > ~/.commands/mn2status << EOL
@@ -441,6 +448,7 @@ chmod +x  ~/.commands/startd2
 chmod +x  ~/.commands/stopd2
 chmod +x  ~/.commands/campusBetaInstall
 chmod +x  ~/.commands/getBootstrapx
+chmod +x  ~/.commands/getxinfo
 
 . .commands/gethelp
 
