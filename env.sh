@@ -393,7 +393,7 @@ EOL
 
 cat > ~/.commands/mn2start << EOL
 #!/bin/bash    
-./Campusd -conf= ~/.CCASH2/CampusCash.conf -datadir= ~/.CCASH2 masternode start
+./Campusd -conf= ~/.CCASH2/CampusCash.conf -datadir= ~/.CCASH2 -port=12001 masternode start
 EOL
 
 cat > ~/.commands/mnxstart << EOL
