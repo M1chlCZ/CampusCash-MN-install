@@ -388,7 +388,7 @@ EOL
 
 cat > /root/.commands/getinfo2 << EOL
 #!/bin/bash    
-./Campusd -conf= /root/.CCASH2/CampusCash.conf -datadir= /root/.CCASH2 getinfo
+./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 getinfo
 EOL
 
 cat > /root/.commands/mn2start << EOL
@@ -399,18 +399,18 @@ EOL
 cat > /root/.commands/mnxstart << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-./Campusd -conf= /root/.CCASH\$1/CampusCash.conf -datadir= /root/.CCASH\$1 -port=1200\$PORT masternode start
+./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode start
 EOL
 
 cat > /root/.commands/getxinfo << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-./Campusd -conf= /root/.CCASH\$1/CampusCash.conf -datadir= /root/.CCASH\$1 -port=1200\$PORT getinfo
+./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT getinfo
 EOL
 
 cat > /root/.commands/mn2status << EOL
 #!/bin/bash    
-./Campusd -conf= /root/.CCASH2/CampusCash.conf -datadir= /root/.CCASH2 masternode status
+./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode status
 EOL
 
 cat > /root/.commands/startd2 << EOL
