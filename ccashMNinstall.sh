@@ -346,8 +346,6 @@ clear
 
 #Set up enviroment variables
 cd ~
-mkdir .commands
-echo "export PATH="$PATH:~/.commands"" >>~/.profile
 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
 source env.sh

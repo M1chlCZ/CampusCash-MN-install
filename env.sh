@@ -1,5 +1,8 @@
 echo "Setting up enviromental commands..."
 cd ~
+mkdir -p .commands
+echo "export PATH="$PATH:~/.commands"" >>~/.profile
+
 
 rm  /root/.commands/gethelp > /dev/null 2>&1
 rm  /root/.commands/getinfo > /dev/null 2>&1
