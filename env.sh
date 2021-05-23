@@ -1,6 +1,7 @@
 echo "Setting up enviromental commands..."
 cd ~
 mkdir -p .commands
+mkdir -p .profile
 echo "export PATH="$PATH:~/.commands"" >>~/.profile
 
 
