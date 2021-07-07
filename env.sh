@@ -137,7 +137,7 @@ mv  /root/.CCASH/wallet.dat wallet.dat
 apt-get install -y unzip
 cd /root/.CCASH
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Release/releases/download/1.0.14.1/CCASH_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.2/CCASH_bootstrap.zip
 unzip CCASH_bootstrap.zip
 rm CCASH_bootstrap.zip
 cd ~
@@ -160,7 +160,7 @@ mv  /root/.CCASH\$1/wallet.dat wallet.dat
 apt-get install -y unzip
 cd /root/.CCASH\$1
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Release/releases/download/1.0.14.1/CCASH_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.2/CCASH_bootstrap.zip
 unzip CCASH_bootstrap.zip
 rm CCASH_bootstrap.zip
 cd ~
@@ -210,7 +210,7 @@ mv  /root/.CCASH2/wallet.dat wallet.dat
 apt-get install -y unzip
 cd /root/.CCASH2
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Release/releases/download/1.0.14.1/CCASH_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.2/CCASH_bootstrap.zip
 unzip CCASH_bootstrap.zip
 rm CCASH_bootstrap.zip
 cd ~
@@ -268,14 +268,14 @@ export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
 cd ~
-git clone https://github.com/CampusCash/CampusCash_Release.git
-cd /root/CampusCash_Release/src
+git clone https://github.com/CampusCash/CampusCash_Core.git CampusCash
+cd /root/CampusCash/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
 chmod a+x secp256k1
 chmod a+x leveldb
-chmod a+x /root/CampusCash_Release/src
-chmod a+x /root/CampusCash_Release
+chmod a+x /root/CampusCash/src
+chmod a+x /root/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
 cp  CampusCash_Release/src/CampusCashd  /root/Campusd

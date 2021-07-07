@@ -242,7 +242,7 @@ rm -r db-6.2.32.NC
 
 # Install CCASH daemon
 cd ~
-git clone https://github.com/CampusCash/CampusCash_Release.git CampusCash
+git clone https://github.com/CampusCash/CampusCash_Core.git CampusCash
 cd ~/CampusCash/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
@@ -265,7 +265,7 @@ mkdir /root/.CCASH
 if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
     echo "Downloading bootstrap..."
     cd ~/.CCASH
-    wget https://github.com/Pepsinside/CampusCash_Release/releases/download/1.1.0.2/CCASH_bootstrap.zip
+    wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.2/CCASH_bootstrap.zip
     unzip CCASH_bootstrap.zip
     rm CCASH_bootstrap.zip
     cd ~
