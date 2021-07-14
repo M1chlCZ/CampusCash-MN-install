@@ -137,9 +137,9 @@ mv  /root/.CCASH/wallet.dat wallet.dat
 apt-get install -y unzip
 cd /root/.CCASH
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.2/CCASH_bootstrap.zip
-unzip CCASH_bootstrap.zip
-rm CCASH_bootstrap.zip
+wget https://bootstrap.campuscash.org/boot_strap.zip
+unzip boot_strap.zip
+rm boot_strap.zip
 cd ~
 
 mv CampusCash.conf  /root/.CCASH/CampusCash.conf
@@ -160,9 +160,9 @@ mv  /root/.CCASH\$1/wallet.dat wallet.dat
 apt-get install -y unzip
 cd /root/.CCASH\$1
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.2/CCASH_bootstrap.zip
-unzip CCASH_bootstrap.zip
-rm CCASH_bootstrap.zip
+wget https://bootstrap.campuscash.org/boot_strap.zip
+unzip boot_strap.zip
+rm boot_strap.zip
 cd ~
 
 mv CampusCash.conf  /root/.CCASH\$1/CampusCash.conf
@@ -210,9 +210,9 @@ mv  /root/.CCASH2/wallet.dat wallet.dat
 apt-get install -y unzip
 cd /root/.CCASH2
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.2/CCASH_bootstrap.zip
-unzip CCASH_bootstrap.zip
-rm CCASH_bootstrap.zip
+wget https://bootstrap.campuscash.org/boot_strap.zip
+unzip boot_strap.zip
+rm boot_strap.zip
 cd ~
 
 mv CampusCash.conf  /root/.CCASH2/CampusCash.conf
