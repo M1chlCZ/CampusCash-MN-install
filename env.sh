@@ -27,6 +27,7 @@ rm  /root/.commands/stopdx > /dev/null 2>&1
 rm  /root/.commands/campusBetaInstall > /dev/null 2>&1
 rm  /root/.commands/getBootstrapx > /dev/null 2>&1
 rm  /root/.commands/getxinfo > /dev/null 2>&1
+rm  /root/.commands/mnxstatus > /dev/null 2>&1
 
 cat > /root/.commands/gethelp << EOL
 #!/bin/bash
@@ -126,6 +127,7 @@ cat > /root/.commands/stopdx << EOL
 systemctl stop ccash\$1.service 
 echo "CampusCash Deamon is innactive..."
 EOL
+
 
 cat > /root/.commands/stopd << EOL
 #!/bin/bash
@@ -425,6 +427,12 @@ PORT=\$((\$1 - 1))
 ./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT getinfo
 EOL
 
+cat > /root/.commands/mnxstatus << EOL
+#!/bin/bash    
+PORT=\$((\$1 - 1))
+./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode status
+EOL
+
 cat > /root/.commands/mn2status << EOL
 #!/bin/bash    
 ./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode status
@@ -468,6 +476,7 @@ chmod +x  /root/.commands/stopdx
 chmod +x  /root/.commands/campusBetaInstall
 chmod +x  /root/.commands/getBootstrapx
 chmod +x  /root/.commands/getxinfo
+chmod +x  /root/.commands/mnxstatus
 
 . .commands/gethelp
 
