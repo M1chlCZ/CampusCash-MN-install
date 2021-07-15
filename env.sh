@@ -293,7 +293,7 @@ chmod a+x /root/CampusCash/src
 chmod a+x /root/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
-cp  CampusCash_Release/src/CampusCashd  /root/Campusd
+cp  CampusCash/src/CampusCashd  /root/Campusd
 
 sleep 10
 
