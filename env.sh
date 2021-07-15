@@ -113,11 +113,22 @@ systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
+cat > /root/.commands/startdx << EOL
+#!/bin/bash    
+systemctl start ccash\$1.service 
+echo "CampusCash Deamon is running..."
+EOL
+
+cat > /root/.commands/stopdx << EOL
+#!/bin/bash    
+systemctl stop ccash\$1.service 
+echo "CampusCash Deamon is innactive..."
+EOL
+
 cat > /root/.commands/stopd << EOL
 #!/bin/bash
 systemctl stop ccash.service
 sleep 1
-if pgrep Campusd &> /dev/null ; then killall Campusd > /dev/null 2>&1 ; fi
 echo "CampusCash Deamon is innactive..."
 EOL
 
