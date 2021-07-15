@@ -22,6 +22,8 @@ rm  /root/.commands/mn2start > /dev/null 2>&1
 rm  /root/.commands/mn2status > /dev/null 2>&1
 rm  /root/.commands/startd2 > /dev/null 2>&1
 rm  /root/.commands/stopd2 > /dev/null 2>&1
+rm  /root/.commands/startdx > /dev/null 2>&1
+rm  /root/.commands/stopdx > /dev/null 2>&1
 rm  /root/.commands/campusBetaInstall > /dev/null 2>&1
 rm  /root/.commands/getBootstrapx > /dev/null 2>&1
 rm  /root/.commands/getxinfo > /dev/null 2>&1
@@ -461,6 +463,8 @@ chmod +x  /root/.commands/mn2start
 chmod +x  /root/.commands/mn2status
 chmod +x  /root/.commands/startd2
 chmod +x  /root/.commands/stopd2
+chmod +x  /root/.commands/startdx
+chmod +x  /root/.commands/stopdx
 chmod +x  /root/.commands/campusBetaInstall
 chmod +x  /root/.commands/getBootstrapx
 chmod +x  /root/.commands/getxinfo
