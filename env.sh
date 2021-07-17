@@ -28,6 +28,8 @@ rm  /root/.commands/campusBetaInstall > /dev/null 2>&1
 rm  /root/.commands/getBootstrapx > /dev/null 2>&1
 rm  /root/.commands/getxinfo > /dev/null 2>&1
 rm  /root/.commands/mnxstatus > /dev/null 2>&1
+rm  /root/.commands/getPeers > /dev/null 2>&1
+rm  /root/.commands/getxPeers > /dev/null 2>&1
 
 cat > /root/.commands/gethelp << EOL
 #!/bin/bash
@@ -164,7 +166,7 @@ systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/getpeers << EOL
+cat > /root/.commands/getPeers << EOL
 #!/bin/bash    
 systemctl stop ccash.service 
 cd /root/.CCASH
@@ -175,7 +177,7 @@ systemctl start ccash.service
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/getpeersx << EOL
+cat > /root/.commands/getxPeers << EOL
 #!/bin/bash    
 systemctl stop ccash\$1.service
 cd /root/.CCASH\$1
@@ -498,6 +500,8 @@ chmod +x  /root/.commands/campusBetaInstall
 chmod +x  /root/.commands/getBootstrapx
 chmod +x  /root/.commands/getxinfo
 chmod +x  /root/.commands/mnxstatus
+chmod +x  /root/.commands/getPeers
+chmod +x  /root/.commands/getxPeers
 
 . .commands/gethelp
 
