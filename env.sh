@@ -9,6 +9,7 @@ rm  /root/.commands/gethelp > /dev/null 2>&1
 rm  /root/.commands/getinfo > /dev/null 2>&1
 rm  /root/.commands/mnstart > /dev/null 2>&1
 rm  /root/.commands/mnstatus > /dev/null 2>&1
+rm  /root/.commands/mnxstatus > /dev/null 2>&1
 rm  /root/.commands/startd > /dev/null 2>&1
 rm  /root/.commands/stopd > /dev/null 2>&1
 rm  /root/.commands/commandUpdate > /dev/null 2>&1
@@ -58,15 +59,37 @@ echo "mnstart              | Start masternode"
 echo ""
 echo "mnstatus             | Status of the masternode"
 echo ""
+echo "mnxstatus N          | Status of the masternode #N"
+echo ""
 echo "startd               | Start CampusCash deamon"
 echo ""
+echo "startd2              | Start CampusCash deamon for MN #2"
+echo ""
+echo "startdx N            | Start CampusCash deamon #<N>"
+echo ""
 echo "stopd                | Stop CampusCash deamon"
+echo ""
+echo "stopd2               | Stop CampusCash deamon for MN #2"
+echo ""
+echo "stopdx N             | Stop CampusCash deamon #N"
+echo ""
+echo "mn2start             | Start MN #2"
+echo ""
+echo "mn2status            | Status of MN #2"
+echo ""
+echo "mnxstatus N          | Status of MN #2"
 echo ""
 echo "campusUpdate         | Update CampusCash deamon"
 echo ""
 echo "commandUpdate        | Update List of commands"
 echo ""
+echo "campusBetaInstall    | Installs a beta version of daemon"
+echo ""
 echo "getBootstrap         | Get a bootstrap"
+echo ""
+echo "getBootstrap2        | Get a bootstrap for MN #2"
+echo ""
+echo "getBootstrapx N      | Get a bootstrap for MN #N"
 echo ""
 echo "getpeerinfo          | Show peer info"
 echo ""
@@ -76,20 +99,11 @@ echo "getinfo2             | Get 2nd deamon info"
 echo ""
 echo "mn2setup             | Set up MN #2"
 echo ""
-echo "mn2start             | Start MN #2"
-echo ""
-echo "mn2status            | Status of MN #2"
-echo ""
-echo "startd2              | Start CampusCash deamon for MN #2"
-echo ""
-echo "stopd2               | Stop CampusCash deamon for MN #2"
-echo ""
-echo "getBootstrap2        | Get a bootstrap for MN #2"
+echo "mnxsetup N           | Set up MN #N"
 echo ""
 echo "gethelp              | Show help"
 echo "---------------------------------------------------"
 echo ""
-
 EOL
 
 cat > /root/.commands/getinfo << EOL
@@ -324,6 +338,9 @@ sleep 10
 
 sleep 1
 
+getBootstrap
+getPeers
+
 sudo systemctl start ccash.service
 sudo systemctl start ccash2.service > /dev/null 2>&1
 
@@ -444,6 +461,12 @@ PORT=\$((\$1 - 1))
 ./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode start
 EOL
 
+cat > /root/.commands/mnxstatus << EOL
+#!/bin/bash    
+PORT=\$((\$1 - 1))
+./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode status
+EOL
+
 cat > /root/.commands/getxinfo << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
@@ -502,6 +525,7 @@ chmod +x  /root/.commands/getxinfo
 chmod +x  /root/.commands/mnxstatus
 chmod +x  /root/.commands/getPeers
 chmod +x  /root/.commands/getxPeers
+chmod +x  /root/.commands/mnxstatus 
 
 . .commands/gethelp
 
