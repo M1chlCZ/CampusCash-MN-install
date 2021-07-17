@@ -22,29 +22,47 @@ mnstart              | Start masternode
 
 mnstatus             | Status of the masternode
 
+mnxstatus N          | Status of the masternode #N
+
 startd               | Start CampusCash deamon
+
+startd2              | Start CampusCash deamon for MN #2
+
+startdx N            | Start CampusCash deamon #<N>
 
 stopd                | Stop CampusCash deamon
 
-campusUpdate         | Update CampusCash deamon
+stopd2               | Stop CampusCash deamon for MN #2
 
-commandUpdate        | Update List of commands
-
-getpeerinfo          | Show peer info
-
-clearbanned          | Clear all banned IPs
-
-mn2setup             | Set up MN #2
+stopdx N             | Stop CampusCash deamon #N
 
 mn2start             | Start MN #2
 
 mn2status            | Status of MN #2
 
-startd2              | Start CampusCash deamon for MN #2
+mnxstatus N          | Status of MN #2
 
-stopd2               | Stop CampusCash deamon for MN #2
+campusUpdate         | Update CampusCash deamon
+
+commandUpdate        | Update List of commands
+
+campusBetaInstall    | Installs a beta version of daemon
+
+getBootstrap         | Get a bootstrap
 
 getBootstrap2        | Get a bootstrap for MN #2
+
+getBootstrapx N      | Get a bootstrap for MN #N
+
+getpeerinfo          | Show peer info
+
+clearbanned          | Clear all banned IPs
+
+getinfo2             | Get 2nd deamon info
+
+mn2setup             | Set up MN #2
+
+mnxsetup N           | Set up MN #N
 
 gethelp              | Show help
 ---------------------------------------------------
