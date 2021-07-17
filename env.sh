@@ -164,6 +164,27 @@ systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
+cat > /root/.commands/getpeers << EOL
+#!/bin/bash    
+systemctl stop ccash.service 
+cd /root/.CCASH
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
+cd
+systemctl start ccash.service 
+# systemctl stop ccash\$1.service 
+echo "CampusCash Deamon is running..."
+EOL
+
+cat > /root/.commands/getpeersx << EOL
+#!/bin/bash    
+systemctl stop ccash\$1.service
+cd /root/.CCASH\$1
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
+cd
+systemctl start ccash\$1.service
+echo "CampusCash Deamon is running..."
+EOL
+
 cat > /root/.commands/getBootstrapx << EOL
 systemctl stop ccash\$1.service 
 
