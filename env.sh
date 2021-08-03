@@ -112,22 +112,22 @@ EOL
 
 cat > /root/.commands/getinfo << EOL
 #!/bin/bash    
-/root/Campusd getinfo
+~/Campusd getinfo
 EOL
 
 cat > /root/.commands/getpeerinfo << EOL
 #!/bin/bash    
-/root/Campusd getpeerinfo
+~/Campusd getpeerinfo
 EOL
 
 cat > /root/.commands/mnstart << EOL
 #!/bin/bash    
-/root/Campusd masternode start
+~/Campusd masternode start
 EOL
 
 cat > /root/.commands/mnstatus << EOL
 #!/bin/bash    
-/root/Campusd masternode status
+~/Campusd masternode status
 EOL
 
 cat > /root/.commands/startd << EOL
@@ -158,7 +158,7 @@ EOL
 
 cat > /root/.commands/clearbanned << EOL
 #!/bin/bash    
-/root/Campusd clearbanned
+~/Campusd clearbanned
 EOL
 
 cat > /root/.commands/getBootstrap << EOL
@@ -313,6 +313,8 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+cd~
+
 sudo systemctl stop ccash.service
 sudo systemctl stop ccash2.service > /dev/null 2>&1
 
@@ -384,6 +386,8 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+cd ~
+
 sudo systemctl stop ccash.service
 sudo systemctl stop ccash2.service > /dev/null 2>&1
 
@@ -445,11 +449,13 @@ echo ""
 EOL
 
 cat > /root/.commands/mn2setup << EOL
+cd ~
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mn2.sh > /dev/null 2>&1
 source mn2.sh
 EOL
 
 cat > /root/.commands/mnxsetup << EOL
+cd ~
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mnxsetup.sh > /dev/null 2>&1
 chmod +x mnxsetup.sh
 source mnxsetup.sh
@@ -457,41 +463,41 @@ EOL
 
 cat > /root/.commands/getinfo2 << EOL
 #!/bin/bash    
-./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 getinfo
+~/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 getinfo
 EOL
 
 cat > /root/.commands/mn2start << EOL
 #!/bin/bash    
-./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 -port=12001 masternode start
+~/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 -port=12001 masternode start
 EOL
 
 cat > /root/.commands/mnxstart << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode start
+~/Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode start
 EOL
 
 cat > /root/.commands/mnxstatus << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode status
+~/Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode status
 EOL
 
 cat > /root/.commands/getxinfo << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT getinfo
+~/Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT getinfo
 EOL
 
 cat > /root/.commands/mnxstatus << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-./Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode status
+~/Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode status
 EOL
 
 cat > /root/.commands/mn2status << EOL
 #!/bin/bash    
-./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode status
+~/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode status
 EOL
 
 cat > /root/.commands/startd2 << EOL
