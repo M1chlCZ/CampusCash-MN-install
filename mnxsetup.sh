@@ -254,7 +254,6 @@ EOL
     sudo systemctl enable ccash$i.service
     sudo systemctl start ccash$i.service
 done
-clear
 
 echo "" && echo "$Number Masternodes are completed" && echo ""
 
