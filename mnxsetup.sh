@@ -217,7 +217,7 @@ ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
 rpcallowip=127.0.0.1
-rpcport=12$PR$i
+rpcport=12$PR$NUM
 listen=1
 server=1
 daemon=1
@@ -238,14 +238,14 @@ chown -R $USER:$USER ~/.CCASH$NUM
 
 cat > /etc/systemd/system/ccash$NUM.service << EOL
 [Unit]
-Description=CCASHD$i
+Description=CCASHD$NUM
 After=network.target
 [Service]
 Type=forking
 User=root
 WorkingDirectory=/root/
-ExecStart=/root/Campusd -conf=/root/.CCASH$i/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$i
-ExecStop=/root/Campusd -conf=/root/.CCASH$i/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$i
+ExecStart=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$NUM
+ExecStop=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$NUM stop
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
