@@ -123,7 +123,7 @@ do
 done
 
 apt-get update -y
-apt-get install -y netplan.io
+apt-get install -y netplan.io rsync
 
 mkdir ~/netplan-bc
 
