@@ -118,7 +118,7 @@ do
     elif [ $i -lt 1000 ]; then
         PREFIX="0"
     fi
-    NEWIP+=",$CUTIP$PREFIX$i/$NETMASK"
+    NEWIP+=",'$CUTIP$PREFIX$i/$NETMASK'"
 
 done
 
@@ -129,6 +129,7 @@ mkdir ~/netplan-bc
 
 cd /etc/netplan
 cp * ~/netplan-bc/
+rm *
 
 touch 50-cloud-init.yaml
 
@@ -139,7 +140,7 @@ network:
   ethernets:
     $INTERFACE:
       dhcp4: no
-      addresses: [$IP4/$BITS4,$EXTERNALIP/$NETMASK$NEWIP]
+      addresses: [$IP4/$BITS4,'$EXTERNALIP/$NETMASK'$NEWIP]
       gateway4: $GATEWAY
       nameservers:
         addresses: [8.8.8.8]
