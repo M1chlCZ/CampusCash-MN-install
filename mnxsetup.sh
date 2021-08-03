@@ -182,6 +182,7 @@ do
 done
 
 cd ~/.CCASH$NUM/
+rm peers.dat
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd ~
 
@@ -244,8 +245,8 @@ After=network.target
 Type=forking
 User=root
 WorkingDirectory=/root/
-ExecStart=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$i
-ExecStop=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$i stop
+ExecStart=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$NUM -listen=12$PR$i
+ExecStop=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$NUM -listen=12$PR$i stop
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target

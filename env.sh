@@ -188,6 +188,7 @@ cat > /root/.commands/getPeers << EOL
 #!/bin/bash    
 systemctl stop ccash.service 
 cd /root/.CCASH
+rm peers.dat
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd
 systemctl start ccash.service 
@@ -199,6 +200,7 @@ cat > /root/.commands/getxPeers << EOL
 #!/bin/bash    
 systemctl stop ccash\$1.service
 cd /root/.CCASH\$1
+rm peers.dat
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd
 systemctl start ccash\$1.service
