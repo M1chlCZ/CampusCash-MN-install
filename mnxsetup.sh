@@ -173,14 +173,15 @@ touch ~/.CCASH/debug.log
 
 for ((i=1; i<$NUMBER+1; i++));
 do
+    NUM=$i+1
     echo "Copying blockchain for Mastenode $i"
-    rsync -av --progress ~/.CCASH/* ~/.CCASH$i
-    rm ~/.CCASH$i/wallet.dat
-    rm ~/.CCASH$i/CampusCash.conf
+    rsync -av --progress ~/.CCASH/* ~/.CCASH$NUM
+    rm ~/.CCASH$NUM/wallet.dat
+    rm ~/.CCASH$NUM/CampusCash.conf
     clear
 done
 
-cd ~/.CCASH$i/
+cd ~/.CCASH$NUM/
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd ~
 
@@ -192,7 +193,7 @@ echo "setting up configs"
 
 for ((i=1; i<$NUMBER+1; i++));
 do
-
+    NUM=$i+1
     if [ $i -lt 10 ]; then
         PR="000"
     elif [ $i -lt 100 ]; then
@@ -210,8 +211,8 @@ do
     RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
     RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
-touch ~/.CCASH$i/CampusCash.conf
-cat > ~/.CCASH$i/CampusCash.conf << EOL
+touch ~/.CCASH$NUM/CampusCash.conf
+cat > ~/.CCASH$NUM/CampusCash.conf << EOL
 ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
@@ -232,10 +233,10 @@ addnode=45.77.58.250:19427
 addnode=104.131.27.134:19427
 EOL
 
-chmod 0600 ~/.CCASH$i/CampusCash.conf
-chown -R $USER:$USER ~/.CCASH$i
+chmod 0600 ~/.CCASH$NUM/CampusCash.conf
+chown -R $USER:$USER ~/.CCASH$NUM
 
-cat > /etc/systemd/system/ccash$i.service << EOL
+cat > /etc/systemd/system/ccash$NUM.service << EOL
 [Unit]
 Description=CCASHD$i
 After=network.target
@@ -251,8 +252,8 @@ WantedBy=multi-user.target
 EOL
 
 
-    sudo systemctl enable ccash$i.service
-    sudo systemctl start ccash$i.service
+    sudo systemctl enable ccash$NUM.service
+    sudo systemctl start ccash$NUM.service
 done
 
 echo "" && echo "$Number Masternodes are completed" && echo ""
