@@ -173,7 +173,7 @@ touch ~/.CCASH/debug.log
 
 for ((i=1; i<$NUMBER+1; i++));
 do
-    NUM=$i+1
+    NUM=$(($i + 1))
     echo "Copying blockchain for Mastenode $i"
     rsync -av --progress ~/.CCASH/* ~/.CCASH$NUM
     rm ~/.CCASH$NUM/wallet.dat
@@ -193,7 +193,7 @@ echo "setting up configs"
 
 for ((i=1; i<$NUMBER+1; i++));
 do
-    NUM=$i+1
+    NUM=$(($i + 1))
     if [ $i -lt 10 ]; then
         PR="000"
     elif [ $i -lt 100 ]; then
@@ -217,7 +217,7 @@ ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
 rpcallowip=127.0.0.1
-rpcport=12$PR$NUM
+rpcport=12$PR$i
 listen=1
 server=1
 daemon=1
@@ -244,8 +244,8 @@ After=network.target
 Type=forking
 User=root
 WorkingDirectory=/root/
-ExecStart=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$NUM
-ExecStop=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$NUM stop
+ExecStart=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$i
+ExecStop=/root/Campusd -conf=/root/.CCASH$NUM/CampusCash.conf -datadir=/root/.CCASH$i -listen=12$PR$i stop
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
