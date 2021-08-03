@@ -449,6 +449,12 @@ wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mn2.sh
 source mn2.sh
 EOL
 
+cat > /root/.commands/mnxsetup << EOL
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mnxsetup.sh > /dev/null 2>&1
+chmod +x mnxsetup.sh
+source mnxsetup.sh
+EOL
+
 cat > /root/.commands/getinfo2 << EOL
 #!/bin/bash    
 ./Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 getinfo
@@ -516,6 +522,7 @@ chmod +x  /root/.commands/getBootstrap
 chmod +x  /root/.commands/getBootstrap2
 chmod +x  /root/.commands/getinfo2
 chmod +x  /root/.commands/mn2setup
+chmod +x  /root/.commands/mnxsetup
 chmod +x  /root/.commands/mnxstart
 chmod +x  /root/.commands/mn2start
 chmod +x  /root/.commands/mn2status

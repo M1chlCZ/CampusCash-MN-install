@@ -122,12 +122,17 @@ do
 
 done
 
+apt-get update -y
+apt-get install -y netplan.io
+
+mkdir ~/netplan-bc
 
 cd /etc/netplan
+cp * ~/netplan-bc/
 
-touch 10-ens3.yaml
+touch 50-cloud-init.yaml
 
-cat > 10-ens3.yaml << EOL
+cat > 50-cloud-init.yaml << EOL
 network:
   version: 2
   renderer: networkd
@@ -164,6 +169,9 @@ do
     clear
 done
 
+cd ~/.CCASH$i/
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
+cd ~
 
 systemctl start ccash.service
 
@@ -211,23 +219,6 @@ addnode=157.230.107.144:19427
 addnode=89.40.10.129:19427
 addnode=45.77.58.250:19427
 addnode=104.131.27.134:19427
-addnode=138.68.10.197:19427
-addnode=212.24.103.156:19427
-addnode=110.232.115.241:19427
-addnode=139.99.239.62:19427
-addnode=194.135.81.164:19427
-addnode=161.35.231.193:19427
-addnode=64.225.122.213:19427
-addnode=82.165.119.20:19427
-addnode=185.5.53.254:19427
-addnode=138.197.161.183:19427
-addnode=176.223.128.109:19427
-addnode=66.42.71.176:19427
-addnode=94.176.232.189:19427
-addnode=185.81.167.251:19427
-addnode=82.165.119.20:19427
-addnode=104.238.156.128:19427
-addnode=85.214.212.126:19427
 EOL
 
 chmod 0600 ~/.CCASH$i/CampusCash.conf

@@ -89,6 +89,10 @@ addnode=104.238.156.128:19427
 addnode=85.214.212.126:19427
 EOL
 
+cd ~/.CCASH$i/
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
+cd ~
+
 chmod 0600 ~/.CCASH2/CampusCash.conf
 chown -R $USER:$USER ~/.CCASH2
 
