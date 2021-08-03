@@ -122,8 +122,18 @@ do
 
 done
 
-apt-get update -y
-apt-get install -y netplan.io rsync
+pkgs='netplan.io rsync'
+install=false
+for pkg in $pkgs; do
+  status="$(dpkg-query -W --showformat='${db:Status-Status}' "$pkg" 2>&1)"
+  if [ ! $? = 0 ] || [ ! "$status" = installed ]; then
+    install=true
+  fi
+  if "$install"; then
+    apt-get install -y $pkg
+    install=false
+  fi
+done
 
 mkdir ~/netplan-bc
 
