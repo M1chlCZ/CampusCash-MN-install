@@ -339,10 +339,9 @@ chmod a+x /root/CampusCash
 make -f makefile.unix USE_UPNP=-
 cd ~ 
 cp  CampusCash/src/CampusCashd  /root/Campusd
+cd ~
 
-sleep 10
-
-[ -f  /root/Campusd ] && echo "Copy OK." || cp  /root/CampusCash_Release/src/CampusCashd /root/Campusd
+strip Campusd
 
 sleep 1
 

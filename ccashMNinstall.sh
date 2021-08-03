@@ -254,6 +254,7 @@ make -f makefile.unix USE_UPNP=-
 sleep 1
 cp CampusCashd ~/Campusd
 cd ~
+strip Campusd
 sleep 1
 
 clear
