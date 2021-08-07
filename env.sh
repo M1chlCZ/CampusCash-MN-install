@@ -474,9 +474,7 @@ cd ~
 wget https://github.com/CampusCash/CampusCash_Core/archive/refs/tags/\$1.zip 
 unzip \$1.zip
 cd /root/CampusCash_Core-\$1/src
-chmod a+x obj
 chmod a+x leveldb/build_detect_platform
-
 make -f makefile.unix USE_UPNP=-
 cd ~ 
 cp  CampusCash_Core-\$1/src/CampusCashd /root/Campusd
