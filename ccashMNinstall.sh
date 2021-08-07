@@ -242,19 +242,13 @@ rm -r db-6.2.32.NC
 
 # Install CCASH daemon
 cd ~
-git clone https://github.com/CampusCash/CampusCash_Core.git CampusCash
-cd ~/CampusCash/src
-chmod a+x obj
+wget https://github.com/CampusCash/CampusCash_Core/archive/refs/tags/1.1.0.4.zip 
+unzip 1.1.0.4.zip
+cd /root/CampusCash_Core-1.1.0.4/src
 chmod a+x leveldb/build_detect_platform
-chmod a+x secp256k1
-chmod a+x leveldb
-chmod a+x ~/CampusCash/src
-chmod a+x ~/CampusCash
 make -f makefile.unix USE_UPNP=-
-sleep 1
-cp CampusCashd ~/Campusd
-cd ~
-strip Campusd
+cd ~ 
+cp  CampusCash_Core-1.1.0.4/src/CampusCashd /root/Campusd
 sleep 1
 
 clear
