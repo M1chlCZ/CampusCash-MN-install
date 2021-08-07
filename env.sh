@@ -31,6 +31,7 @@ rm  /root/.commands/getxinfo > /dev/null 2>&1
 rm  /root/.commands/mnxstatus > /dev/null 2>&1
 rm  /root/.commands/getPeers > /dev/null 2>&1
 rm  /root/.commands/getxPeers > /dev/null 2>&1
+rm  /root/.commands/campusVersionInstall > /dev/null 2>&1
 
 cat > /root/.commands/gethelp << EOL
 #!/bin/bash
@@ -449,6 +450,76 @@ read -p "Beta version of CampusCash is installed" -n1 -s
 echo ""
 EOL
 
+cat > /root/.commands/campusVersionInstall << EOL
+#!/bin/bash    
+# Check if we are root
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root! Aborting..." 1>&2
+   exit 1
+fi
+
+cd ~
+
+sudo systemctl stop ccash.service
+sudo systemctl stop ccash2.service > /dev/null 2>&1
+
+rm -r CampusCash > /dev/null 2>&1
+killall Campusd > /dev/null 2>&1
+rm Campusd > /dev/null 2>&1
+
+export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
+export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
+
+cd ~
+git clone -b \$i https://github.com/SaltineChips/CampusCash.git CampusCash
+cd /root/CampusCash/src
+chmod a+x obj
+chmod a+x leveldb/build_detect_platform
+chmod a+x secp256k1
+chmod a+x leveldb
+chmod a+x /root/CampusCash/src
+chmod a+x /root/CampusCash
+make -f makefile.unix USE_UPNP=-
+cd ~ 
+cp  CampusCash/src/CampusCashd /root/Campusd
+
+sleep 10
+
+[ -f /root/Campusd ] && echo "Copy OK." || cp  /root/CampusCash/src/CampusCashd /root/Campusd
+
+sleep 1
+
+sudo systemctl start ccash.service
+sudo systemctl start ccash2.service > /dev/null 2>&1
+
+wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
+source env.sh
+
+sleep 5
+source /root/.profile
+
+rm -r CampusCash
+
+cat << "EOF"
+            Update complete!
+
+           |Brought to you by|         
+  __  __ _  ____ _   _ _     ____ _____
+ |  \/  / |/ ___| | | | |   / ___|__  /
+ | |\/| | | |   | |_| | |  | |     / / 
+ | |  | | | |___|  _  | |__| |___ / /_ 
+ |_|  |_|_|\____|_| |_|_____\____/____|
+       For complains Tweet @M1chl 
+
+CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
+
+EOF
+
+read -p "Beta version of CampusCash is installed" -n1 -s
+
+echo ""
+EOL
+
 cat > /root/.commands/mn2setup << EOL
 cd ~
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mn2.sh > /dev/null 2>&1
@@ -544,6 +615,7 @@ chmod +x  /root/.commands/mnxstatus
 chmod +x  /root/.commands/getPeers
 chmod +x  /root/.commands/getxPeers
 chmod +x  /root/.commands/mnxstatus 
+chmod +x  /root/.commands/campusVersionInstall
 
 . .commands/gethelp
 
