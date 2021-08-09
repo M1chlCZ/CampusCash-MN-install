@@ -281,32 +281,6 @@ systemctl start ccash2.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > $HOME/.commands/commandUpdate << EOL
-#!/bin/bash
-cd $HOME 
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh > /dev/null 2>&1
-source env.sh
-clear
-
-cat << "EOF"
-            Update complete!
-
-           |Brought to you by|         
-  __  __ _  ____ _   _ _     ____ _____
- |  \/  / |/ ___| | | | |   / ___|__  /
- | |\/| | | |   | |_| | |  | |     / / 
- | |  | | | |___|  _  | |__| |___ / /_ 
- |_|  |_|_|\____|_| |_|_____\____/____|
-       For complains Tweet @M1chl 
-
-CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
-
-EOF
-
-. $HOME/.commands/gethelp
-
-echo ""
-EOL
 
 cat > $HOME/.commands/campusUpdate << EOL
 #!/bin/bash    
@@ -324,6 +298,7 @@ export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
 cd $HOME
+rm -r CampusCash
 git clone https://github.com/CampusCash/CampusCash_Core.git CampusCash
 cd $HOME/CampusCash/src
 chmod a+x obj
@@ -353,7 +328,7 @@ source env.sh
 sleep 5
 source $HOME/.profile
 
-rm -r CampusCash_Release
+rm -r CampusCash
 
 cat << "EOF"
             Update complete!
