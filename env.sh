@@ -169,6 +169,7 @@ cd $HOME
 
 mv  $HOME/.CCASH/CampusCash.conf CampusCash.conf
 mv  $HOME/.CCASH/wallet.dat wallet.dat
+mv  $HOME/.CCASH/masternode.conf masternode.conf
 
 pkgs='unzip'
 install=false
@@ -192,6 +193,7 @@ cd $HOME
 
 mv CampusCash.conf  $HOME/.CCASH/CampusCash.conf
 mv wallet.dat  $HOME/.CCASH/wallet.dat
+mv masternode.conf $HOME/.CCASH/masternode.conf 
 
 systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
@@ -227,6 +229,7 @@ cd $HOME
 
 mv  $HOME/.CCASH\$1/CampusCash.conf CampusCash.conf
 mv  $HOME/.CCASH\$1/wallet.dat wallet.dat
+mv  $HOME/.CCASH\$1/masternode.conf masternode.conf
 
 pkgs='unzip'
 install=false
@@ -250,6 +253,7 @@ cd $HOME
 
 mv CampusCash.conf  $HOME/.CCASH\$1/CampusCash.conf
 mv wallet.dat  $HOME/.CCASH\$1/wallet.dat
+mv masternode.conf $HOME/.CCASH\$1/masternode.conf
 
 systemctl start ccash\$1.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
@@ -289,6 +293,7 @@ cd $HOME
 
 mv  $HOME/.CCASH2/CampusCash.conf CampusCash.conf
 mv  $HOME/.CCASH2/wallet.dat wallet.dat
+mv  $HOME/.CCASH2/masternode.conf masternode.conf
 
 pkgs='unzip'
 install=false
@@ -312,6 +317,7 @@ cd $HOME
 
 mv CampusCash.conf  $HOME/.CCASH2/CampusCash.conf
 mv wallet.dat  $HOME/.CCASH2/wallet.dat
+mv masternode.conf $HOME/.CCASH2/masternode.conf
 
 systemctl start ccash2.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
