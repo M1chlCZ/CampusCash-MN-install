@@ -170,7 +170,19 @@ cd $HOME
 mv  $HOME/.CCASH/CampusCash.conf CampusCash.conf
 mv  $HOME/.CCASH/wallet.dat wallet.dat
 
-apt-get install -y unzip
+pkgs='unzip'
+install=false
+for pkg in $pkgs; do
+  status="$(dpkg-query -W --showformat='${db:Status-Status}' "$pkg" 2>&1)"
+  if [ ! $? = 0 ] || [ ! "$status" = installed ]; then
+    install=true
+  fi
+  if "$install"; then
+    apt-get install -y $pkg
+    install=false
+  fi
+done
+
 cd $HOME/.CCASH
 rm -rf *
 wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.10/ccash_bootstrap.zip
@@ -216,7 +228,19 @@ cd $HOME
 mv  $HOME/.CCASH\$1/CampusCash.conf CampusCash.conf
 mv  $HOME/.CCASH\$1/wallet.dat wallet.dat
 
-apt-get install -y unzip
+pkgs='unzip'
+install=false
+for pkg in $pkgs; do
+  status="$(dpkg-query -W --showformat='${db:Status-Status}' "$pkg" 2>&1)"
+  if [ ! $? = 0 ] || [ ! "$status" = installed ]; then
+    install=true
+  fi
+  if "$install"; then
+    apt-get install -y $pkg
+    install=false
+  fi
+done
+
 cd $HOME/.CCASH\$1
 rm -rf *
 wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.10/ccash_bootstrap.zip
@@ -266,7 +290,19 @@ cd $HOME
 mv  $HOME/.CCASH2/CampusCash.conf CampusCash.conf
 mv  $HOME/.CCASH2/wallet.dat wallet.dat
 
-apt-get install -y unzip
+pkgs='unzip'
+install=false
+for pkg in $pkgs; do
+  status="$(dpkg-query -W --showformat='${db:Status-Status}' "$pkg" 2>&1)"
+  if [ ! $? = 0 ] || [ ! "$status" = installed ]; then
+    install=true
+  fi
+  if "$install"; then
+    apt-get install -y $pkg
+    install=false
+  fi
+done
+
 cd $HOME/.CCASH2
 rm -rf *
 wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.10/ccash_bootstrap.zip
