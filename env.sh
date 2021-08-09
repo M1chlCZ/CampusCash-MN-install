@@ -310,11 +310,6 @@ EOL
 
 cat > /root/.commands/campusUpdate << EOL
 #!/bin/bash    
-# Check if we are root
-if [ "$(id -u)" != "0" ]; then
-   echo "This script must be run as root! Aborting..." 1>&2
-   exit 1
-fi
 
 cd~
 
