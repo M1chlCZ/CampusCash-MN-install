@@ -1,39 +1,39 @@
 echo "Setting up enviromental commands..."
-cd ~
+cd $HOME
 mkdir -p .commands
 mkdir -p .profile
-echo "export PATH="$PATH:~/.commands"" >>~/.profile
+echo "export PATH="$PATH:$HOME/.commands"" >>$HOME/.profile
 
 
-rm  /root/.commands/gethelp > /dev/null 2>&1
-rm  /root/.commands/getinfo > /dev/null 2>&1
-rm  /root/.commands/mnstart > /dev/null 2>&1
-rm  /root/.commands/mnstatus > /dev/null 2>&1
-rm  /root/.commands/mnxstatus > /dev/null 2>&1
-rm  /root/.commands/startd > /dev/null 2>&1
-rm  /root/.commands/stopd > /dev/null 2>&1
-rm  /root/.commands/commandUpdate > /dev/null 2>&1
-rm  /root/.commands/campusUpdate > /dev/null 2>&1
-rm  /root/.commands/clearbanned > /dev/null 2>&1
-rm  /root/.commands/getBootstrap > /dev/null 2>&1
-rm  /root/.commands/getBootstrap2 > /dev/null 2>&1
-rm  /root/.commands/mn2setup > /dev/null 2>&1
-rm  /root/.commands/mnxsetup > /dev/null 2>&1
-rm  /root/.commands/mn2start > /dev/null 2>&1
-rm  /root/.commands/mn2status > /dev/null 2>&1
-rm  /root/.commands/startd2 > /dev/null 2>&1
-rm  /root/.commands/stopd2 > /dev/null 2>&1
-rm  /root/.commands/startdx > /dev/null 2>&1
-rm  /root/.commands/stopdx > /dev/null 2>&1
-rm  /root/.commands/campusBetaInstall > /dev/null 2>&1
-rm  /root/.commands/getBootstrapx > /dev/null 2>&1
-rm  /root/.commands/getxinfo > /dev/null 2>&1
-rm  /root/.commands/mnxstatus > /dev/null 2>&1
-rm  /root/.commands/getPeers > /dev/null 2>&1
-rm  /root/.commands/getxPeers > /dev/null 2>&1
-rm  /root/.commands/campusVersionInstall > /dev/null 2>&1
+rm  $HOME/.commands/gethelp > /dev/null 2>&1
+rm  $HOME/.commands/getinfo > /dev/null 2>&1
+rm  $HOME/.commands/mnstart > /dev/null 2>&1
+rm  $HOME/.commands/mnstatus > /dev/null 2>&1
+rm  $HOME/.commands/mnxstatus > /dev/null 2>&1
+rm  $HOME/.commands/startd > /dev/null 2>&1
+rm  $HOME/.commands/stopd > /dev/null 2>&1
+rm  $HOME/.commands/commandUpdate > /dev/null 2>&1
+rm  $HOME/.commands/campusUpdate > /dev/null 2>&1
+rm  $HOME/.commands/clearbanned > /dev/null 2>&1
+rm  $HOME/.commands/getBootstrap > /dev/null 2>&1
+rm  $HOME/.commands/getBootstrap2 > /dev/null 2>&1
+rm  $HOME/.commands/mn2setup > /dev/null 2>&1
+rm  $HOME/.commands/mnxsetup > /dev/null 2>&1
+rm  $HOME/.commands/mn2start > /dev/null 2>&1
+rm  $HOME/.commands/mn2status > /dev/null 2>&1
+rm  $HOME/.commands/startd2 > /dev/null 2>&1
+rm  $HOME/.commands/stopd2 > /dev/null 2>&1
+rm  $HOME/.commands/startdx > /dev/null 2>&1
+rm  $HOME/.commands/stopdx > /dev/null 2>&1
+rm  $HOME/.commands/campusBetaInstall > /dev/null 2>&1
+rm  $HOME/.commands/getBootstrapx > /dev/null 2>&1
+rm  $HOME/.commands/getxinfo > /dev/null 2>&1
+rm  $HOME/.commands/mnxstatus > /dev/null 2>&1
+rm  $HOME/.commands/getPeers > /dev/null 2>&1
+rm  $HOME/.commands/getxPeers > /dev/null 2>&1
+rm  $HOME/.commands/campusVersionInstall > /dev/null 2>&1
 
-cat > /root/.commands/gethelp << EOL
+cat > $HOME/.commands/gethelp << EOL
 #!/bin/bash
 
 cat << "EOF"
@@ -111,84 +111,84 @@ echo "---------------------------------------------------"
 echo ""
 EOL
 
-cat > /root/.commands/getinfo << EOL
+cat > $HOME/.commands/getinfo << EOL
 #!/bin/bash    
-~/Campusd getinfo
+$HOME/Campusd getinfo
 EOL
 
-cat > /root/.commands/getpeerinfo << EOL
+cat > $HOME/.commands/getpeerinfo << EOL
 #!/bin/bash    
-~/Campusd getpeerinfo
+$HOME/Campusd getpeerinfo
 EOL
 
-cat > /root/.commands/mnstart << EOL
+cat > $HOME/.commands/mnstart << EOL
 #!/bin/bash    
-~/Campusd masternode start
+$HOME/Campusd masternode start
 EOL
 
-cat > /root/.commands/mnstatus << EOL
+cat > $HOME/.commands/mnstatus << EOL
 #!/bin/bash    
-~/Campusd masternode status
+$HOME/Campusd masternode status
 EOL
 
-cat > /root/.commands/startd << EOL
+cat > $HOME/.commands/startd << EOL
 #!/bin/bash
 systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/startdx << EOL
+cat > $HOME/.commands/startdx << EOL
 #!/bin/bash    
 systemctl start ccash\$1.service 
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/stopdx << EOL
+cat > $HOME/.commands/stopdx << EOL
 #!/bin/bash    
 systemctl stop ccash\$1.service 
 echo "CampusCash Deamon is innactive..."
 EOL
 
 
-cat > /root/.commands/stopd << EOL
+cat > $HOME/.commands/stopd << EOL
 #!/bin/bash
 systemctl stop ccash.service
 sleep 1
 echo "CampusCash Deamon is innactive..."
 EOL
 
-cat > /root/.commands/clearbanned << EOL
+cat > $HOME/.commands/clearbanned << EOL
 #!/bin/bash    
-~/Campusd clearbanned
+$HOME/Campusd clearbanned
 EOL
 
-cat > /root/.commands/getBootstrap << EOL
+cat > $HOME/.commands/getBootstrap << EOL
 systemctl stop ccash.service 
 
-cd ~
+cd $HOME
 
-mv  /root/.CCASH/CampusCash.conf CampusCash.conf
-mv  /root/.CCASH/wallet.dat wallet.dat
+mv  $HOME/.CCASH/CampusCash.conf CampusCash.conf
+mv  $HOME/.CCASH/wallet.dat wallet.dat
 
 apt-get install -y unzip
-cd /root/.CCASH
+cd $HOME/.CCASH
 rm -rf *
 wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.10/ccash_bootstrap.zip
 unzip ccash_bootstrap.zip
 rm ccash_bootstrap.zip
-cd ~
+cd $HOME
 
-mv CampusCash.conf  /root/.CCASH/CampusCash.conf
-mv wallet.dat  /root/.CCASH/wallet.dat
+mv CampusCash.conf  $HOME/.CCASH/CampusCash.conf
+mv wallet.dat  $HOME/.CCASH/wallet.dat
 
 systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/getPeers << EOL
+cat > $HOME/.commands/getPeers << EOL
 #!/bin/bash    
 systemctl stop ccash.service 
-cd /root/.CCASH
+cd $HOME/.CCASH
 rm peers.dat
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd
@@ -197,10 +197,10 @@ systemctl start ccash.service
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/getxPeers << EOL
+cat > $HOME/.commands/getxPeers << EOL
 #!/bin/bash    
 systemctl stop ccash\$1.service
-cd /root/.CCASH\$1
+cd $HOME/.CCASH\$1
 rm peers.dat
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd
@@ -208,32 +208,32 @@ systemctl start ccash\$1.service
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/getBootstrapx << EOL
+cat > $HOME/.commands/getBootstrapx << EOL
 systemctl stop ccash\$1.service 
 
-cd ~
+cd $HOME
 
-mv  /root/.CCASH\$1/CampusCash.conf CampusCash.conf
-mv  /root/.CCASH\$1/wallet.dat wallet.dat
+mv  $HOME/.CCASH\$1/CampusCash.conf CampusCash.conf
+mv  $HOME/.CCASH\$1/wallet.dat wallet.dat
 
 apt-get install -y unzip
-cd /root/.CCASH\$1
+cd $HOME/.CCASH\$1
 rm -rf *
 wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.10/ccash_bootstrap.zip
 unzip ccash_bootstrap.zip
 rm ccash_bootstrap.zip
-cd ~
+cd $HOME
 
-mv CampusCash.conf  /root/.CCASH\$1/CampusCash.conf
-mv wallet.dat  /root/.CCASH\$1/wallet.dat
+mv CampusCash.conf  $HOME/.CCASH\$1/CampusCash.conf
+mv wallet.dat  $HOME/.CCASH\$1/wallet.dat
 
 systemctl start ccash\$1.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/commandUpdate << EOL
+cat > $HOME/.commands/commandUpdate << EOL
 #!/bin/bash
-cd ~ 
+cd $HOME 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh > /dev/null 2>&1
 source env.sh
 clear
@@ -253,37 +253,37 @@ CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
 
 EOF
 
-. /root/.commands/gethelp
+. $HOME/.commands/gethelp
 
 echo ""
 EOL
 
-cat > /root/.commands/getBootstrap2 << EOL
+cat > $HOME/.commands/getBootstrap2 << EOL
 systemctl stop ccash2.service 
 
-cd ~
+cd $HOME
 
-mv  /root/.CCASH2/CampusCash.conf CampusCash.conf
-mv  /root/.CCASH2/wallet.dat wallet.dat
+mv  $HOME/.CCASH2/CampusCash.conf CampusCash.conf
+mv  $HOME/.CCASH2/wallet.dat wallet.dat
 
 apt-get install -y unzip
-cd /root/.CCASH2
+cd $HOME/.CCASH2
 rm -rf *
 wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.10/ccash_bootstrap.zip
 unzip ccash_bootstrap.zip
 rm ccash_bootstrap.zip
-cd ~
+cd $HOME
 
-mv CampusCash.conf  /root/.CCASH2/CampusCash.conf
-mv wallet.dat  /root/.CCASH2/wallet.dat
+mv CampusCash.conf  $HOME/.CCASH2/CampusCash.conf
+mv wallet.dat  $HOME/.CCASH2/wallet.dat
 
 systemctl start ccash2.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
 
-cat > /root/.commands/commandUpdate << EOL
+cat > $HOME/.commands/commandUpdate << EOL
 #!/bin/bash
-cd ~ 
+cd $HOME 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh > /dev/null 2>&1
 source env.sh
 clear
@@ -303,15 +303,15 @@ CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
 
 EOF
 
-. /root/.commands/gethelp
+. $HOME/.commands/gethelp
 
 echo ""
 EOL
 
-cat > /root/.commands/campusUpdate << EOL
+cat > $HOME/.commands/campusUpdate << EOL
 #!/bin/bash    
 
-cd~
+cd $HOME
 
 sudo systemctl stop ccash.service
 sudo systemctl stop ccash2.service > /dev/null 2>&1
@@ -323,19 +323,19 @@ rm Campusd > /dev/null 2>&1
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
-cd ~
+cd $HOME
 git clone https://github.com/CampusCash/CampusCash_Core.git CampusCash
-cd /root/CampusCash/src
+cd $HOME/CampusCash/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
 chmod a+x secp256k1
 chmod a+x leveldb
-chmod a+x /root/CampusCash/src
-chmod a+x /root/CampusCash
+chmod a+x $HOME/CampusCash/src
+chmod a+x $HOME/CampusCash
 make -f makefile.unix USE_UPNP=-
-cd ~ 
-cp  CampusCash/src/CampusCashd  /root/Campusd
-cd ~
+cd $HOME 
+cp  CampusCash/src/CampusCashd  $HOME/Campusd
+cd $HOME
 
 strip Campusd
 
@@ -351,7 +351,7 @@ wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
 source env.sh
 
 sleep 5
-source /root/.profile
+source $HOME/.profile
 
 rm -r CampusCash_Release
 
@@ -375,7 +375,7 @@ read -p "You may need run mnstart command to start a masternode after update. Pr
 echo ""
 EOL
 
-cat > /root/.commands/campusBetaInstall << EOL
+cat > $HOME/.commands/campusBetaInstall << EOL
 #!/bin/bash    
 # Check if we are root
 if [ "$(id -u)" != "0" ]; then
@@ -383,7 +383,7 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-cd ~
+cd $HOME
 
 sudo systemctl stop ccash.service
 sudo systemctl stop ccash2.service > /dev/null 2>&1
@@ -395,22 +395,19 @@ rm Campusd > /dev/null 2>&1
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
-cd ~
+cd $HOME
 git clone https://github.com/SaltineChips/CampusCash.git CampusCash
-cd /root/CampusCash/src
+cd $HOME/CampusCash/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
 chmod a+x secp256k1
 chmod a+x leveldb
-chmod a+x /root/CampusCash/src
-chmod a+x /root/CampusCash
+chmod a+x $HOME/CampusCash/src
+chmod a+x $HOME/CampusCash
 make -f makefile.unix USE_UPNP=-
-cd ~ 
-cp  CampusCash/src/CampusCashd /root/Campusd
+cd $HOME 
+cp  CampusCash/src/CampusCashd $HOME/Campusd
 
-sleep 10
-
-[ -f /root/Campusd ] && echo "Copy OK." || cp  /root/CampusCash/src/CampusCashd /root/Campusd
 
 sleep 1
 
@@ -421,7 +418,7 @@ wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
 source env.sh
 
 sleep 5
-source /root/.profile
+source $HOME/.profile
 
 rm -r CampusCash
 
@@ -445,7 +442,7 @@ read -p "Beta version of CampusCash is installed" -n1 -s
 echo ""
 EOL
 
-cat > /root/.commands/campusVersionInstall << EOL
+cat > $HOME/.commands/campusVersionInstall << EOL
 #!/bin/bash    
 # Check if we are root
 if [ "$(id -u)" != "0" ]; then
@@ -453,7 +450,7 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-cd ~
+cd $HOME
 
 sudo systemctl stop ccash.service
 sudo systemctl stop ccash2.service > /dev/null 2>&1
@@ -465,18 +462,18 @@ rm Campusd > /dev/null 2>&1
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
-cd ~
+cd $HOME
 wget https://github.com/CampusCash/CampusCash_Core/archive/refs/tags/\$1.zip 
 unzip \$1.zip
-cd /root/CampusCash_Core-\$1/src
+cd $HOME/CampusCash_Core-\$1/src
 chmod a+x leveldb/build_detect_platform
 make -f makefile.unix USE_UPNP=-
-cd ~ 
-cp  CampusCash_Core-\$1/src/CampusCashd /root/Campusd
+cd $HOME 
+cp  CampusCash_Core-\$1/src/CampusCashd $HOME/Campusd
 
 sleep 10
 
-[ -f /root/Campusd ] && echo "Copy OK." || cp  /root/CampusCash/src/CampusCashd /root/Campusd
+[ -f $HOME/Campusd ] && echo "Copy OK." || cp  $HOME/CampusCash/src/CampusCashd $HOME/Campusd
 
 sleep 1
 
@@ -487,7 +484,7 @@ wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
 source env.sh
 
 sleep 5
-source /root/.profile
+source $HOME/.profile
 
 rm -r CampusCash_Core-\$1
 
@@ -511,65 +508,65 @@ read -p "Beta version of CampusCash is installed" -n1 -s
 echo ""
 EOL
 
-cat > /root/.commands/mn2setup << EOL
-cd ~
+cat > $HOME/.commands/mn2setup << EOL
+cd $HOME
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mn2.sh > /dev/null 2>&1
 source mn2.sh
 EOL
 
-cat > /root/.commands/mnxsetup << EOL
-cd ~
+cat > $HOME/.commands/mnxsetup << EOL
+cd $HOME
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/mnxsetup.sh > /dev/null 2>&1
 chmod +x mnxsetup.sh
 source mnxsetup.sh
 EOL
 
-cat > /root/.commands/getinfo2 << EOL
+cat > $HOME/.commands/getinfo2 << EOL
 #!/bin/bash    
-~/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 getinfo
+$HOME/Campusd -conf=$HOME/.CCASH2/CampusCash.conf -datadir=$HOME/.CCASH2 getinfo
 EOL
 
-cat > /root/.commands/mn2start << EOL
+cat > $HOME/.commands/mn2start << EOL
 #!/bin/bash    
-~/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 -port=12001 masternode start
+$HOME/Campusd -conf=$HOME/.CCASH2/CampusCash.conf -datadir=$HOME/.CCASH2 -port=12001 masternode start
 EOL
 
-cat > /root/.commands/mnxstart << EOL
-#!/bin/bash    
-PORT=\$((\$1 - 1))
-~/Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode start
-EOL
-
-cat > /root/.commands/mnxstatus << EOL
+cat > $HOME/.commands/mnxstart << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-~/Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode status
+$HOME/Campusd -conf=$HOME/.CCASH\$1/CampusCash.conf -datadir=$HOME/.CCASH\$1 -port=1200\$PORT masternode start
 EOL
 
-cat > /root/.commands/getxinfo << EOL
+cat > $HOME/.commands/mnxstatus << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-~/Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT getinfo
+$HOME/Campusd -conf=$HOME/.CCASH\$1/CampusCash.conf -datadir=$HOME/.CCASH\$1 -port=1200\$PORT masternode status
 EOL
 
-cat > /root/.commands/mnxstatus << EOL
+cat > $HOME/.commands/getxinfo << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-~/Campusd -conf=/root/.CCASH\$1/CampusCash.conf -datadir=/root/.CCASH\$1 -port=1200\$PORT masternode status
+$HOME/Campusd -conf=$HOME/.CCASH\$1/CampusCash.conf -datadir=$HOME/.CCASH\$1 -port=1200\$PORT getinfo
 EOL
 
-cat > /root/.commands/mn2status << EOL
+cat > $HOME/.commands/mnxstatus << EOL
 #!/bin/bash    
-~/Campusd -conf=/root/.CCASH2/CampusCash.conf -datadir=/root/.CCASH2 masternode status
+PORT=\$((\$1 - 1))
+$HOME/Campusd -conf=$HOME/.CCASH\$1/CampusCash.conf -datadir=$HOME/.CCASH\$1 -port=1200\$PORT masternode status
 EOL
 
-cat > /root/.commands/startd2 << EOL
+cat > $HOME/.commands/mn2status << EOL
+#!/bin/bash    
+$HOME/Campusd -conf=$HOME/.CCASH2/CampusCash.conf -datadir=$HOME/.CCASH2 masternode status
+EOL
+
+cat > $HOME/.commands/startd2 << EOL
 #!/bin/bash
 systemctl start ccash2.service > /dev/null 2>&1
 echo "CampusCash Deamon #2 is running..."
 EOL
 
-cat > /root/.commands/stopd2 << EOL
+cat > $HOME/.commands/stopd2 << EOL
 #!/bin/bash
 systemctl stop ccash2.service
 sleep 1
@@ -577,37 +574,37 @@ echo "CampusCash Deamon #2 is innactive..."
 EOL
 
 
-chmod +x  /root/.commands/getinfo
-chmod +x  /root/.commands/mnstart
-chmod +x  /root/.commands/mnstatus
-chmod +x  /root/.commands/startd
-chmod +x  /root/.commands/stopd
-chmod +x  /root/.commands/commandUpdate
-chmod +x  /root/.commands/campusUpdate
-chmod +x  /root/.commands/gethelp
-chmod +x  /root/.commands/getpeerinfo
-chmod +x  /root/.commands/clearbanned
-chmod +x  /root/.commands/getBootstrap
-chmod +x  /root/.commands/getBootstrap2
-chmod +x  /root/.commands/getinfo2
-chmod +x  /root/.commands/mn2setup
-chmod +x  /root/.commands/mnxsetup
-chmod +x  /root/.commands/mnxstart
-chmod +x  /root/.commands/mn2start
-chmod +x  /root/.commands/mn2status
-chmod +x  /root/.commands/startd2
-chmod +x  /root/.commands/stopd2
-chmod +x  /root/.commands/startdx
-chmod +x  /root/.commands/stopdx
-chmod +x  /root/.commands/campusBetaInstall
-chmod +x  /root/.commands/getBootstrapx
-chmod +x  /root/.commands/getxinfo
-chmod +x  /root/.commands/mnxstatus
-chmod +x  /root/.commands/getPeers
-chmod +x  /root/.commands/getxPeers
-chmod +x  /root/.commands/mnxstatus 
-chmod +x  /root/.commands/campusVersionInstall
+chmod +x  $HOME/.commands/getinfo
+chmod +x  $HOME/.commands/mnstart
+chmod +x  $HOME/.commands/mnstatus
+chmod +x  $HOME/.commands/startd
+chmod +x  $HOME/.commands/stopd
+chmod +x  $HOME/.commands/commandUpdate
+chmod +x  $HOME/.commands/campusUpdate
+chmod +x  $HOME/.commands/gethelp
+chmod +x  $HOME/.commands/getpeerinfo
+chmod +x  $HOME/.commands/clearbanned
+chmod +x  $HOME/.commands/getBootstrap
+chmod +x  $HOME/.commands/getBootstrap2
+chmod +x  $HOME/.commands/getinfo2
+chmod +x  $HOME/.commands/mn2setup
+chmod +x  $HOME/.commands/mnxsetup
+chmod +x  $HOME/.commands/mnxstart
+chmod +x  $HOME/.commands/mn2start
+chmod +x  $HOME/.commands/mn2status
+chmod +x  $HOME/.commands/startd2
+chmod +x  $HOME/.commands/stopd2
+chmod +x  $HOME/.commands/startdx
+chmod +x  $HOME/.commands/stopdx
+chmod +x  $HOME/.commands/campusBetaInstall
+chmod +x  $HOME/.commands/getBootstrapx
+chmod +x  $HOME/.commands/getxinfo
+chmod +x  $HOME/.commands/mnxstatus
+chmod +x  $HOME/.commands/getPeers
+chmod +x  $HOME/.commands/getxPeers
+chmod +x  $HOME/.commands/mnxstatus 
+chmod +x  $HOME/.commands/campusVersionInstall
 
 . .commands/gethelp
 
-rm /root/env.sh > /dev/null 2>&1
+rm $HOME/env.sh > /dev/null 2>&1
