@@ -199,7 +199,7 @@ mv wallet.dat  $HOME/.CCASH/wallet.dat
 mv masternode.conf $HOME/.CCASH/masternode.conf 
 
 cat $HOME/.CCASH/CampusCash.conf | sed '/addnode/d' > $HOME/.CCASH/CampusCash.conf
-cat >>$HOME/.CCASH/CampusCash.conf <<EOF
+cat <<EOT >> $HOME/.CCASH/CampusCash.conf
 addnode=155.138.148.198:19427
 addnode=[2001:19f0:b001:f89:100:100:100:108]:19427
 addnode=188.68.51.62:19427
@@ -251,7 +251,7 @@ addnode=172.58.27.73:32442
 addnode=199.127.140.240:39160
 addnode=88.147.5.38:46594
 addnode=77.242.107.120:50593
-EOF
+EOT
 
 systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
@@ -314,7 +314,7 @@ mv wallet.dat  $HOME/.CCASH\$1/wallet.dat
 mv masternode.conf $HOME/.CCASH\$1/masternode.conf
 
 cat $HOME/.CCASH\$1/CampusCash.conf | sed '/addnode/d' > $HOME/.CCASH\$1/CampusCash.conf
-cat >>$HOME/.CCASH\$1/CampusCash.conf <<EOF
+cat <<EOT >> $HOME/.CCASH\$1/CampusCash.conf
 addnode=155.138.148.198:19427
 addnode=[2001:19f0:b001:f89:100:100:100:108]:19427
 addnode=188.68.51.62:19427
@@ -366,7 +366,7 @@ addnode=172.58.27.73:32442
 addnode=199.127.140.240:39160
 addnode=88.147.5.38:46594
 addnode=77.242.107.120:50593
-EOF
+EOT
 
 systemctl start ccash\$1.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
@@ -433,7 +433,7 @@ mv wallet.dat  $HOME/.CCASH2/wallet.dat
 mv masternode.conf $HOME/.CCASH2/masternode.conf
 
 cat $HOME/.CCASH2/CampusCash.conf | sed '/addnode/d' > $HOME/.CCASH2/CampusCash.conf
-cat >>$HOME/.CCASH2/CampusCash.conf <<EOF
+cat <<EOT >> $HOME/.CCASH2/CampusCash.conf
 addnode=155.138.148.198:19427
 addnode=[2001:19f0:b001:f89:100:100:100:108]:19427
 addnode=188.68.51.62:19427
@@ -485,7 +485,7 @@ addnode=172.58.27.73:32442
 addnode=199.127.140.240:39160
 addnode=88.147.5.38:46594
 addnode=77.242.107.120:50593
-EOF
+EOT
 
 
 systemctl start ccash2.service > /dev/null 2>&1
