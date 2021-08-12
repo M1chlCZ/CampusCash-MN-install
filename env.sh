@@ -398,9 +398,9 @@ EOL
 
 cat > $HOME/.commands/addnode << EOL
 $HOME/Campusd getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
-        temp="${line%\"}"
-        temp="${temp#\"}"
-        echo "addnode=$temp"
+        temp="\${line%\"}"
+        temp="\${temp#\"}"
+        echo "addnode=\$temp"
 done
 EOL
 
@@ -408,18 +408,18 @@ cat > $HOME/.commands/addnode2 << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
 $HOME/Campusd -conf=$HOME/.CCASH\$1/CampusCash.conf -datadir=$HOME/.CCASH\$1 -port=1200\$PORT getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
-        temp="${line%\"}"
-        temp="${temp#\"}"
-        echo "addnode=$temp"
+        temp="\${line%\"}"
+        temp="\${temp#\"}"
+        echo "addnode=\$temp"
 done
 EOL
 
 cat > $HOME/.commands/addnodex << EOL
 #!/bin/bash    
 $HOME/Campusd -conf=$HOME/.CCASH2/CampusCash.conf -datadir=$HOME/.CCASH2 getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
-        temp="${line%\"}"
-        temp="${temp#\"}"
-        echo "addnode=$temp"
+        temp="\${line%\"}"
+        temp="\${temp#\"}"
+        echo "addnode=\$temp"
 done
 EOL
 
