@@ -32,6 +32,7 @@ rm  $HOME/.commands/mnxstatus > /dev/null 2>&1
 rm  $HOME/.commands/getPeers > /dev/null 2>&1
 rm  $HOME/.commands/getxPeers > /dev/null 2>&1
 rm  $HOME/.commands/campusVersionInstall > /dev/null 2>&1
+rm  $HOME/.commands/addnode > /dev/null 2>&1
 
 cat > $HOME/.commands/gethelp << EOL
 #!/bin/bash
@@ -392,6 +393,14 @@ read -p "You may need run mnstart command to start a masternode after update. Pr
 echo ""
 EOL
 
+cat > $HOME/.commands/addnode << EOL
+$HOME/Campusd getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
+        temp="${line%\"}"
+        temp="${temp#\"}"
+        echo "addnode=$temp"
+done
+EOL
+
 cat > $HOME/.commands/campusBetaInstall << EOL
 #!/bin/bash    
 # Check if we are root
@@ -621,6 +630,7 @@ chmod +x  $HOME/.commands/getPeers
 chmod +x  $HOME/.commands/getxPeers
 chmod +x  $HOME/.commands/mnxstatus 
 chmod +x  $HOME/.commands/campusVersionInstall
+chmod +x  $HOME/.commands/addnode
 
 . .commands/gethelp
 
