@@ -322,7 +322,7 @@ cd $HOME
 mv CampusCash.conf  $HOME/.CCASH2/CampusCash.conf
 mv wallet.dat  $HOME/.CCASH2/wallet.dat
 mv masternode.conf $HOME/.CCASH2/masternode.conf
-
+ 
 systemctl start ccash2.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
