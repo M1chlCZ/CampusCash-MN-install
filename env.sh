@@ -198,6 +198,61 @@ mv CampusCash.conf  $HOME/.CCASH/CampusCash.conf
 mv wallet.dat  $HOME/.CCASH/wallet.dat
 mv masternode.conf $HOME/.CCASH/masternode.conf 
 
+cat $HOME/.CCASH/CampusCash.conf | sed '/addnode/d' > $HOME/.CCASH/CampusCash.conf
+cat >>$HOME/.CCASH/CampusCash.conf <<EOF
+addnode=155.138.148.198:19427
+addnode=[2001:19f0:b001:f89:100:100:100:108]:19427
+addnode=188.68.51.62:19427
+addnode=185.233.105.123:38442
+addnode=188.68.51.62:56808
+addnode=45.76.118.204:50670
+addnode=207.148.86.74:33272
+addnode=95.217.161.140:37246
+addnode=139.180.173.78:19427
+addnode=91.132.144.89:59874
+addnode=207.148.83.115:19427
+addnode=167.86.116.187:58466
+addnode=78.141.241.137:60498
+addnode=104.50.83.156:46024
+addnode=149.28.179.72:19427
+addnode=138.197.161.183:33554
+addnode=80.208.229.187:59180
+addnode=194.135.84.156:56818
+addnode=176.223.143.120:37302
+addnode=212.24.102.5:36704
+addnode=94.176.239.147:56210
+addnode=80.209.234.43:41480
+addnode=80.208.228.20:58202
+addnode=80.209.224.146:19427
+addnode=176.223.138.179:60948
+addnode=5.189.173.231:39230
+addnode=89.40.8.158:50312
+addnode=185.81.167.83:34276
+addnode=185.5.53.254:60576
+addnode=153.156.116.4:11913
+addnode=194.135.81.164:49424
+addnode=185.69.54.76:36960
+addnode=62.77.152.229:52262
+addnode=[2a03:4000:6:d4bd:4803:60ff:fe89:3]:19427
+addnode=45.76.113.7:19427
+addnode=94.176.232.189:19427
+addnode=5.45.108.38:33620
+addnode=65.21.206.123:42266
+addnode=65.21.202.231:34354
+addnode=95.216.101.189:42178
+addnode=95.216.101.189:46468
+addnode=95.216.77.226:55376
+addnode=104.50.83.156:42518
+addnode=45.129.181.191:38880
+addnode=95.217.95.233:19427
+addnode=45.32.189.107:19427
+addnode=65.21.198.58:52206
+addnode=172.58.27.73:32442
+addnode=199.127.140.240:39160
+addnode=88.147.5.38:46594
+addnode=77.242.107.120:50593
+EOF
+
 systemctl start ccash.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
 EOL
@@ -257,6 +312,61 @@ cd $HOME
 mv CampusCash.conf  $HOME/.CCASH\$1/CampusCash.conf
 mv wallet.dat  $HOME/.CCASH\$1/wallet.dat
 mv masternode.conf $HOME/.CCASH\$1/masternode.conf
+
+cat $HOME/.CCASH\$1/CampusCash.conf | sed '/addnode/d' > $HOME/.CCASH\$1/CampusCash.conf
+cat >>$HOME/.CCASH\$1/CampusCash.conf <<EOF
+addnode=155.138.148.198:19427
+addnode=[2001:19f0:b001:f89:100:100:100:108]:19427
+addnode=188.68.51.62:19427
+addnode=185.233.105.123:38442
+addnode=188.68.51.62:56808
+addnode=45.76.118.204:50670
+addnode=207.148.86.74:33272
+addnode=95.217.161.140:37246
+addnode=139.180.173.78:19427
+addnode=91.132.144.89:59874
+addnode=207.148.83.115:19427
+addnode=167.86.116.187:58466
+addnode=78.141.241.137:60498
+addnode=104.50.83.156:46024
+addnode=149.28.179.72:19427
+addnode=138.197.161.183:33554
+addnode=80.208.229.187:59180
+addnode=194.135.84.156:56818
+addnode=176.223.143.120:37302
+addnode=212.24.102.5:36704
+addnode=94.176.239.147:56210
+addnode=80.209.234.43:41480
+addnode=80.208.228.20:58202
+addnode=80.209.224.146:19427
+addnode=176.223.138.179:60948
+addnode=5.189.173.231:39230
+addnode=89.40.8.158:50312
+addnode=185.81.167.83:34276
+addnode=185.5.53.254:60576
+addnode=153.156.116.4:11913
+addnode=194.135.81.164:49424
+addnode=185.69.54.76:36960
+addnode=62.77.152.229:52262
+addnode=[2a03:4000:6:d4bd:4803:60ff:fe89:3]:19427
+addnode=45.76.113.7:19427
+addnode=94.176.232.189:19427
+addnode=5.45.108.38:33620
+addnode=65.21.206.123:42266
+addnode=65.21.202.231:34354
+addnode=95.216.101.189:42178
+addnode=95.216.101.189:46468
+addnode=95.216.77.226:55376
+addnode=104.50.83.156:42518
+addnode=45.129.181.191:38880
+addnode=95.217.95.233:19427
+addnode=45.32.189.107:19427
+addnode=65.21.198.58:52206
+addnode=172.58.27.73:32442
+addnode=199.127.140.240:39160
+addnode=88.147.5.38:46594
+addnode=77.242.107.120:50593
+EOF
 
 systemctl start ccash\$1.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
@@ -321,6 +431,62 @@ cd $HOME
 mv CampusCash.conf  $HOME/.CCASH2/CampusCash.conf
 mv wallet.dat  $HOME/.CCASH2/wallet.dat
 mv masternode.conf $HOME/.CCASH2/masternode.conf
+
+cat $HOME/.CCASH2/CampusCash.conf | sed '/addnode/d' > $HOME/.CCASH2/CampusCash.conf
+cat >>$HOME/.CCASH2/CampusCash.conf <<EOF
+addnode=155.138.148.198:19427
+addnode=[2001:19f0:b001:f89:100:100:100:108]:19427
+addnode=188.68.51.62:19427
+addnode=185.233.105.123:38442
+addnode=188.68.51.62:56808
+addnode=45.76.118.204:50670
+addnode=207.148.86.74:33272
+addnode=95.217.161.140:37246
+addnode=139.180.173.78:19427
+addnode=91.132.144.89:59874
+addnode=207.148.83.115:19427
+addnode=167.86.116.187:58466
+addnode=78.141.241.137:60498
+addnode=104.50.83.156:46024
+addnode=149.28.179.72:19427
+addnode=138.197.161.183:33554
+addnode=80.208.229.187:59180
+addnode=194.135.84.156:56818
+addnode=176.223.143.120:37302
+addnode=212.24.102.5:36704
+addnode=94.176.239.147:56210
+addnode=80.209.234.43:41480
+addnode=80.208.228.20:58202
+addnode=80.209.224.146:19427
+addnode=176.223.138.179:60948
+addnode=5.189.173.231:39230
+addnode=89.40.8.158:50312
+addnode=185.81.167.83:34276
+addnode=185.5.53.254:60576
+addnode=153.156.116.4:11913
+addnode=194.135.81.164:49424
+addnode=185.69.54.76:36960
+addnode=62.77.152.229:52262
+addnode=[2a03:4000:6:d4bd:4803:60ff:fe89:3]:19427
+addnode=45.76.113.7:19427
+addnode=94.176.232.189:19427
+addnode=5.45.108.38:33620
+addnode=65.21.206.123:42266
+addnode=65.21.202.231:34354
+addnode=95.216.101.189:42178
+addnode=95.216.101.189:46468
+addnode=95.216.77.226:55376
+addnode=104.50.83.156:42518
+addnode=45.129.181.191:38880
+addnode=95.217.95.233:19427
+addnode=45.32.189.107:19427
+addnode=65.21.198.58:52206
+addnode=172.58.27.73:32442
+addnode=199.127.140.240:39160
+addnode=88.147.5.38:46594
+addnode=77.242.107.120:50593
+EOF
+
 
 systemctl start ccash2.service > /dev/null 2>&1
 echo "CampusCash Deamon is running..."
