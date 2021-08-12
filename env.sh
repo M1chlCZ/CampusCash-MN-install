@@ -334,7 +334,7 @@ cat > $HOME/.commands/campusUpdate << EOL
 cd $HOME
 
 sudo systemctl stop ccash.service
-sudo systemctl stop ccash2.service > /dev/null 2>&1
+sudo systemctl stop ccash*.service
 
 rm -r CampusCash > /dev/null 2>&1
 killall Campusd > /dev/null 2>&1
@@ -366,7 +366,7 @@ getBootstrap
 getPeers
 
 sudo systemctl start ccash.service
-sudo systemctl start ccash2.service > /dev/null 2>&1
+sudo systemctl start ccash*.service > /dev/null 2>&1
 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
 source env.sh
