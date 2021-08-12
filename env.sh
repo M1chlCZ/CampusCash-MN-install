@@ -33,6 +33,8 @@ rm  $HOME/.commands/getPeers > /dev/null 2>&1
 rm  $HOME/.commands/getxPeers > /dev/null 2>&1
 rm  $HOME/.commands/campusVersionInstall > /dev/null 2>&1
 rm  $HOME/.commands/addnode > /dev/null 2>&1
+rm  $HOME/.commands/addnodex > /dev/null 2>&1
+rm  $HOME/.commands/addnode2 > /dev/null 2>&1
 
 cat > $HOME/.commands/gethelp << EOL
 #!/bin/bash
@@ -401,6 +403,25 @@ $HOME/Campusd getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line
 done
 EOL
 
+cat > $HOME/.commands/addnode2 << EOL
+#!/bin/bash    
+PORT=\$((\$1 - 1))
+$HOME/Campusd -conf=$HOME/.CCASH\$1/CampusCash.conf -datadir=$HOME/.CCASH\$1 -port=1200\$PORT getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
+        temp="${line%\"}"
+        temp="${temp#\"}"
+        echo "addnode=$temp"
+done
+EOL
+
+cat > $HOME/.commands/addnodex << EOL
+#!/bin/bash    
+$HOME/Campusd -conf=$HOME/.CCASH2/CampusCash.conf -datadir=$HOME/.CCASH2 getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
+        temp="${line%\"}"
+        temp="${temp#\"}"
+        echo "addnode=$temp"
+done
+EOL
+
 cat > $HOME/.commands/campusBetaInstall << EOL
 #!/bin/bash    
 # Check if we are root
@@ -631,6 +652,8 @@ chmod +x  $HOME/.commands/getxPeers
 chmod +x  $HOME/.commands/mnxstatus 
 chmod +x  $HOME/.commands/campusVersionInstall
 chmod +x  $HOME/.commands/addnode
+chmod +x  $HOME/.commands/addnodex
+chmod +x  $HOME/.commands/addnode2
 
 . .commands/gethelp
 
