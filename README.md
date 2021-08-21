@@ -54,6 +54,10 @@ getBootstrap2        | Get a bootstrap for MN #2
 
 getBootstrapx N      | Get a bootstrap for MN #N
 
+getPeers             | Get peers for daemon
+
+getxPeers N          | Get peers for daemon #N
+
 getpeerinfo          | Show peer info
 
 clearbanned          | Clear all banned IPs
