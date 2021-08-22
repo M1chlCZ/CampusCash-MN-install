@@ -189,7 +189,7 @@ done
 
 cd $HOME/.CCASH
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.12/ccash_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.12/ccash_bootstrap.zip
 unzip ccash_bootstrap.zip
 rm ccash_bootstrap.zip
 cd $HOME
@@ -250,7 +250,7 @@ done
 
 cd $HOME/.CCASH\$1
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.12/ccash_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.12/ccash_bootstrap.zip
 unzip ccash_bootstrap.zip
 rm ccash_bootstrap.zip
 cd $HOME
@@ -314,7 +314,7 @@ done
 
 cd $HOME/.CCASH2
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/1.1.0.12/ccash_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.12/ccash_bootstrap.zip
 unzip ccash_bootstrap.zip
 rm ccash_bootstrap.zip
 cd $HOME
