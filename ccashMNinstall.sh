@@ -223,7 +223,7 @@ if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
 fi
 clear
 
-# Install Berkley DB 5.6
+# Install Berkley DB 6.2
 echo "Installing Berkley DB..."
 cd ~
 wget http://download.oracle.com/berkeley-db/db-6.2.32.NC.tar.gz
@@ -250,7 +250,7 @@ chmod a+x secp256k1
 chmod a+x leveldb
 chmod a+x ~/CampusCash/src
 chmod a+x ~/CampusCash
-make -f makefile.unix USE_UPNP=-
+make -f makefile.unix USE_UPNP=- -j`nproc`
 sleep 1
 cp CampusCashd ~/Campusd
 cd ~

@@ -353,7 +353,7 @@ chmod a+x secp256k1
 chmod a+x leveldb
 chmod a+x $HOME/CampusCash/src
 chmod a+x $HOME/CampusCash
-make -f makefile.unix USE_UPNP=-
+make -f makefile.unix USE_UPNP=- -j`nproc`
 cd $HOME 
 cp  CampusCash/src/CampusCashd  $HOME/Campusd
 cd $HOME
@@ -452,7 +452,7 @@ chmod a+x secp256k1
 chmod a+x leveldb
 chmod a+x $HOME/CampusCash/src
 chmod a+x $HOME/CampusCash
-make -f makefile.unix USE_UPNP=-
+make -f makefile.unix USE_UPNP=- -j`nproc`
 cd $HOME 
 cp  CampusCash/src/CampusCashd $HOME/Campusd
 
