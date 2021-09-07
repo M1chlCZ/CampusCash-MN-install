@@ -87,9 +87,9 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 
 clear
 
-# Check if we are root
-if [ "$(id -u)" != "0" ]; then
-    echo "This script must be run as root! Aborting..." 1>&2
+if [[ $UID != 0 ]]; then
+    echo "Please run this script with sudo:"
+    echo "sudo $0 $*"
     exit 1
 fi
 
@@ -151,19 +151,18 @@ if [ -z "$ADVANCED" ]; then
 fi
 
 if [[ ("$ADVANCED" == "y" || "$ADVANCED" == "Y") ]]; then
-    USER=root
+    USER=$USER
     INSTALLERUSED="#Used Advanced Install"
 
     echo "" && echo 'Using advance install' && echo ""
     sleep 1
 else
-    USER=root
+    USER=$USER
     UFW="y"
     INSTALLERUSED="#Used Basic Install"
     BOOTSTRAP="y"
 fi
 
-USERHOME=$(eval echo "~$USER")
 
 if [ -z "$KEY" ]; then
     read -e -p "Masternode Private Key : " KEY
@@ -194,7 +193,7 @@ RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 echo "Configuring swap file..."
 # Configuring SWAPT
 if [[ ("$SWAP" == "y" || "$SWAP" == "Y" || "$SWAP" == "") ]]; then
-    cd ~
+    cd $HOME
     sudo swapoff -a
     sudo dd if=/dev/zero of=/swapfile bs=6144 count=1048576
     sudo chmod 600 /swapfile
@@ -205,10 +204,44 @@ clear
 
 # update packages and upgrade Ubuntu
 echo "Installing dependencies..."
-apt-get update
-apt-get upgrade -y
-apt-get -qq -y install ntp build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev libcurl4-openssl-dev curl libzip-dev
-apt-get -qq -y install make automake build-essential libboost-all-dev yasm binutils libcurl4-openssl-dev openssl libgmp-dev libtool libssl-dev unzip
+YUM_CMD=$(which yum)
+APT_GET_CMD=$(which apt-get)
+PACMAN_CMD=$(which pacman)
+
+if [[ ! -z $YUM_CMD ]]; then
+    yum check-update
+elif [[ ! -z $APT_GET_CMD ]]; then
+    apt-get update
+elif [[ ! -z $PACMAN_CMD ]]; then
+    yes | LC_ALL=en_US.UTF-8 pacman -S $pkg
+else
+    echo "Cannot update repository"
+    exit 1;
+fi
+
+
+
+pkgs='build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev libcurl4-openssl-dev curl libzip-dev ntp git make automake build-essential libboost-all-dev yasm binutils libcurl4-openssl-dev openssl libssl-dev libgmp-dev libtool qt5-default qttools5-dev-tools'
+install=false
+for pkg in $pkgs; do
+  status="$(dpkg-query -W --showformat='${db:Status-Status}' "$pkg" 2>&1)"
+  if [ ! $? = 0 ] || [ ! "$status" = installed ]; then
+    install=true
+  fi
+  if "$install"; then
+    if [[ ! -z $YUM_CMD ]]; then
+        yum -y install $pkg
+    elif [[ ! -z $APT_GET_CMD ]]; then
+        apt-get install -y $pkg
+    elif [[ ! -z $PACMAN_CMD ]]; then
+        yes | LC_ALL=en_US.UTF-8 pacman -S $pkg
+    else
+        echo "error can't install package $pkg"
+        exit 1;
+    fi    
+    install=false
+  fi
+done
 clear
 
 echo "Configuring UFW..."
@@ -225,7 +258,7 @@ clear
 
 # Install Berkley DB 6.2
 echo "Installing Berkley DB..."
-cd ~
+cd $HOME
 wget http://download.oracle.com/berkeley-db/db-6.2.32.NC.tar.gz
 tar zxf db-6.2.32.NC.tar.gz
 cd db-6.2.32.NC/build_unix
@@ -236,24 +269,24 @@ ln -s /usr/local/BerkeleyDB.6.2/lib/libdb-6.2.so /usr/lib/libdb-6.2.so
 ln -s /usr/local/BerkeleyDB.6.2/lib/libdb_cxx-6.2.so /usr/lib/libdb_cxx-6.2.so
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
-cd ~
+cd $HOME
 rm db-6.2.32.NC.tar.gz
-rm -r db-6.2.32.NC
+rm -rf --interactive=never db-6.2.32.NC
 
 # Install CCASH daemon
-cd ~
+cd $HOME
 git clone https://github.com/CampusCash/CampusCash_Core.git CampusCash
-cd ~/CampusCash/src
+cd $HOME/CampusCash/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
 chmod a+x secp256k1
 chmod a+x leveldb
-chmod a+x ~/CampusCash/src
-chmod a+x ~/CampusCash
+chmod a+x $HOME/CampusCash/src
+chmod a+x $HOME/CampusCash
 make -f makefile.unix USE_UPNP=- -j`nproc`
 sleep 1
-cp CampusCashd ~/Campusd
-cd ~
+cp CampusCashd $HOME/Campusd
+cd $HOME
 strip Campusd
 sleep 1
 
@@ -265,16 +298,16 @@ mkdir /root/.CCASH
 # Bootstrap
 if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
     echo "Downloading bootstrap..."
-    cd ~/.CCASH
-    wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.13/CCASH_BootStrap.zip
-    unzip CCASH_BootStrap.zip
-    rm CCASH_BootStrap.zip
-    cd ~
+    cd $HOME/.CCASH
+    wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.15/ccash_bootstrap.zip
+    unzip ccash_bootstrap.zip
+    rm ccash_bootstrap.zip
+    cd $HOME
 fi
 
 # Create CampusCash.conf
-touch ~/.CCASH/CampusCash.conf
-cat >~/.CCASH/CampusCash.conf <<EOL
+touch $HOME/.CCASH/CampusCash.conf
+cat >$HOME/.CCASH/CampusCash.conf <<EOL
 ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
@@ -306,18 +339,18 @@ addnode = 45.32.189.107
 addnode = 45.76.121.100:19427
 addnode = 45.76.121.100
 EOL
-chmod 0600 ~/.CCASH/CampusCash.conf
-chown -R $USER:$USER ~/.CCASH
+chmod 0600 $HOME/.CCASH/CampusCash.conf
+chown -R $USER:$USER $HOME/.CCASH
 
 sleep 1
 clear
 
 #Set up enviroment variables
-cd ~
+cd $HOME
 
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
 source env.sh
-source ~/.profile
+source $HOME/.profile
 
 clear
 
@@ -355,8 +388,8 @@ read -p "Press Enter to continue after read to continue. " -n1 -s
 clear
 
 #File cleanup
-rm -r ~/CampusCash
-rm -rf ~/ccashMNinstall.sh
+rm -r $HOME/CampusCash
+rm -rf $HOME/ccashMNinstall.sh
 
 echo "" && echo "Masternode setup complete" && echo ""
 
