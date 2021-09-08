@@ -237,7 +237,7 @@ for pkg in $pkgs; do
         yum -y install $pkg
     elif [[ ! -z $APT_GET_CMD ]]; then
         echo "using apt-get"
-        apt-get -qq -y install $pkg
+        DEBIAN_FRONTEND=noninteractive apt-get -qq -y install $pkg
     elif [[ ! -z $PACMAN_CMD ]]; then
         echo "using pacman"
         yes | LC_ALL=en_US.UTF-8 pacman -S $pkg
