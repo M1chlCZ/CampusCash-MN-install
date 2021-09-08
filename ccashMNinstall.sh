@@ -212,10 +212,8 @@ if [[ ! -z $YUM_CMD ]]; then
     echo "using YUM"
     yum check-update
 elif [[ ! -z $APT_GET_CMD ]]; then
-    echo "using apt-get"
     apt-get update
 elif [[ ! -z $PACMAN_CMD ]]; then
-    echo "using pacman"
     yes | LC_ALL=en_US.UTF-8 pacman -S $pkg
 else
     echo "Cannot update repository"
@@ -233,13 +231,10 @@ for pkg in $pkgs; do
   fi
   if "$install"; then
     if [[ ! -z $YUM_CMD ]]; then
-        echo "using YUM"
         yum -y install $pkg
     elif [[ ! -z $APT_GET_CMD ]]; then
-        echo "using apt-get"
         DEBIAN_FRONTEND=noninteractive apt-get -qq -y install $pkg
     elif [[ ! -z $PACMAN_CMD ]]; then
-        echo "using pacman"
         yes | LC_ALL=en_US.UTF-8 pacman -S $pkg
     else
         echo "error can't install package $pkg"
