@@ -64,6 +64,7 @@ else
 fi
 
 cd $HOME
+rm -rf CampusCash > /dev/null 2>&1
 git clone https://github.com/CampusCash/CampusCash_Core.git CampusCash
 
 if [[ ("$JUSTDAEMON" == "y" || "$JUSTDAEMON" == "Y") ]]; then
@@ -84,10 +85,10 @@ if [[ ("$JUSTDAEMON" == "y" || "$JUSTDAEMON" == "Y") ]]; then
 else
     # Install CCASH QT Wallet
     cd $HOME/CampusCash
-    chmod a+x objz
-    chmod a+x leveldb/build_detect_platform
-    chmod a+x secp256k1
-    chmod a+x leveldb
+    chmod a+x src/obj
+    chmod a+x src/leveldb/build_detect_platform
+    chmod a+x src/secp256k1
+    chmod a+x src/leveldb
     chmod a+x $HOME/CampusCash/src
     chmod a+x $HOME/CampusCash
     qmake -qt=qt5
