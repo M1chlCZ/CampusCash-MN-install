@@ -18,7 +18,7 @@ else
     exit 1;
 fi
 
-pkgs='build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev libcurl4-openssl-dev curl libzip-dev ntp git make automake build-essential libboost-all-dev yasm binutils libcurl4-openssl-dev openssl libssl-dev libgmp-dev libtool qt5-default qttools5-dev-tools libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools'
+pkgs='build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev libcurl4-openssl-dev curl libzip-dev ntp git make automake build-essential libboost-all-dev yasm binutils libcurl4-openssl-dev openssl libssl-dev libgmp-dev libtool qt5-default qttools5-dev-tools libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libminiupnpc-dev libevent-dev'
 install=false
 for pkg in $pkgs; do
   status="$(dpkg-query -W --showformat='${db:Status-Status}' "$pkg" 2>&1)"
