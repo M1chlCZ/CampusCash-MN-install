@@ -189,9 +189,9 @@ done
 
 cd $HOME/.CCASH
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.15/ccash_bootstrap.zip
-unzip ccash_bootstrap.zip
-rm ccash_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.16/CampusCash_Bootstrap.zip
+unzip CampusCash_Bootstrap.zip
+rm CampusCash_Bootstrap.zip
 cd $HOME
 
 mv CampusCash.conf  $HOME/.CCASH/CampusCash.conf
@@ -250,9 +250,9 @@ done
 
 cd $HOME/.CCASH\$1
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.15/ccash_bootstrap.zip
-unzip ccash_bootstrap.zip
-rm ccash_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.16/CampusCash_Bootstrap.zip
+unzip CampusCash_Bootstrap.zip
+rm CampusCash_Bootstrap.zip
 cd $HOME
 
 mv CampusCash.conf  $HOME/.CCASH\$1/CampusCash.conf
@@ -314,9 +314,9 @@ done
 
 cd $HOME/.CCASH2
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.15/ccash_bootstrap.zip
-unzip ccash_bootstrap.zip
-rm ccash_bootstrap.zip
+wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.16/CampusCash_Bootstrap.zip
+unzip CampusCash_Bootstrap.zip
+rm CampusCash_Bootstrap.zip
 cd $HOME
 
 mv CampusCash.conf  $HOME/.CCASH2/CampusCash.conf

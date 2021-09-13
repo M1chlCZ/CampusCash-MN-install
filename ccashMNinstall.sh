@@ -300,9 +300,9 @@ mkdir /root/.CCASH
 if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
     echo "Downloading bootstrap..."
     cd $HOME/.CCASH
-    wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.15/ccash_bootstrap.zip
-    unzip ccash_bootstrap.zip
-    rm ccash_bootstrap.zip
+    wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.16/CampusCash_Bootstrap.zip
+    unzip CampusCash_Bootstrap.zip
+    rm CampusCash_Bootstrap.zip
     cd $HOME
 fi
 
